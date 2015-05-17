@@ -4,7 +4,7 @@
 ## Uncomment to clear the screen before every task
 # clearing :on
 
-guard 'livereload', host: 'infoshuttle.dev' do
+guard 'livereload' do
   watch(%r{app/views/.+\.(erb|haml|slim)$})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{public/.+\.(css|scss|js|html)})
