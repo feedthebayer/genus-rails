@@ -15,19 +15,13 @@ $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
-// Colors
-$blue: #477dca;
-$dark-gray: #333;
-$medium-gray: #999;
-$light-gray: #ddd;
-
 // Font Colors
-$base-background-color: #fff;
-$base-font-color: $dark-gray;
-$action-color: $blue;
+$base-background-color: $base3;
+$base-font-color: $base00;
+$action-color: $cyan;
 
 // Border
-$base-border-color: $light-gray;
+$base-border-color: $base2;
 $base-border: 1px solid $base-border-color;
 
 // Forms

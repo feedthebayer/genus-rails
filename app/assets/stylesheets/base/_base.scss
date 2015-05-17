@@ -3,9 +3,14 @@
 // Copyright 2013-2015 thoughtbot, inc.
 // MIT License
 
+@import "colors";
 @import "variables";
 @import "buttons";
 @import "forms";
 @import "lists";
 @import "tables";
 @import "typography";
+
+html {
+  background-color: $base-background-color;
+}
