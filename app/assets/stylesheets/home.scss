@@ -1,3 +1,10 @@
+.home-nav {
+  font-size: 1.2em;
+  position: fixed;
+  right: 1em;
+  top: 0.5em;
+}
+
 .home-content {
   text-align: center;
   margin-top: 30vh;
@@ -7,7 +14,7 @@
   font-size: 6em;
   margin: 0;
 
-  @include media($medium-up) {
+  @include media($med-up) {
     font-size: 10em;
   }
 }

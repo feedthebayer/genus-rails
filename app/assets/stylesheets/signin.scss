@@ -1,0 +1,44 @@
+.si-content {
+  text-align: center;
+  margin-top: 5vh;
+
+  @include media($lrg-up) {
+    margin-top: 20vh;
+  }
+}
+
+.si-heading {
+  font-size: calc(1.6em + 5vw);
+  margin-bottom: 0.5em;
+
+  @include media($lrg-up) {
+    font-size: 5em;
+    margin-bottom: 0.3em;
+  }
+
+  @include media($xlrg-up) {
+    font-size: 6em;
+  }
+}
+
+.si-intro {
+  margin: 0 auto;
+  max-width: 40em;
+  padding: 0 0.5em;
+}
+
+.si-form {
+  margin: 0 auto;
+  margin-top: 1em;
+  max-width: 30em;
+  padding: 0 0.5em;
+  text-align: left;
+
+  @include media($lrg-up) {
+    margin-top: 3em;
+  }
+}
+
+.si-form-btn {
+  width: 100%;
+}

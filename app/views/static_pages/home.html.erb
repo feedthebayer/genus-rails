@@ -1,5 +1,15 @@
+<nav class="home-nav">
+  <% if signed_in? %>
+    <%= link_to "Sign Out", signout_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign In", signin_path %>
+  <% end %>
+</nav>
 <section class="home-content">
   <h1 class="home-heading">Genus</h1>
+  <p><strong>
+      A flexible & simple GlassFrog alternative for self-managing organizations
+  </strong></p>
   <p>
     Coming soon by <%= link_to "Brandon Bayer",
       "http://twitter.com/feedthebayer" %>

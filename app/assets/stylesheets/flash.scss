@@ -1,0 +1,18 @@
+.global-flash {
+  font-size: calc(0.9em + 0.6vw);
+  text-align: center;
+}
+
+.global-flashMsg {
+  color: $base3;
+  padding: 0.5em;
+}
+
+.global-flashMsg.success {
+  background-color: $cyan;
+}
+
+.global-flashMsg.error {
+  background-color: $red;
+}
+
