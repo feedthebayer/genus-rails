@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    email = params[:session][:email].downcase
+    email = (params[:session][:email]).downcase
     if user = User.find_by(email: email)
       #email link
     else
-      flash[:error] =
+      flash.now[:error] =
         "Sorry, but I can't find #{email}. Are you sure that's correct?"
       render :new
     end
@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
       remember user
       path = :root # TODO - redirect to organization
     else
-      flash[:error] = "Looks like that login link has expired.
+      flash.now[:error] = "Looks like that login link has expired.
         Please request a new one"
       path = request.path
     end
