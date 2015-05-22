@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    sign_out
+    sign_out if signed_in?
     redirect_to :root
   end
 
@@ -30,6 +30,7 @@ class SessionsController < ApplicationController
     if user && user.password_digest && user.authenticate(password)
       flash[:success] = "Signed in!"
       sign_in user
+      remember user
       path = :root # TODO - redirect to organization
     else
       flash[:error] = "Looks like that sign-in link has expired.

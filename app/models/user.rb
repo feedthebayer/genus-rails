@@ -1,9 +1,43 @@
 class User < ActiveRecord::Base
+  attr_accessor :remember_token
   has_secure_password validations: false
 
-  def new_token!
-    SecureRandom.hex(16).tap do |random_token|
+  before_save { self.email = email.downcase }
+  validates_presence_of :name
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+
+  # Generates, encryptes, saves, & returns a new login token
+  def new_signin_token!
+    SecureRandom.urlsafe_base64.tap do |random_token|
       update_attributes password: random_token
     end
+  end
+
+  # Generates, encryptes, saves, & returns a new remember token
+  def remember!
+    SecureRandom.urlsafe_base64.tap do |random_token|
+      self.remember_token = random_token
+      update_attributes remember_digest: User.digest(random_token)
+    end
+  end
+
+  # Returns true if the given token matches the digest.
+  def authenticated?(remember_token)
+    return nil if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def forget
+    update_attributes remember_digest: nil
+  end
+
+  # Returns hash digest of given string
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
   end
 end
