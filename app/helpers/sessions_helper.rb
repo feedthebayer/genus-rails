@@ -1,6 +1,6 @@
 module SessionsHelper
 
-  def sign_in(user)
+  def log_in(user)
     session[:user_id] = user.id
     user.update_attributes password: nil
   end
@@ -23,11 +23,11 @@ module SessionsHelper
     end
   end
 
-  def signed_in?
+  def logged_in?
     !current_user.nil?
   end
 
-  def sign_out
+  def log_out
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil

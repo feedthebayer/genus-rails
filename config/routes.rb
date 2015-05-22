@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'signin' => 'sessions#new'
-  post 'signin' => 'sessions#create'
-  delete 'signout' => 'sessions#destroy'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
   resources :organizations, path: "", only: [:show] do
     resources :users, only: [:create, :show, :update, :destroy]

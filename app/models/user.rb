@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 
   # Generates, encryptes, saves, & returns a new login token
-  def new_signin_token!
+  def new_login_token!
     SecureRandom.urlsafe_base64.tap do |random_token|
       update_attributes password: random_token
     end
