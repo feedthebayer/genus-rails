@@ -62,17 +62,14 @@ IntercomRails.config do |config|
   # The method/variable that contains the current company for the current user,
   # in your controllers. 'Companies' are generic groupings of users, so this
   # could be a company, app or group.
-  #
-  # config.company.current = Proc.new { current_company }
+  config.company.current = Proc.new { current_organization }
 
   # == Company Custom Data
   # A hash of additional data you wish to send about a company.
   # This works the same as User custom data above.
-  #
-  # config.company.custom_data = {
-  #   :number_of_messages => Proc.new { |app| app.messages.count },
-  #   :is_interesting => :is_interesting?
-  # }
+  config.company.custom_data = {
+    number_of_users: Proc.new { |org| org.users.count }
+  }
 
   # == Company Plan name
   # This is the name of the plan a company is currently paying (or not paying) for.
