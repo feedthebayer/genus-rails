@@ -2,12 +2,16 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token
   has_secure_password validations: false
 
-  before_save { self.email = email.downcase }
+  before_save :downcase_email
   validates_presence_of :name
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+
+  def send_login_email
+    UserMailer.login(self).deliver_later
+  end
 
   # Generates, encryptes, saves, & returns a new login token
   def new_login_token!
@@ -39,5 +43,11 @@ class User < ActiveRecord::Base
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  private
+
+  def downcase_email
+    self.email = email.downcase
   end
 end

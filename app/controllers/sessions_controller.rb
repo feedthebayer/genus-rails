@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
   def create
     email = (params[:session][:email]).downcase
     if user = User.find_by(email: email)
-      #email link
+      user.send_login_email
+      flash[:success] = "The login link should be in your inbox in just a moment!"
+      redirect_to :root
     else
       flash.now[:error] =
         "Sorry, but I can't find #{email}. Are you sure that's correct?"
@@ -33,7 +35,7 @@ class SessionsController < ApplicationController
       remember user
       path = :root # TODO - redirect to organization
     else
-      flash.now[:error] = "Looks like that login link has expired.
+      flash[:error] = "Looks like that login link has expired.
         Please request a new one"
       path = request.path
     end
