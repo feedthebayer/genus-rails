@@ -14,6 +14,7 @@ gem 'figaro'
 gem 'bourbon'
 gem 'neat'
 gem 'bcrypt', '~> 3.1.7'
+gem 'intercom-rails'
 
 group :development, :test do
   gem 'byebug'
