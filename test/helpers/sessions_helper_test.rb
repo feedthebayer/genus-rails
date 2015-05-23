@@ -7,6 +7,12 @@ class SessionsHelperTest < ActionView::TestCase
     remember(@user)
   end
 
+  test "current_user & current_organization are set at login" do
+    log_in_as(@user)
+    assert_equal @user, current_user
+    assert_equal @user.organization, current_organization
+  end
+
   test "current_user returns right user when session is nil" do
     assert_equal @user, current_user, "current user not set"
     assert is_logged_in?, "not logged in"

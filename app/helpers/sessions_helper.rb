@@ -23,6 +23,10 @@ module SessionsHelper
     end
   end
 
+  def current_organization
+    @current_organization ||= @current_user.organization if current_user
+  end
+
   # Returns true if the given user is the current user.
   def current_user?(user)
     user == current_user
