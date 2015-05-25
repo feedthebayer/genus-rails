@@ -1,2 +1,17 @@
-<h1>Organizations#show</h1>
-<p>Find me in app/views/organizations/show.html.erb</p>
+<header class="org-header">
+  <nav class="hdr-left">
+    <%= link_to root_path do %>
+      <%= image_tag "genus-logo-t.png", alt: "Genus", class: "hdr-logo" %>
+    <% end %>
+    <ul class="hdr-list">
+      <li class="hdr-list-item"><%= link_to "#{@org.name}", @org %></li>
+      <li class="hdr-list-item"><%= link_to "Groups", "#" %></li>
+      <li class="hdr-list-item"><%= link_to "Roles", "#" %></li>
+      <li class="hdr-list-item"><%= link_to "People", "#" %></li>
+      <li class="hdr-list-item"><%= link_to "Me", "#" %></li>
+    </ul>
+  </nav>
+  <nav class="hdr-right">
+    <%= log_in_out_link %>
+  </nav>
+</header>

@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Logged in!"
       log_in user
       remember user
-      path = :root # TODO - redirect to organization
+      path = current_organization
     else
       flash[:error] = "Looks like that login link has expired.
         Please request a new one"
