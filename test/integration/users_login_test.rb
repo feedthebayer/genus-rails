@@ -40,14 +40,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?, "not logged out"
     assert_equal '/', path, "sent to wrong page"
     # Simulate a user clicking logout in a second window.
-    delete_via_redirect logout_path
-    assert_select "a[href=?]", login_path
+    delete logout_path
+    follow_redirect!
     assert_select "a[href=?]", logout_path, count: 0
+    assert_select "a[href=?]", login_path
   end
 
   test "login link destroyed after use" do
     log_in_as @user
-    assert_nil @user.password_digest, "password token not deleted"
+    assert_nil @user.reload.password_digest, "password token not deleted"
   end
 
   test "login creates cookie" do
