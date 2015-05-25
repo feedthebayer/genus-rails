@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token
   belongs_to :organization
+  has_many :messages, as: :messageable
   has_secure_password validations: false
+  attr_accessor :remember_token
 
   before_save :downcase_email
-  validates_presence_of :name
-  validates_presence_of :organization
+  validates_presence_of :name, :organization
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
