@@ -7,14 +7,9 @@
 
 .home-content {
   text-align: center;
-  margin-top: 30vh;
 }
 
-.home-heading {
-  font-size: 6em;
-  margin: 0;
-
-  @include media($med-up) {
-    font-size: 10em;
-  }
+.home-logo {
+  max-width: 500px;
+  width: 100%;
 }
