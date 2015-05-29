@@ -31,7 +31,7 @@
       improve your experience.</p>
     <![endif]-->
 
-    <section class="global-flash">
+    <section class="global-flash" id="global-flash" data-turbolinks-temporary>
       <% flash.each do |name, msg| -%>
         <% if msg.is_a?(String) %>
           <div class="global-flashMsg <%= name %>">

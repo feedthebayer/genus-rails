@@ -13,3 +13,7 @@
 @import "si";
 @import "org";
 @import "msg";
+
+html.turbolinks-progress-bar::before {
+  display: none !important;
+}

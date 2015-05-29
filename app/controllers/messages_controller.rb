@@ -7,10 +7,11 @@ class MessagesController < ApplicationController
     unless @message.save
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
-    redirect_to :back
+    redirect_to current_organization, change: 'messages'
   end
 
   def update
+    # redirect_to current_organization, change: "messages:#{@message.id}"
   end
 
   def destroy
@@ -19,7 +20,7 @@ class MessagesController < ApplicationController
     unless @message.destroy
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
-    redirect_to :back
+    redirect_to current_organization, change: 'messages'
   end
 
   private

@@ -1,8 +1,10 @@
-<header class="org-header">
+<header class="org-header" id="org-header" data-turbolinks-permanent>
   <nav class="hdr-left">
-    <%= link_to root_path do %>
-      <%= image_tag "genus-logo-t.png", alt: "Genus", class: "hdr-logo" %>
-    <% end %>
+    <span data-no-turbolink>
+      <%= link_to root_path do %>
+        <%= image_tag "genus-logo-t.png", alt: "Genus", class: "hdr-logo" %>
+      <% end %>
+    </span>
     <ul class="hdr-list">
       <li class="hdr-list-item"><%= link_to "#{@org.name}", @org %></li>
       <li class="hdr-list-item"><%= link_to "Groups", "#" %></li>
@@ -16,7 +18,7 @@
   </nav>
 </header>
 <main class="org-main">
-  <section class="org-messages">
+  <section class="org-messages" id="messages">
     <section class="org-newMsg">
       <h1 class="org-sectionHeader">Message Everyone</h1>
       <%= render partial: 'messages/form', locals: { message: @new_message } %>
@@ -24,7 +26,7 @@
     <h1 class="org-sectionHeader">Today</h1>
     <%= render @messages %>
   </section>
-  <aside class="org-aside">
+  <aside class="org-aside" id="org-aside" data-turbolinks-permanent>
     <h1>My Roles</h1>
     <h1>My Groups</h1>
   </aside>
