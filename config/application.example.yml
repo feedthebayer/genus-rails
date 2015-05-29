@@ -2,6 +2,7 @@ MANDRILL_USERNAME: your_key_here
 MANDRILL_API_KEY: your_key_here
 INTERCOM_APP_ID: your_key_here
 INTERCOM_API_SECRET: your_key_here
+MAILCHIMP_SIGNUP_ACTION: your_url_here
 
 production:
   INTERCOM_APP_ID: your_key_here

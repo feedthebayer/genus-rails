@@ -15,4 +15,16 @@
     Coming soon by <%= link_to "Brandon Bayer",
       "http://twitter.com/feedthebayer" %>
   </p>
+
+  <!-- Begin MailChimp Signup Form -->
+  <section class="home-mailchimp" id="mc_embed_signup">
+    <form action="<%= ENV['MAILCHIMP_SIGNUP_ACTION'] %>" method="post" name="mc-embedded-subscribe-form">
+      <div class="mc-field-group">
+        <input type="email" value="" name="EMAIL" placeholder="Enter your email address">
+      </div>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;"><input type="text" name="b_f1c7ebfcafb38d6b735e19b90_fd939b60bc" tabindex="-1" value=""></div>
+      <button type="submit" value="Subscribe" name="subscribe" >Let me know when I can try this out!</button>
+    </form>
+  </section>
 </section>
