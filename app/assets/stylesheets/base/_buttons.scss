@@ -1,10 +1,12 @@
 #{$all-button-inputs},
-button {
+button, a.button {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
   background-color: $action-color;
   border-radius: $base-border-radius;
-  border: none;
+  border-color: darken($action-color, 10%);
+  border-style: solid;
+  border-width: 0px 0px 2px 0px;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -20,7 +22,7 @@ button {
 
   &:hover,
   &:focus {
-    background-color: darken($action-color, 10%);
+    background-color: darken($action-color, 8%);
     color: #fff;
   }
 

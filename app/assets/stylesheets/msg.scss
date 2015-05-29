@@ -1,27 +1,14 @@
 .msg-container {
-  // background: $base3;
-  background: $base3-light;
-  // @include border-style(solid);
-  // @include border-width(0px);
-  // @include border-color(darken($base2,1));
-  $msg-radius: 5px;
-  @include border-top-radius($msg-radius);
-  @include border-right-radius($msg-radius);
-  @include border-bottom-radius($msg-radius);
-  @include border-left-radius($msg-radius);
-
-  $msg-p-offset: 1px;
-  $msg-n-offset: -$msg-p-offset;
-  $msg-blur: 4px;
-  $msg-color: rgba(0, 0, 0, 0.05);
-
-  box-shadow: $msg-n-offset $msg-n-offset $msg-blur $msg-color,
-              $msg-n-offset $msg-p-offset $msg-blur $msg-color,
-              $msg-p-offset $msg-n-offset $msg-blur $msg-color,
-              $msg-p-offset $msg-p-offset $msg-blur $msg-color;
+  // background: $base3-light;
+  border-color: $base2;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 0px 0px 2px 0px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
   font-size: 0.9em;
   margin-bottom: 2.5em;
   padding: 1em;
+  padding-bottom: 1.5em;
 
   @include media($lrg-up) {
     padding: 2em;
@@ -63,6 +50,6 @@
   }
 }
 
-.msg-footer {
+.msg-footerSmall {
   float: right;
 }
