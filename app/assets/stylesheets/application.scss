@@ -20,9 +20,8 @@ html.turbolinks-progress-bar::before {
 
 // Disable form zoom on iOS
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-  select:focus,
-  textarea:focus,
-  input:focus {
+  textarea,
+  input[type='text'] {
     font-size: 16px;
   }
 }
