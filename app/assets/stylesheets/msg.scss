@@ -1,0 +1,68 @@
+.msg-container {
+  // background: $base3;
+  background: $base3-light;
+  // @include border-style(solid);
+  // @include border-width(0px);
+  // @include border-color(darken($base2,1));
+  $msg-radius: 5px;
+  @include border-top-radius($msg-radius);
+  @include border-right-radius($msg-radius);
+  @include border-bottom-radius($msg-radius);
+  @include border-left-radius($msg-radius);
+
+  $msg-p-offset: 1px;
+  $msg-n-offset: -$msg-p-offset;
+  $msg-blur: 4px;
+  $msg-color: rgba(0, 0, 0, 0.05);
+
+  box-shadow: $msg-n-offset $msg-n-offset $msg-blur $msg-color,
+              $msg-n-offset $msg-p-offset $msg-blur $msg-color,
+              $msg-p-offset $msg-n-offset $msg-blur $msg-color,
+              $msg-p-offset $msg-p-offset $msg-blur $msg-color;
+  font-size: 0.9em;
+  margin-bottom: 2.5em;
+  padding: 1em;
+
+  @include media($lrg-up) {
+    padding: 2em;
+  }
+}
+
+.msg-content {
+  clear: both;
+  padding-top: 1em;
+}
+
+.msg-header {
+  font-size: 1.1em;
+  margin-bottom: 0;
+
+  @include media($med-up) {
+    float: left;
+    margin-right: 1em;
+  }
+}
+
+.msg-time {
+  @include media($med-up) {
+    float: right;
+    line-height: 2.3;
+  }
+}
+
+.msg-new-textarea {
+  font-size: 0.9em;
+  min-height: 3em;
+}
+
+.msg-new-submit {
+  float: right;
+
+  @include media($med-down) {
+    width: 100%;
+  }
+}
+
+.msg-footer {
+  float: right;
+}

@@ -1,0 +1,5 @@
+<%= form_for [current_organization, message], class: "msg-new-form" do |f| %>
+  <%= f.text_area :body, class: 'msg-new-textarea uOvrflHide',
+      placeholder: "What's on your mind?" %>
+  <%= f.submit class: 'msg-new-submit' %>
+<% end %>

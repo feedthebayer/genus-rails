@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :organization
-  has_many :messages, as: :messageable
+  has_many :messages
   has_secure_password validations: false
   attr_accessor :remember_token
 

@@ -15,3 +15,17 @@
     <%= log_in_out_link %>
   </nav>
 </header>
+<main class="org-main">
+  <section class="org-messages">
+    <section class="org-newMsg">
+      <h1 class="org-sectionHeader">Message Everyone</h1>
+      <%= render partial: 'messages/form', locals: { message: @new_message } %>
+    </section>
+    <h1 class="org-sectionHeader">Today</h1>
+    <%= render @messages %>
+  </section>
+  <aside class="org-aside">
+    <h1>My Roles</h1>
+    <h1>My Groups</h1>
+  </aside>
+</main>
