@@ -75,7 +75,7 @@
   padding: 1em;
 }
 
-.org-messages {
+.org-msgSection {
   @include media($lrg-up) {
     @include span-columns(7);
   }
