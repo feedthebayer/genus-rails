@@ -1,36 +1,40 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-      <%= content_for?(:title) ? yield(:title) + " | Genus" : "Genus | Flexible & Simple GlassFrog Alternative" %>
-    </title>
-    <meta name="description" content="Genus is a flexible & simple GlassFrog
+    <% cache 'head' do %>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>
+        <%= content_for?(:title) ? yield(:title) + " | Genus" : "Genus | Flexible & Simple GlassFrog Alternative" %>
+      </title>
+      <meta name="description" content="Genus is a flexible & simple GlassFrog
       alternative for self-managing organizations.">
-    <meta name="keywords" content="GlassFrog, glass frog, alternative, social network, self-managing, business management">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" >
-    <meta name="apple-mobile-web-app-capable" content="yes" >
-    <meta name="apple-mobile-web-app-title" content="Genus" >
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="mobile-web-app-capable" content="yes" >
+      <meta name="keywords" content="GlassFrog, glass frog, alternative, social network, self-managing, business management">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" >
+      <!-- <meta name="apple&#45;mobile&#45;web&#45;app&#45;capable" content="yes" > -->
+      <!-- <meta name="apple&#45;mobile&#45;web&#45;app&#45;title" content="Genus" > -->
+      <!-- <meta name="apple&#45;mobile&#45;web&#45;app&#45;status&#45;bar&#45;style" content="black"> -->
+      <!-- <meta name="mobile&#45;web&#45;app&#45;capable" content="yes" > -->
 
-    <%# <%= favicon_link_tag %>
-    <%# <%= favicon_link_tag 'apple-touch-icon-iphone.png', rel: 'apple-touch-icon', type: 'image/png' %>
-    <%# <%= favicon_link_tag 'touch-icon-ipad.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "76x76" %>
-    <%# <%= favicon_link_tag 'touch-icon-iphone-retina.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "120x120" %>
-    <%# <%= favicon_link_tag 'touch-icon-ipad-retina.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "152x152" %>
+      <%# <%= favicon_link_tag %>
+      <%# <%= favicon_link_tag 'apple-touch-icon-iphone.png', rel: 'apple-touch-icon', type: 'image/png' %>
+      <%# <%= favicon_link_tag 'touch-icon-ipad.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "76x76" %>
+      <%# <%= favicon_link_tag 'touch-icon-iphone-retina.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "120x120" %>
+      <%# <%= favicon_link_tag 'touch-icon-ipad-retina.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "152x152" %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <% end %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
-      Please <a href="http://browsehappy.com/">upgrade your browser</a> to
+    <% cache 'browser-upgrade' do %>
+      <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> to
       improve your experience.</p>
-    <![endif]-->
+      <![endif]-->
+    <% end %>
 
     <section class="global-flash" id="global-flash" data-turbolinks-temporary>
       <% flash.each do |name, msg| -%>
@@ -45,14 +49,16 @@
     <%= yield %>
 
     <% if Rails.env.production? %>
-      <script>
+      <% cache 'google-analytics' do %>
+        <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+                                                                function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
         e=o.createElement(i);r=o.getElementsByTagName(i)[0];
         e.src='//www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-63030273-1','auto');ga('send','pageview');
-      </script>
+        </script>
+      <% end %>
     <% end %>
-</body>
+  </body>
 </html>
