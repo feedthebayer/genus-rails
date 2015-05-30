@@ -19,7 +19,7 @@
   <section class="org-msgSection">
     <section class="org-newMsg">
       <h1 class="org-sectionHeader">Message Everyone</h1>
-      <%= render partial: 'messages/form', locals: { message: @new_message } %>
+      <%= render partial: 'messages/form', locals: { org: @org, message: @new_message } %>
     </section>
     <section class="org-messages" id="messages">
       <h1 class="org-sectionHeader">Today</h1>
