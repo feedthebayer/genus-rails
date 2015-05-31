@@ -3,8 +3,8 @@ class OrganizationsController < ApplicationController
 
   def show
     @org = find_organization
-    @messages = @org.messages # TODO - only get today's messages
-    @new_message = Message.new(messageable: @org)
+    @conversations = @org.conversations # TODO - only get today's messages
+    # @new_message = Message.new(messageable: @org)
   end
 
   private
@@ -13,7 +13,7 @@ class OrganizationsController < ApplicationController
     if current_organization.id == params[:id].to_i
       current_organization
     else
-      Organization.includes(:messages).find(params[:id])
+      Organization.includes(:conversations).find(params[:id])
     end
   end
 end

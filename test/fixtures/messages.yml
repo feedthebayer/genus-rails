@@ -3,9 +3,9 @@
 one:
   body: Test message one
   user: brandon 
-  messageable: test_org
+  conversation: one
 
 two:
   body: Test message two
   user: brandon 
-  messageable: test_org
+  conversation: two
