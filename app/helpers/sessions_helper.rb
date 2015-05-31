@@ -2,29 +2,32 @@ module SessionsHelper
 
   def log_in(user)
     session[:user_id] = user.id
-    user.update_attributes password: nil
+    user.clear_login_token!
+  end
+
+  def log_in_and_remember(user)
+    log_in user
+    remember user
   end
 
   def remember(user)
-    user.remember!
     cookies.permanent.signed[:user_id] = user.id
-    cookies.permanent[:remember_token] = user.remember_token
+    cookies.permanent[:remember_token] = user.new_remember_token!
   end
 
   def current_user
-    if user_id = session[:user_id]
-      @current_user ||= User.find_by(id: user_id)
-    elsif user_id = cookies.signed[:user_id]
-      user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
-        log_in user
-        @current_user = user
-      end
+    return @current_user if @current_user ||= find_user(session[:user_id])
+
+    # Try to login from cookie
+    user = find_user(cookies.signed[:user_id])
+    if user && user.remembered?(cookies[:remember_token])
+      log_in user
+      @current_user = user
     end
   end
 
-  def current_organization
-    @current_organization ||= @current_user.organization if current_user
+  def find_user(id)
+    User.includes(:organization).find_by(id: id)
   end
 
   # Returns true if the given user is the current user.
@@ -32,20 +35,28 @@ module SessionsHelper
     user == current_user
   end
 
+  def current_organization
+    if current_user
+      @current_organization ||= @current_user.organization
+    end
+  end
+
   def logged_in?
     !current_user.nil?
   end
 
   def log_out
-    forget(current_user)
-    session.delete(:user_id)
-    @current_user = nil
+    if logged_in?
+      forget current_user
+      session.delete :user_id
+      @current_user = nil
+    end
   end
 
   # Forgets a persistent session.
   def forget(user)
-    user.forget
-    cookies.delete(:user_id)
-    cookies.delete(:remember_token)
+    user.clear_remember_token!
+    cookies.delete :user_id
+    cookies.delete :remember_token
   end
 end

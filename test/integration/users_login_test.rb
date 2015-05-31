@@ -29,9 +29,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     # Login
     get_via_redirect login_path, sid: @user.id, token: @token
     assert is_logged_in?, "not logged in"
-    assert_equal '/', path, "sent to wrong page"
+    assert_equal organization_path(@user.organization), path, "sent to wrong page"
     assert_not flash.empty?, "no flash msg"
-    assert_template 'static_pages/home', "wrong template"
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
 

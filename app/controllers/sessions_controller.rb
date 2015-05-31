@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    maybe_login_from_token
+    login_from_token if params[:token].present?
   end
 
   def create
@@ -17,22 +17,19 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out if logged_in?
+    log_out
     redirect_to :root
   end
 
   private
 
-  def maybe_login_from_token
-    return if params[:token].blank?
-
+  def login_from_token
     user = User.find_by(id: params[:sid])
-    password = params[:token]
+    password_token = params[:token]
 
-    if user && user.password_digest && user.authenticate(password)
+    if user && user.password_digest && user.authenticate(password_token)
       flash[:success] = "Logged in!"
-      log_in user
-      remember user
+      log_in_and_remember user
       path = current_organization
     else
       flash[:error] = "Looks like that login link has expired.

@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   belongs_to :organization
   has_many :messages
   has_secure_password validations: false
-  attr_accessor :remember_token
 
   before_save :downcase_email
   validates_presence_of :name, :organization
@@ -22,22 +21,24 @@ class User < ActiveRecord::Base
     end
   end
 
+  def clear_login_token!
+    update_attributes password: nil
+  end
+
   # Generates, encryptes, saves, & returns a new remember token
-  def remember!
+  def new_remember_token!
     SecureRandom.urlsafe_base64.tap do |random_token|
-      self.remember_token = random_token
       update_attributes remember_digest: User.digest(random_token)
     end
   end
 
-  # Returns true if the given token matches the digest.
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def clear_remember_token!
+    update_attributes remember_digest: nil
   end
 
-  def forget
-    update_attributes remember_digest: nil
+  def remembered?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
   # Returns hash digest of given string
