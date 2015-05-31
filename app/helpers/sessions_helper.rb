@@ -16,18 +16,14 @@ module SessionsHelper
   end
 
   def current_user
-    return @current_user if @current_user ||= find_user(session[:user_id])
+    return @current_user if @current_user ||= User.find_by(id: session[:user_id])
 
     # Try to login from cookie
-    user = find_user(cookies.signed[:user_id])
+    user = User.find_by(id: cookies.signed[:user_id])
     if user && user.remembered?(cookies[:remember_token])
       log_in user
       @current_user = user
     end
-  end
-
-  def find_user(id)
-    User.includes(:organization).find_by(id: id)
   end
 
   # Returns true if the given user is the current user.
@@ -43,7 +39,6 @@ module SessionsHelper
 
   def require_login
     unless logged_in?
-      # flash[:error] = "You need to login first."
       redirect_to login_path
     end
   end
