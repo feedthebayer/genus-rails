@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :require_login
+
   def create
     @message = Message.new(user: current_user,
                            messageable: current_organization,

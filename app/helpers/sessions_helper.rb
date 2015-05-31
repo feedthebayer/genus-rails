@@ -41,6 +41,13 @@ module SessionsHelper
     end
   end
 
+  def require_login
+    unless logged_in?
+      # flash[:error] = "You need to login first."
+      redirect_to login_path
+    end
+  end
+
   def logged_in?
     !current_user.nil?
   end

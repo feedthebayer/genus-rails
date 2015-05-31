@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
     password_token = params[:token]
 
     if user && user.password_digest && user.authenticate(password_token)
-      flash[:success] = "Logged in!"
+      flash[:success] = "Logged in! Remember to log out if on a public computer."
       log_in_and_remember user
       path = current_organization
     else

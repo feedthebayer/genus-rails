@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyText
-  user_id: 
-  messageable_id: 
-  messageable_type: Messageable
+  body: Test message one
+  user: brandon 
+  messageable: test_org
 
 two:
-  body: MyText
-  user_id: 
-  messageable_id: 
-  messageable_type: Messageable
+  body: Test message two
+  user: brandon 
+  messageable: test_org
