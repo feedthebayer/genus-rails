@@ -1,2 +1,9 @@
-<h1>Conversations#show</h1>
-<p>Find me in app/views/conversations/show.html.erb</p>
+<% content_for :title, "#{@org.name} - Conversation #{@conversation.id}" %>
+<section class="con-messages" id="messages">
+  <h1 class="con-sectionHeader">Today</h1>
+  <%= render @messages %>
+</section>
+<section class="org-newMsg">
+  <h1 class="org-sectionHeader">New message</h1>
+  <%= render partial: 'messages/form', locals: { org: @org, message: @new_msg } %>
+</section>

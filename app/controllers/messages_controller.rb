@@ -2,14 +2,20 @@ class MessagesController < ApplicationController
   before_action :require_login
 
   def create
-    @message = Message.new(user: current_user,
-                           messageable: current_organization,
+    @org = find_organization
+    @conversation = find_or_create_conversation_in @org
+    @message = Message.new(user: current_user, conversation: @conversation,
                            body: params[:message][:body])
 
-    unless @message.save
+    if not @message.save
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
-    redirect_to current_organization, change: 'messages'
+
+    if new_conversation?
+      redirect_to [@org, @message.conversation]
+    else
+      redirect_to [@org, @message.conversation], change: 'messages'
+    end
   end
 
   def update
@@ -17,17 +23,34 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    @org = find_organization
     @message = Message.find(params[:id])
 
-    unless @message.destroy
+    if not @message.destroy
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
-    redirect_to current_organization, change: 'messages'
+    redirect_to [@org, @message.conversation], change: 'messages'
   end
 
   private
 
-  def message_params
-    params.require[:message].permit[:body]
+  def find_organization
+    if current_organization.id == params[:organization_id].to_i
+      current_organization
+    else
+      Organization.find(params[:organization_id])
+    end
+  end
+
+  def find_or_create_conversation_in(conversational)
+    if new_conversation?
+      conversational.conversations.create!
+    else
+      Conversation.find(params[:conversation_id])
+    end
+  end
+
+  def new_conversation?
+    params[:conversation_id].blank?
   end
 end

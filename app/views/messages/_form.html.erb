@@ -1,4 +1,6 @@
-<%= form_for [org, message], class: "msg-new-form", remote: true do |f| %>
+<%# For new conversations, message.conversation = nil & is dropped %>
+<%= form_for [org, message.conversation, message],
+      class: "msg-new-form", remote: true do |f| %>
   <%= f.text_area :body, class: 'msg-new-textarea uOvrflHide',
       placeholder: "What's on your mind?" %>
   <%= f.submit class: 'msg-new-submit' %>

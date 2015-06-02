@@ -5,8 +5,16 @@ Rails.application.routes.draw do
 
   resources :organizations, path: "", only: [:show] do
     resources :users, only: [:create, :show, :update, :destroy]
-    resources :conversations, only: [:create, :show, :destroy] do
-      resources :messages, only: [:create, :update, :destroy]
+    resources :conversations, only: [:show] do
+      # For all new messages in an existing converation
+      resources :messages, only: [:create]
+    end
+    # For all new global conversations & show/update/delete all exisiting msg
+    resources :messages, only: [:create, :show, :update, :destroy]
+
+    resources :groups, only: [:create, :show, :destroy] do
+      # For all new conversations in a group
+      resources :messages, only: [:create]
     end
   end
 

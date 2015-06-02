@@ -1,3 +1,4 @@
+<% content_for :title, @org.name %>
 <header class="org-header" id="org-header" data-turbolinks-permanent>
   <nav class="hdr-left">
     <%= link_to root_path do %>
@@ -18,8 +19,8 @@
 <main class="org-main">
   <section class="org-msgSection">
     <section class="org-newMsg">
-      <h1 class="org-sectionHeader">Message Everyone</h1>
-      <%# <%= render partial: 'messages/form', locals: { org: @org, message: @new_message } %>
+      <h1 class="org-sectionHeader">Start a conversation</h1>
+      <%= render partial: 'messages/form', locals: { org: @org, message: @new_msg } %>
     </section>
     <section class="org-messages" id="messages">
       <h1 class="org-sectionHeader">Today</h1>

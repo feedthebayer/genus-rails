@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
   def show
     @org = find_organization
     @conversations = @org.conversations # TODO - only get today's messages
-    # @new_message = Message.new(messageable: @org)
+    @new_msg = Message.new
   end
 
   private
