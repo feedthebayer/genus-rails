@@ -1,15 +1,23 @@
 <% provide(:title, "Log In") %>
-<section class="si-content">
-  <h1 class="si-heading">Login</h1>
-  <p class="si-intro">
+<header>
+  <nav>
+    <%= link_to root_path do %>
+      <%= image_tag "genus-logo-t.png", alt: "Genus", class: "si-logo" %>
+    <% end %>
+  </nav>
+</header>
+
+<section class="li-content">
+  <h1 class="li-heading">Login</h1>
+  <p class="li-intro">
     At Genus, we love simplicity; we don't make you create complex, easily
     forgotten passwords. Instead, we'll instantly email you a secure, one-click login link.
   </p>
-  <div class="si-form">
+  <div class="li-form">
     <%= form_for(:session, url: login_path) do |f| %>
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true %>
-      <%= f.submit "Email me a new login link", class: "si-form-btn" %>
+      <%= f.submit "Email me a new login link", class: "li-form-btn" %>
     <% end %>
   </div>
 </section>
