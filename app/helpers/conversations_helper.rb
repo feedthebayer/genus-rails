@@ -3,7 +3,10 @@ module ConversationsHelper
   def link_to_rest_of_conversation(conversation)
     return nil if conversation.length < 3
 
-    link_to "#{conversation.length - 2} more messages",
-    [conversation.conversational, conversation]
+    number_of_messages = conversation.length - 2
+    link_string =
+      "#{number_of_messages} more #{ "messsage".pluralize number_of_messages }"
+
+    link_to link_string, [conversation.conversational, conversation]
   end
 end
