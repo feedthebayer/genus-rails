@@ -1,0 +1,70 @@
+.nav-header {
+  @include media($lrg-up) {
+    font-size: 1.2em;
+  }
+}
+
+.nav-left {
+  float: left;
+
+  @include media($lrg-up) {
+    margin: 0.5em 1em;
+  }
+}
+
+.nav-logo {
+  float: left;
+  width: 75px;
+
+  @include media($lrg-up) {
+    width: 100px;
+  }
+}
+
+.nav-list {
+  float: left;
+  max-width: 57vw;
+  padding: 0.5em;
+
+  a {
+    text-decoration: none;
+  }
+
+  @include media($lrg-up) {
+    max-width: inherit;
+    padding: 2em;
+  }
+}
+
+.nav-list-item {
+  display: inline-block;
+  margin-bottom: 0.5em;
+
+  &+&, &:first-child {
+    margin-right: 1em;
+  }
+
+  @include media($lrg-up) {
+    &:first-child {
+      margin: 0;
+    }
+
+    &+& {
+      margin-left: 2em;
+    }
+  }
+}
+
+.nav-right {
+  float: right;
+  font-size: 0.9em;
+  margin-right: 0.5em;
+  margin-top: 0.3em;
+
+  @include media($lrg-up) {
+    font-size: 1em;
+    margin-right: 1em;
+    margin-top: 0.5em;
+  }
+}
+

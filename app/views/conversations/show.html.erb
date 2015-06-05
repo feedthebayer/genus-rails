@@ -1,9 +1,16 @@
-<% content_for :title, "#{@org.name} - Conversation #{@conversation.id}" %>
-<section class="con-messages" id="messages">
-  <h1 class="con-sectionHeader">Today</h1>
-  <%= render @messages %>
-</section>
-<section class="org-newMsg">
-  <h1 class="org-sectionHeader">New message</h1>
-  <%= render partial: 'messages/form', locals: { org: @org, message: @new_msg } %>
-</section>
+<% content_for :title, "Conversation in #{@conversation.conversational.name}" %>
+<%= render partial: 'shared/nav_header', locals: { org: @org } %>
+<main class="app-main" id="app-main">
+  <section class="con-container">
+    <h1 class="app-sectionHeader">
+      A conversation in <%= @conversation.conversational.name %>
+    </h1>
+    <section class="con-messages" id="messages">
+      <%= render @messages %>
+    </section>
+    <section class="con-newMsg" id="new-message" data-turbolinks-temporary>
+      <h1 class="app-sectionHeader">Reply to the conversation</h1>
+      <%= render partial: 'messages/form', locals: { org: @org, message: @new_msg } %>
+    </section>
+  </section>
+</main>

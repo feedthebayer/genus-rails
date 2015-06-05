@@ -1,0 +1,14 @@
+<section class="con-messages" id="messages">
+  <%= render conversation.messages.first %>
+  <% if conversation.length > 2 %>
+    <p class="msg-container msg-separator">
+      <%= link_to_rest_of_conversation conversation %>
+    </p>
+  <% end %>
+  <%= render conversation.messages.last if conversation.length > 1 %>
+  <nav class="con-footerNav">
+    <%= link_to "Reply to this conversation",
+      organization_conversation_path(conversation.conversational, conversation,
+                                      anchor: "new-message") %>
+  </nav>
+</section>

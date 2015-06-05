@@ -1,0 +1,25 @@
+.con-container {
+
+  @include media($xlrg-up) {
+    @include span-columns(8);
+    @include shift(2);
+  }
+}
+
+.con-messages {
+  background: $base3-light;
+  border-color: $base2;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px 0px 2px;
+  // box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 0.9em;
+  margin-bottom: 2.5em;
+}
+
+.con-footerNav {
+  // padding-right: 2em;
+  padding-bottom: 0.5em;
+  text-align: center;
+}

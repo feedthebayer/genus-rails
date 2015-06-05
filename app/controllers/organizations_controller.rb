@@ -3,7 +3,8 @@ class OrganizationsController < ApplicationController
 
   def show
     @org = find_organization
-    @conversations = @org.conversations # TODO - only get today's messages
+    # TODO - only get today's messages
+    @conversations = @org.conversations.includes(:messages).all
     @new_msg = Message.new
   end
 

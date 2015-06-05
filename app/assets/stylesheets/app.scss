@@ -1,0 +1,16 @@
+.app-main {
+  clear: both;
+  @include outer-container;
+  padding: 1em;
+}
+
+.app-sectionHeader {
+  color: $green;
+  font-size: 1.3em;
+
+  @include media($med-up) {
+    font-size: 1.7em;
+  }
+}
+
+

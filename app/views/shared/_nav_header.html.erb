@@ -1,0 +1,17 @@
+<header class="nav-header" id="nav-header" data-turbolinks-permanent>
+  <nav class="nav-left">
+    <%= link_to root_path do %>
+      <%= image_tag "genus-logo-t.png", alt: "Genus", class: "nav-logo" %>
+    <% end %>
+    <ul class="nav-list">
+      <li class="nav-list-item"><%= link_to org.name, org %></li>
+      <li class="nav-list-item"><%= link_to "Groups", "#" %></li>
+      <li class="nav-list-item"><%= link_to "Roles", "#" %></li>
+      <li class="nav-list-item"><%= link_to "People", "#" %></li>
+      <li class="nav-list-item"><%= link_to "Me", "#" %></li>
+    </ul>
+  </nav>
+  <nav class="nav-right">
+    <%= log_in_out_link %>
+  </nav>
+</header>

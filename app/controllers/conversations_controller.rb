@@ -3,7 +3,9 @@ class ConversationsController < ApplicationController
 
   def show
     @org = find_organization
-    @conversation = Conversation.includes(:messages).find(params[:id])
+    # For some reason messages still get loaded in the view
+    # @conversation = Conversation.includes(:messages).find(params[:id])
+    @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages.all
     @new_msg = @conversation.messages.build
   end
