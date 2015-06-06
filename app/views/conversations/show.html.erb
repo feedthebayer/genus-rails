@@ -10,7 +10,8 @@
     </section>
     <section class="con-newMsg" id="new-message" data-turbolinks-temporary>
       <h1 class="app-sectionHeader">Reply to the conversation</h1>
-      <%= render partial: 'messages/form', locals: { org: @org, message: @new_msg } %>
+      <%= render partial: 'messages/form',
+        locals: { org: @org, message_parent: @conversation, message: @new_msg } %>
     </section>
   </section>
 </main>

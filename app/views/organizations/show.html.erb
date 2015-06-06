@@ -4,7 +4,8 @@
   <section class="org-msgSection">
     <section class="org-newMsg" id="org-newMsg" data-turbolinks-temporary>
       <h1 class="app-sectionHeader">Start a Conversation</h1>
-      <%= render partial: 'messages/form', locals: { org: @org, message: @new_msg } %>
+      <%= render partial: 'messages/form',
+        locals: { org: @org, message_parent: nil, message: @new_msg } %>
     </section>
     <section class="org-conversations" id="conversations">
       <h1 class="app-sectionHeader">Today's Conversations</h1>
