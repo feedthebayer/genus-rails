@@ -1,6 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'capybara/rails'
 
 class ActiveSupport::TestCase
 
@@ -26,5 +27,14 @@ class ActiveSupport::TestCase
 
   def integration_test?
     defined?(post_via_redirect)
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+
+  def log_in_with_capybara_as(user)
+    visit(login_path sid: user.id, token: user.new_login_token!)
   end
 end

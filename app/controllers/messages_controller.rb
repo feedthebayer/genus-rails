@@ -27,15 +27,16 @@ class MessagesController < ApplicationController
     @org = find_organization
     @message = Message.find(params[:id])
 
-    if @message.conversation.messages.count == 1
-      @message.conversation.destroy!
-    end
-
     if not @message.destroy
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
 
-    redirect_to [@org, @message.conversation], change: 'messages'
+    if @message.conversation.messages.empty?
+      @message.conversation.destroy!
+      redirect_to @org
+    else
+      redirect_to [@org, @message.conversation], change: 'messages'
+    end
   end
 
   private
