@@ -11,7 +11,16 @@
 .org-aside {
   @include media($lrg-up) {
     @include span-columns(5);
+    padding-left: 3em;
   }
+}
+
+.org-asideHeading {
+  font-size: 1.1em;
+}
+
+.org-group {
+  font-size: 0.9em;
 }
 
 

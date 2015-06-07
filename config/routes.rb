@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     # For all new global conversations & show/update/delete all exisiting msg
     resources :messages, only: [:create, :show, :update, :destroy]
 
-    resources :groups, only: [:create, :show, :destroy] do
+    resources :groups, only: [:create, :show, :index, :destroy] do
       # For all new conversations in a group
       resources :messages, only: [:create]
     end

@@ -1,0 +1,33 @@
+.grp-indexContainer {
+  @include media($lrg-up) {
+    @include span-columns(9);
+  }
+  @include media($xlrg-up) {
+    @include span-columns(7);
+  }
+}
+
+.grp-indexSection {
+  margin-bottom: 4em;
+}
+
+.grp-newForm {
+}
+
+input[type="text"].grp-newTextfield {
+  line-height: 24px;
+
+  @include media($med-up) {
+    float: left;
+    width: 74%;
+  }
+}
+
+.grp-newSubmit {
+  float: right;
+
+  @include media($sml-only) {
+    width: 100%;
+  }
+}
+

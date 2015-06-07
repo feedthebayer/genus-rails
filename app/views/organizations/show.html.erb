@@ -12,8 +12,14 @@
       <%= render @conversations %>
     </section>
   </section>
-  <aside class="org-aside" id="org-aside" data-turbolinks-permanent>
-    <h1>My Roles</h1>
-    <h1>My Groups</h1>
+  <aside class="org-aside" id="org-aside">
+    <h1 class="org-asideHeading">My Roles</h1>
+    <h1 class="org-asideHeading">All Groups</h1>
+    <ul>
+      <% @groups.each do |group| %>
+        <li><%= link_to group.name, [@org, group], class: "org-group" %></li>
+      <% end %>
+      <li><%= link_to "New...", organization_groups_path(@org), class: "org-group" %></li>
+    </ul>
   </aside>
 </main>
