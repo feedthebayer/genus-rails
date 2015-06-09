@@ -3,7 +3,7 @@ button, a.button {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
   background-color: $action-color;
-  border-radius: $base-border-radius;
+  border-radius: $button-border-radius;
   border-color: darken($action-color, 10%);
   border-style: solid;
   border-width: 0px 0px 2px 0px;
@@ -19,6 +19,10 @@ button, a.button {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+
+  &.btn-sml {
+    padding: 0.5em 0.7em;
+  }
 
   &:hover,
   &:focus {

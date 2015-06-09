@@ -10,6 +10,7 @@
 $medium-screen: em(600);
 $large-screen: em(760);
 $xlarge-screen: em(1024);
+$xxlarge-screen: em(1200);
 
 $sml-only: new-breakpoint(max-width $medium-screen);
 $med-down: new-breakpoint(max-width $large-screen);
@@ -17,3 +18,4 @@ $med-down: new-breakpoint(max-width $large-screen);
 $med-up: new-breakpoint(min-width $medium-screen);
 $lrg-up: new-breakpoint(min-width $large-screen);
 $xlrg-up: new-breakpoint(min-width $xlarge-screen);
+$xxlrg-up: new-breakpoint(min-width $xxlarge-screen);

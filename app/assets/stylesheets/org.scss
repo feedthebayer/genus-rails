@@ -1,18 +1,19 @@
 .org-msgSection {
   @include media($lrg-up) {
-    @include span-columns(7);
+    @include span-columns(8);
   }
 }
 
 .org-aside {
   @include media($lrg-up) {
-    @include span-columns(5);
+    @include span-columns(4);
     padding-left: 3em;
   }
 }
 
 .org-asideHeading {
-  font-size: 1.1em;
+  color: $green;
+  font-size: 1.2em;
 }
 
 .org-group {

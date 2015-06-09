@@ -1,8 +1,8 @@
 <% content_for :title, "#{@group.name} in #{@org.name}" %>
 <%= render partial: 'shared/nav_header', locals: { org: @org } %>
 <main class="app-main" id="app-main">
+  <h1 class="app-pageHeading"><%= @group.name %></h1>
   <section class="grp-showContainer">
-    <h1 class="app-sectionHeader"><%= @group.name %></h1>
     <section class="grp-msgSection">
       <section id="grp-newMsg" data-turbolinks-temporary>
         <h1 class="app-sectionHeader">Start a Conversation</h1>

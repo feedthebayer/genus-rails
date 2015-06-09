@@ -2,8 +2,10 @@
 <%= render partial: 'shared/nav_header', locals: { org: @org } %>
 <main class="app-main" id="app-main">
   <section class="grp-indexContainer">
+    <h1 class="app-pageHeading">
+      All groups in <%= link_to @org.name, @org, class: "app-headingLink" %>
+    </h1>
     <section class="grp-indexSection">
-      <h1 class="app-sectionHeader">All groups in <%= @org.name %></h1>
       <ul id="groups">
         <% @groups.each do |group| %>
           <li><%= link_to group.name, [@org, group], class: "org-group" %></li>

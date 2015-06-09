@@ -1,19 +1,18 @@
 .grp-indexContainer {
   @include media($lrg-up) {
-    @include span-columns(9);
-  }
-  @include media($xlrg-up) {
-    @include span-columns(7);
+    @include span-columns(8);
+    @include shift(2);
   }
 }
 
 .grp-indexSection {
+  font-size: 1.1em;
   margin-bottom: 4em;
 }
 
 .grp-showContainer {
   @include media($lrg-up) {
-    @include span-columns(7);
+    @include span-columns(8);
   }
 }
 
@@ -25,12 +24,13 @@ input[type="text"].grp-newTextfield {
 
   @include media($med-up) {
     float: left;
-    width: 74%;
+    width: 72%;
   }
 }
 
 .grp-newSubmit {
   float: right;
+  width: 26%;
 
   @include media($sml-only) {
     width: 100%;

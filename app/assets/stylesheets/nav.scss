@@ -1,38 +1,32 @@
 .nav-header {
-  @include media($lrg-up) {
-    font-size: 1.2em;
-  }
+  // @include media($xxlrg-up) {
+  //   margin-left: 5%;
+  // }
 }
 
 .nav-left {
-  float: left;
-
-  @include media($lrg-up) {
-    margin: 0.5em 1em;
-  }
+  display: inline-block;
 }
 
 .nav-logo {
   float: left;
   width: 75px;
-
-  @include media($lrg-up) {
-    width: 100px;
-  }
 }
 
 .nav-list {
   float: left;
-  max-width: 57vw;
-  padding: 0.5em;
+  max-width: 75vw;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
 
   a {
     text-decoration: none;
   }
 
-  @include media($lrg-up) {
+  @include media($med-up) {
     max-width: inherit;
-    padding: 2em;
+    padding-left: 1.55em;
+    padding-top: 1.55em;
   }
 }
 
@@ -41,30 +35,34 @@
   margin-bottom: 0.5em;
 
   &+&, &:first-child {
-    margin-right: 1em;
+    margin-right: 0.7em;
   }
 
-  @include media($lrg-up) {
-    &:first-child {
-      margin: 0;
+  &:first-child {
+    display: block;
+  }
+
+  @include media($med-up) {
+    &+& {
+      margin-right: 1.5em;
     }
 
-    &+& {
-      margin-left: 2em;
+    &:first-child {
+      display: inline-block;
     }
   }
 }
 
 .nav-right {
-  float: right;
   font-size: 0.9em;
+  position: absolute;
   margin-right: 0.5em;
   margin-top: 0.3em;
+  right: 0;
+  top: 0;
 
-  @include media($lrg-up) {
+  @include media($med-up) {
     font-size: 1em;
-    margin-right: 1em;
-    margin-top: 0.5em;
   }
 }
 
