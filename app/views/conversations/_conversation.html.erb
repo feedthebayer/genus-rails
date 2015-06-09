@@ -8,7 +8,7 @@
   <%= render conversation.messages.last if conversation.length > 1 %>
   <nav class="con-footerNav">
     <%= link_to "Reply to this conversation",
-      organization_conversation_path(conversation.conversational, conversation,
+      organization_conversation_path(conversation.organization, conversation,
                                       anchor: "new-message") %>
   </nav>
 </section>

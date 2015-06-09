@@ -15,10 +15,4 @@
   <div class="msg-content">
     <%= simple_format message.body %>
   </div>
-  <footer class="msg-footer">
-    <small class="msg-footerSmall">
-      <%= link_to "Delete", [message.conversation.conversational, message],
-        method: :delete, remote: true %>
-    </small>
-  </footer>
 </article>

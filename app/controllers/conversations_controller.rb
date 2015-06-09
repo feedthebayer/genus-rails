@@ -6,6 +6,7 @@ class ConversationsController < ApplicationController
     # For some reason messages still get loaded in the view
     # @conversation = Conversation.includes(:messages).find(params[:id])
     @conversation = Conversation.find(params[:id])
+    @parent_path = get_parent_show_path_for @conversation
     @messages = @conversation.messages.all
     @new_msg = @conversation.messages.build
   end
@@ -17,6 +18,14 @@ class ConversationsController < ApplicationController
       current_organization
     else
       Organization.find(params[:organization_id])
+    end
+  end
+
+  def get_parent_show_path_for(conversation)
+    if conversation.conversational_type == "Group"
+      organization_group_path(conversation.organization, conversation.conversational)
+    else
+      organization_path(conversation.organization)
     end
   end
 end

@@ -1,2 +1,19 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<% content_for :title, "#{@group.name} in #{@org.name}" %>
+<%= render partial: 'shared/nav_header', locals: { org: @org } %>
+<main class="app-main" id="app-main">
+  <section class="grp-showContainer">
+    <h1 class="app-sectionHeader"><%= @group.name %></h1>
+    <section class="grp-msgSection">
+      <section id="grp-newMsg" data-turbolinks-temporary>
+        <h1 class="app-sectionHeader">Start a Conversation</h1>
+        <%= render partial: 'messages/form',
+          locals: { org: @org, message_parent: @group, message: @new_msg } %>
+      </section>
+      <section id="conversations">
+        <h1 class="app-sectionHeader">Today's Conversations</h1>
+        <%= render @conversations %>
+      </section>
+    </section>
+  </section>
+</main>
+

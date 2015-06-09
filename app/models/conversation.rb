@@ -8,4 +8,12 @@ class Conversation < ActiveRecord::Base
   def length
     self.messages.count
   end
+
+  def organization
+    if conversational_type == "Organization"
+      self.conversational
+    elsif conversational_type == "Group"
+      self.conversational.organization
+    end
+  end
 end

@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 
   def create
     @org = find_organization
-    @conversation = find_or_create_conversation_in @org
+    @conversation = find_or_create_conversation_in_parent
     @message = Message.new(user: current_user, conversation: @conversation,
                            body: params[:message][:body])
 
@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
 
     if new_conversation?
       flash[:success] = "Conversation created!"
-      redirect_to @org, change: 'conversations'
+      redirect_to :back, change: 'conversations'
     else
       redirect_to [@org, @message.conversation], change: 'messages'
     end
@@ -49,9 +49,13 @@ class MessagesController < ApplicationController
     end
   end
 
-  def find_or_create_conversation_in(conversational)
+  def find_new_message_parent
+
+  end
+
+  def find_or_create_conversation_in_parent
     if new_conversation?
-      conversational.conversations.create!
+      create_conversation_in_parent
     else
       Conversation.find(params[:conversation_id])
     end
@@ -59,5 +63,14 @@ class MessagesController < ApplicationController
 
   def new_conversation?
     params[:conversation_id].blank?
+  end
+
+  def create_conversation_in_parent
+    if params[:group_id].present?
+      parent = Group.find(params[:group_id])
+    else
+      parent = current_organization
+    end
+    parent.conversations.create!
   end
 end

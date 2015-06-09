@@ -11,6 +11,12 @@
   margin-bottom: 4em;
 }
 
+.grp-showContainer {
+  @include media($lrg-up) {
+    @include span-columns(7);
+  }
+}
+
 .grp-newForm {
 }
 

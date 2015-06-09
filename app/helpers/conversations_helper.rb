@@ -7,6 +7,6 @@ module ConversationsHelper
     link_string =
       "#{number_of_messages} more #{ "messsage".pluralize number_of_messages }"
 
-    link_to link_string, [conversation.conversational, conversation]
+    link_to link_string, [conversation.organization, conversation]
   end
 end

@@ -2,19 +2,21 @@
 <%= render partial: 'shared/nav_header', locals: { org: @org } %>
 <main class="app-main" id="app-main">
   <section class="org-msgSection">
-    <section class="org-newMsg" id="org-newMsg" data-turbolinks-temporary>
+    <section id="org-newMsg" data-turbolinks-temporary>
       <h1 class="app-sectionHeader">Start a Conversation</h1>
       <%= render partial: 'messages/form',
         locals: { org: @org, message_parent: nil, message: @new_msg } %>
     </section>
-    <section class="org-conversations" id="conversations">
+    <section id="conversations">
       <h1 class="app-sectionHeader">Today's Conversations</h1>
       <%= render @conversations %>
     </section>
   </section>
   <aside class="org-aside" id="org-aside">
     <h1 class="org-asideHeading">My Roles</h1>
-    <h1 class="org-asideHeading">All Groups</h1>
+    <h1 class="org-asideHeading">
+      <%= link_to "All Groups", organization_groups_path(@org), class: "app-headingLink" %>
+    </h1>
     <ul>
       <% @groups.each do |group| %>
         <li><%= link_to group.name, [@org, group], class: "org-group" %></li>

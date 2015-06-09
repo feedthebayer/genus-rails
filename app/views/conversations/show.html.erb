@@ -3,7 +3,9 @@
 <main class="app-main" id="app-main">
   <section class="con-container">
     <h1 class="app-sectionHeader">
-      A conversation in <%= @conversation.conversational.name %>
+      A conversation in
+        <%= link_to @conversation.conversational.name, @parent_path,
+          class: "app-headingLink" %>
     </h1>
     <section class="con-messages" id="messages">
       <%= render @messages %>

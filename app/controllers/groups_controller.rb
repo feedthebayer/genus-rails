@@ -15,7 +15,10 @@ class GroupsController < ApplicationController
 
   def show
     @org = find_organization
-    @group = Group.find(params[:id])
+    @group = Group.includes(:conversations).find(params[:id])
+    # TODO - only get today's messages
+    @conversations = @group.conversations.includes(:messages).all
+    @new_msg = Message.new
   end
 
   def index

@@ -4,10 +4,6 @@
   }
 }
 
-.org-newMsg {
-}
-
-
 .org-aside {
   @include media($lrg-up) {
     @include span-columns(5);
