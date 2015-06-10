@@ -44,8 +44,10 @@ class User < ActiveRecord::Base
 
   def remembered?(remember_token)
     return false if remember_digests.empty?
-    remember_digests.include? User.digest(remember_token)
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    remember_digests.each do |digest|
+      return true if BCrypt::Password.new(digest).is_password?(remember_token)
+    end
+    return false
   end
 
   # Returns hash digest of given string
