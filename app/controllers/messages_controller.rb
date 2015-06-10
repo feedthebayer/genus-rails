@@ -2,6 +2,12 @@ class MessagesController < ApplicationController
   before_action :require_login
 
   def create
+    if params[:message][:body].blank?
+      flash[:error] = "Messge body can't be blank"
+      redirect_to :back
+      return
+    end
+
     @org = find_organization
     @conversation = find_or_create_conversation_in_parent
     @message = Message.new(user: current_user, conversation: @conversation,
