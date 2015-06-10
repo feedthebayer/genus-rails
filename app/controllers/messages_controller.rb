@@ -18,8 +18,9 @@ class MessagesController < ApplicationController
     end
 
     if new_conversation?
-      flash[:success] = "Conversation created!"
-      redirect_to :back, change: 'conversations'
+      # flash[:success] = "Conversation created!"
+      # redirect_to :back, change: 'conversations'
+      redirect_to request.referer + "#messages:#{@message.id}", change: 'conversations'
     else
       redirect_to [@org, @message.conversation], change: 'messages'
     end
