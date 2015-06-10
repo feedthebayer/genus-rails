@@ -41,11 +41,7 @@
 }
 
 .msg-new-form {
-  margin-bottom: 3em;
-
-  @include media($lrg-up) {
-    margin-bottom: 2.6em;
-  }
+  margin-bottom: 2.6em;
 }
 
 .msg-new-textarea {

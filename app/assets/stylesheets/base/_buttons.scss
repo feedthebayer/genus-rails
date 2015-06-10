@@ -21,7 +21,13 @@ button, a.button {
   white-space: nowrap;
 
   &.btn-sml {
-    padding: 0.5em 0.7em;
+    font-size: 0.9em;
+    padding: 0.4em 0.5em;
+
+    @include media($med-up) {
+      font-size: $base-font-size;
+      padding: 0.5em 0.7em;
+    }
   }
 
   &:hover,

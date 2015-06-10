@@ -2,6 +2,17 @@
 <%= render partial: 'shared/nav_header', locals: { org: @org } %>
 <main class="app-main" id="app-main">
   <h1 class="app-pageHeading"><%= @org.name %></h1>
+  <section class="org-msgSection">
+    <section id="org-newMsg" data-turbolinks-temporary>
+      <h1 class="app-sectionHeader">Start a Conversation</h1>
+      <%= render partial: 'messages/form',
+        locals: { org: @org, message_parent: nil, message: @new_msg } %>
+    </section>
+    <section id="conversations">
+      <h1 class="app-sectionHeader">Today's Conversations</h1>
+      <%= render @conversations %>
+    </section>
+  </section>
   <aside class="org-aside" id="org-aside">
     <h1 class="org-asideHeading">My Roles</h1>
     <h1 class="org-asideHeading">
@@ -14,15 +25,4 @@
       <li><%= link_to "New...", organization_groups_path(@org), class: "org-group" %></li>
     </ul>
   </aside>
-  <section class="org-msgSection">
-    <section id="org-newMsg" data-turbolinks-temporary>
-      <h1 class="app-sectionHeader">Start a Conversation</h1>
-      <%= render partial: 'messages/form',
-        locals: { org: @org, message_parent: nil, message: @new_msg } %>
-    </section>
-    <section id="conversations">
-      <h1 class="app-sectionHeader">Today's Conversations</h1>
-      <%= render @conversations %>
-    </section>
-  </section>
 </main>
