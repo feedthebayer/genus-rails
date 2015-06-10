@@ -1,13 +1,19 @@
 .org-msgSection {
-  @include media($lrg-up) {
-    @include span-columns(8);
+  @include direction-context(right-to-left) {
+    @include media($lrg-up) {
+      @include span-columns(8);
+    }
   }
 }
 
 .org-aside {
-  @include media($lrg-up) {
-    @include span-columns(4);
-    padding-left: 3em;
+  margin-bottom: 2em;
+
+  @include direction-context(right-to-left) {
+    @include media($lrg-up) {
+      @include span-columns(4);
+      padding-left: 3em;
+    }
   }
 }
 

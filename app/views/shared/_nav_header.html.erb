@@ -1,4 +1,7 @@
 <header class="nav-header" id="nav-header" data-turbolinks-permanent>
+  <nav class="nav-right">
+    <%= log_in_out_link %>
+  </nav>
   <nav class="nav-left">
     <%= link_to org do %>
       <%= image_tag "genus-logo-t.png", alt: "Genus", class: "nav-logo" %>
@@ -10,8 +13,5 @@
       <li class="nav-list-item"><%= link_to "People", "#" %></li>
       <li class="nav-list-item"><%= link_to "Me", "#" %></li>
     </ul>
-  </nav>
-  <nav class="nav-right">
-    <%= log_in_out_link %>
   </nav>
 </header>

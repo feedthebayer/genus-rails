@@ -2,6 +2,10 @@
   <%= form_for [org, message_parent, message], remote: true do |f| %>
     <%= f.text_area :body, class: 'msg-new-textarea uOvrflHide',
       placeholder: "What's on your mind?" %>
-    <%= f.submit class: 'msg-new-submit btn-sml' %>
+    <% if message_parent.present? %>
+      <%= f.submit "Reply to conversation", class: 'msg-new-submit btn-sml' %>
+    <% else %>
+      <%= f.submit "Start conversation", class: 'msg-new-submit btn-sml' %>
+    <% end %>
   <% end %>
 </section>

@@ -11,6 +11,10 @@
 .nav-logo {
   float: left;
   width: 75px;
+
+  @include media($med-up) {
+    margin-left: 5px;
+  }
 }
 
 .nav-list {
@@ -58,11 +62,13 @@
   position: absolute;
   margin-right: 0.5em;
   margin-top: 0.3em;
-  right: 0;
-  top: 0;
+  right: 1vw;
+  top: 1vw;
 
   @include media($med-up) {
     font-size: 1em;
+    right: 0.7em;
+    top: 0.7em;
   }
 }
 

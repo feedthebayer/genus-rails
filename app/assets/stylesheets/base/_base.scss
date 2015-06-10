@@ -13,4 +13,11 @@
 
 html {
   background-color: $base-background-color;
+  border: 1vw solid $base-background-frame-color;
+  min-height: 100%;
+
+  @include media($xlrg-up) {
+    border-width: 0.7em;
+  }
 }
+

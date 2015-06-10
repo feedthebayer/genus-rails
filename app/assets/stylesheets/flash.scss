@@ -1,11 +1,11 @@
 .global-flash {
-  font-size: calc(0.9em + 0.6vw);
+  font-size: calc(0.8em + 0.4vw);
   text-align: center;
 }
 
 .global-flashMsg {
   color: $base3;
-  padding: 0.5em;
+  padding: 0.2em;
 }
 
 .global-flashMsg.success {

@@ -10,8 +10,12 @@ class SessionsController < ApplicationController
       flash[:success] = "The login link should be in your inbox in just a moment!"
       redirect_to :root
     else
-      flash.now[:error] =
-        "Sorry, but I can't find #{email}. Are you sure that's correct?"
+      if email.blank?
+        flash.now[:error] = "Email can't be blank"
+      else
+        flash.now[:error] =
+          "Sorry, but I can't find #{email}. Are you sure that's correct?"
+      end
       render :new
     end
   end
