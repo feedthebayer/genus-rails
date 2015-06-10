@@ -28,16 +28,23 @@ class User < ActiveRecord::Base
   # Generates, encryptes, saves, & returns a new remember token
   def new_remember_token!
     SecureRandom.urlsafe_base64.tap do |random_token|
-      update_attributes remember_digest: User.digest(random_token)
+      if remember_digests.length == 3
+        remember_digests.pop
+      end
+      remember_digests.prepend User.digest(random_token)
+      save!
+      random_token
     end
   end
 
-  def clear_remember_token!
-    update_attributes remember_digest: nil
+  def clear_remember_tokens!
+    remember_digests.clear
+    save!
   end
 
   def remembered?(remember_token)
-    return false if remember_digest.nil?
+    return false if remember_digests.empty?
+    remember_digests.include? User.digest(remember_token)
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
