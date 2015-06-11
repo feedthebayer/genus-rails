@@ -3,9 +3,9 @@
     <%= f.text_area :body, class: 'msg-new-textarea uOvrflHide',
       placeholder: "What's on your mind?" %>
     <% if message_parent.present? %>
-      <%= f.submit "Reply to conversation", class: 'msg-new-submit btn-sml' %>
+      <%= f.submit "Reply to conversation", id: 'new-message', class: 'msg-new-submit btn-sml' %>
     <% else %>
-      <%= f.submit "Start conversation", class: 'msg-new-submit btn-sml' %>
+      <%= f.submit "Start conversation", id: 'new-message', class: 'msg-new-submit btn-sml' %>
     <% end %>
   <% end %>
 </section>

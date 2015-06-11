@@ -10,7 +10,7 @@ class ConversationsTest < ActionDispatch::IntegrationTest
 
   def create_message(message_body)
     fill_in 'message_body', with: message_body
-    click_button 'Create Message'
+    click_button 'new-message'
   end
 
   test "create new message & conversation from org page" do
