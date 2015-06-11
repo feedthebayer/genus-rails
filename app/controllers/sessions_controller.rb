@@ -36,8 +36,7 @@ class SessionsController < ApplicationController
       log_in_and_remember user
       path = current_organization
     else
-      flash[:error] = "Looks like that login link has expired.
-        Please request a new one"
+      flash[:error] = "That login link has expired. Please request a new one"
       path = request.path
     end
 
