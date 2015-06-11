@@ -23,8 +23,18 @@ class GroupsController < ApplicationController
 
   def index
     @org = find_organization
-    @groups = @org.groups.all
+    @groups = @org.groups.active
     @new_group = Group.new
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    if @group.archive!
+      flash[:success] = "#{@group.name} has been archived"
+    else
+      flash[:error] = "#{@group.errors.full_messages.first}"
+    end
+    redirect_to organization_groups_path(@group.organization)
   end
 
   private

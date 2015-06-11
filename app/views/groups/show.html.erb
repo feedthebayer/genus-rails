@@ -15,5 +15,9 @@
       </section>
     </section>
   </section>
+  <aside class="grp-aside" id="grp-aside">
+    <%= link_to "Archive this group", [@org, @group], method: :delete,
+      data: { confirm: "The #{@group.name} group in #{@org.name} will be archived." } %>
+  </aside>
 </main>
 
