@@ -37,4 +37,14 @@ class ActionDispatch::IntegrationTest
   def log_in_with_capybara_as(user)
     visit(login_path sid: user.id, token: user.new_login_token!)
   end
+
+  def create_message(body)
+    fill_in 'message_body', with: body
+    click_button 'new-message'
+  end
+
+  def create_group(name)
+    fill_in 'group_name', with: name
+    click_button 'Create Group'
+  end
 end

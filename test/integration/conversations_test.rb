@@ -8,11 +8,6 @@ class ConversationsTest < ActionDispatch::IntegrationTest
     log_in_with_capybara_as @user
   end
 
-  def create_message(message_body)
-    fill_in 'message_body', with: message_body
-    click_button 'new-message'
-  end
-
   test "create new message & conversation from org page" do
     visit organization_path @org
     assert_equal organization_path(@org), current_path, "not at org path"

@@ -1,9 +1,7 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+group_one:
   name: Test Group One
   organization: test_org 
 
-two:
+group_two:
   name: Test Group Two
   organization_id: test_org

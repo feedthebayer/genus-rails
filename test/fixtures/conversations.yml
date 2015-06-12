@@ -1,7 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   conversational: test_org
 
 two:
-  conversational: test_org
+  conversational: group_one
