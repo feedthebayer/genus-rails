@@ -2,7 +2,7 @@
 <%= render partial: 'shared/nav_header', locals: { org: @org } %>
 <main class="app-main" id="app-main">
   <h1 class="app-pageHeading"><%= @org.name %></h1>
-  <section class="org-msgSection">
+  <section class="app-convoSection">
     <section id="org-newMsg" data-turbolinks-temporary>
       <h1 class="app-sectionHeader">Start a Conversation</h1>
       <%= render partial: 'messages/form',
@@ -13,16 +13,16 @@
       <%= render @conversations %>
     </section>
   </section>
-  <aside class="org-aside" id="org-aside">
-    <h1 class="org-asideHeading">My Roles</h1>
-    <h1 class="org-asideHeading">
-      <%= link_to "All Groups", organization_groups_path(@org), class: "app-headingLink" %>
+  <aside class="app-aside" id="app-aside">
+    <!-- <h1 class="app&#45;asideHeading">My Roles</h1> -->
+    <h1 class="app-asideHeading">
+      <%= link_to "Groups", organization_groups_path(@org), class: "app-headingLink" %>
     </h1>
-    <ul>
+    <ul class="app-asideGroupList">
       <% @groups.each do |group| %>
-        <li><%= link_to group.name, [@org, group], class: "org-group" %></li>
+        <li><%= link_to group.name, [@org, group] %></li>
       <% end %>
-      <li><%= link_to "New...", organization_groups_path(@org), class: "org-group" %></li>
+      <li><%= link_to "New...", organization_groups_path(@org) %></li>
     </ul>
   </aside>
 </main>

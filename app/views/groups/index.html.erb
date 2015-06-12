@@ -3,7 +3,7 @@
 <main class="app-main" id="app-main">
   <section class="grp-indexContainer">
     <h1 class="app-pageHeading">
-      All groups in <%= link_to @org.name, @org, class: "app-headingLink" %>
+      Groups in <%= link_to @org.name, @org, class: "app-headingLink" %>
     </h1>
     <section class="grp-indexSection">
       <ul id="groups">
@@ -13,7 +13,7 @@
       </ul>
     </section>
     <section class="grp-newGroup" id="grp-NewGroup" data-turbolinks-temporary>
-      <h1 class="app-sectionHeader">New group</h1>
+      <h1 class="app-sectionHeader">New group in <%= @org.name %></h1>
       <%= render partial: 'form', locals: { org: @org, group: @new_group } %>
     </section>
   </section>

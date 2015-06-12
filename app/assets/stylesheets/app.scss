@@ -17,6 +17,30 @@
   }
 }
 
+.app-convoSection {
+  @include media($lrg-up) {
+    @include span-columns(8);
+  }
+}
+
+.app-aside {
+  font-size: 0.8em;
+  margin-bottom: 2em;
+
+  @include media($med-up) {
+    font-size: 0.9em;
+  }
+
+  @include media($lrg-up) {
+    @include span-columns(4);
+    padding-left: 3em;
+  }
+}
+
+.app-asideGroupList {
+  margin-bottom: 3em;
+}
+
 .app-sectionHeader {
   color: $green;
   font-size: 1.1em;
@@ -29,5 +53,14 @@
 .app-headingLink {
   color: inherit;
 }
+
+.app-asideHeading {
+  color: $green;
+
+  @include media($med-up) {
+    font-size: 1.2em;
+  }
+}
+
 
 

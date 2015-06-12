@@ -2,8 +2,7 @@
 <%= render partial: 'shared/nav_header', locals: { org: @org } %>
 <main class="app-main" id="app-main">
   <h1 class="app-pageHeading"><%= @group.name %></h1>
-  <section class="grp-showContainer">
-    <section class="grp-msgSection">
+  <section class="app-convoSection">
       <section id="grp-newMsg" data-turbolinks-temporary>
         <h1 class="app-sectionHeader">Start a Conversation</h1>
         <%= render partial: 'messages/form',
@@ -13,9 +12,8 @@
         <h1 class="app-sectionHeader">Today's Conversations</h1>
         <%= render @conversations %>
       </section>
-    </section>
   </section>
-  <aside class="grp-aside" id="grp-aside">
+  <aside class="app-aside" id="app-aside">
     <%= link_to "Archive this group", [@org, @group], method: :delete,
       data: { confirm: "The #{@group.name} group in #{@org.name} will be archived." } %>
   </aside>
