@@ -9,4 +9,8 @@ module ConversationsHelper
 
     link_to link_string, [conversation.organization, conversation]
   end
+
+  def empty_feed_notice
+    content_tag(:p, "Go to another day or check on a different group", class: 'con-empty')
+  end
 end

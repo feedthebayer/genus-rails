@@ -14,10 +14,15 @@ class GroupsController < ApplicationController
   end
 
   def show
+    if params[:date].present?
+      @date = Date.parse params[:date]
+    else
+      @date = Date.today
+    end
+
     @org = find_organization
     @group = Group.includes(:conversations).find(params[:id])
-    # TODO - only get today's messages
-    @conversations = @group.conversations.includes(:messages).all
+    @conversations = @group.conversations.includes(:messages).updated_on @date
     @new_msg = Message.new
   end
 
@@ -34,7 +39,7 @@ class GroupsController < ApplicationController
     else
       flash[:error] = "#{@group.errors.full_messages.first}"
     end
-    redirect_to organization_groups_path(@group.organization)
+    redirect_to @group.organization
   end
 
   private

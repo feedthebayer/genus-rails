@@ -1,0 +1,13 @@
+<section id="groups-aside" data-turbolinks-permanent>
+  <h1 class="app-sectionHeader">
+    <%# <%= link_to "Groups", organization_groups_path(@org), class: "app-headingLink" %>
+    Groups
+  </h1>
+  <ul class="app-asideGroupList">
+    <li><%= link_to org.name, org %></li>
+    <% org.groups.active.each do |group| %>
+      <li><%= link_to group.name, [org, group] %></li>
+    <% end %>
+    <li><%= link_to "New...", organization_groups_path(org) %></li>
+  </ul>
+</section>

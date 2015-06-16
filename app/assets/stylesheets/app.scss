@@ -54,13 +54,26 @@
   color: inherit;
 }
 
-.app-asideHeading {
-  color: $green;
+// .app-asideHeading {
+//   color: $green;
+//   font-size: 1.1em;
+//
+//   @include media($med-up) {
+//     font-size: 1.3em;
+//   }
+// }
 
-  @include media($med-up) {
-    font-size: 1.2em;
-  }
+.app-conDateHeader {
+  margin-bottom: 0;
 }
 
+.app-pagination {
+  margin-bottom: 1em;
+  display: inline-block;
+
+  a+a {
+    margin-left: 0.3em;
+  }
+}
 
 

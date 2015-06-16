@@ -2,10 +2,14 @@ class OrganizationsController < ApplicationController
   before_action :require_login
 
   def show
+    if params[:date].present?
+      @date = Date.parse params[:date]
+    else
+      @date = Date.today
+    end
+
     @org = find_organization
-    @groups = @org.groups.active
-    # TODO - only get today's messages
-    @conversations = @org.conversations.includes(:messages).all
+    @conversations = @org.conversations.includes(:messages).updated_on @date
     @new_msg = Message.new
   end
 

@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
       # redirect_to :back, change: 'conversations'
       redirect_to request.referer + "#messages:#{@message.id}", change: 'conversations'
     else
-      redirect_to [@org, @message.conversation], change: 'messages'
+      redirect_to organization_conversation_path(@org, @message.conversation, anchor: "messages:#{@message.id}"), change: 'messages'
     end
   end
 

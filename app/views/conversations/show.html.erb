@@ -6,7 +6,8 @@
       <%= link_to @conversation.conversational.name, @parent_path,
         class: "app-headingLink" %>
   </h1>
-  <section class="con-container">
+  <!-- <section class="con&#45;container"> -->
+  <section class="app-convoSection">
     <section class="con-messages" id="messages">
       <%= render @messages %>
     </section>
@@ -16,4 +17,8 @@
         locals: { org: @org, message_parent: @conversation, message: @new_msg } %>
     </section>
   </section>
+  <aside class="app-aside" id="app-aside">
+    <%= render partial: 'shared/groups_aside', locals: { org: @org } %>
+    <!-- <h1 class="app&#45;asideHeading">My Roles</h1> -->
+  </aside>
 </main>

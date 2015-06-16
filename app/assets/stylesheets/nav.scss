@@ -63,6 +63,12 @@
   }
 }
 
+.nav-groups {
+  @include media($med-up) {
+    display: none;
+  }
+}
+
 .nav-right {
   font-size: 0.8em;
   position: absolute;

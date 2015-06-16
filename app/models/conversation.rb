@@ -4,6 +4,7 @@ class Conversation < ActiveRecord::Base
   validates_presence_of :conversational
 
   default_scope { order('updated_at') }
+  scope :today, lambda { where('DATE(updated_at) = ?', Date.today) }
 
   def length
     self.messages.count
@@ -15,5 +16,9 @@ class Conversation < ActiveRecord::Base
     elsif conversational_type == "Group"
       self.conversational.organization
     end
+  end
+
+  def self.updated_on(date)
+    where 'DATE(updated_at) = ?', date
   end
 end

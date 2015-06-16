@@ -1,7 +1,7 @@
 <section class="grp-newForm">
   <%= form_for [org, group], remote: true do |f| %>
     <%= f.text_field :name, class: 'grp-newTextfield',
-      placeholder: "Enter a new group name" %>
+      placeholder: "Enter a new group name", autofocus: true %>
     <%= f.submit class: 'grp-newSubmit' %>
   <% end %>
 </section>

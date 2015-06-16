@@ -4,16 +4,32 @@
   <h1 class="app-pageHeading"><%= @group.name %></h1>
   <section class="app-convoSection">
       <section id="grp-newMsg" data-turbolinks-temporary>
-        <h1 class="app-sectionHeader">Start a Conversation</h1>
+        <h1 class="app-sectionHeader">Start a New Conversation</h1>
         <%= render partial: 'messages/form',
           locals: { org: @org, message_parent: @group, message: @new_msg } %>
       </section>
       <section id="conversations">
-        <h1 class="app-sectionHeader">Today's Conversations</h1>
-        <%= render @conversations %>
+        <h1 class="app-sectionHeader app-conDateHeader">
+          <% if @date.today? %>
+            Today's Conversations
+          <% else %>
+            <%= @date.strftime "Conversations on %A %b %e, %Y" %>
+          <% end %>
+        </h1>
+        <small class="app-pagination">
+          <%= link_to 'previous',
+            organization_group_path(@org, @group, date: @date.prev_day.to_s) %>
+          <% if not @date.today? %>
+            <%= link_to 'next',
+              organization_group_path(@org, @group, date: @date.next_day.to_s) %>
+            <%= link_to 'today', @org %>
+          <% end %>
+        </small>
+        <%= render(@conversations) || empty_feed_notice %>
       </section>
   </section>
   <aside class="app-aside" id="app-aside">
+    <%= render partial: 'shared/groups_aside', locals: { org: @org } %>
     <%= link_to "Archive this group", [@org, @group], method: :delete,
       data: { confirm: "The #{@group.name} group in #{@org.name} will be archived." } %>
   </aside>
