@@ -8,18 +8,16 @@
   }
 }
 
-.app-pageHeading {
-  font-size: 1.4em;
-  text-align: center;
-
-  @include media($med-up) {
-    font-size: 2em;
-  }
-}
-
 .app-convoSection {
-  @include media($lrg-up) {
-    @include span-columns(8);
+  @include direction-context(right-to-left) {
+    @include media($lrg-up) {
+      @include span-columns(9);
+    }
+
+    @include media($xlrg-up) {
+      @include span-columns(6);
+      @include shift(3);
+    }
   }
 }
 
@@ -31,9 +29,24 @@
     font-size: 0.9em;
   }
 
-  @include media($lrg-up) {
-    @include span-columns(4);
-    padding-left: 3em;
+  @include direction-context(right-to-left) {
+    @include media($lrg-up) {
+      @include span-columns(3);
+      padding-right: 1em;
+    }
+
+    @include media($xlrg-up) {
+      @include span-columns(2);
+    }
+  }
+}
+
+.app-pageHeading {
+  font-size: 1.4em;
+  text-align: center;
+
+  @include media($med-up) {
+    font-size: 2em;
   }
 }
 
@@ -53,15 +66,6 @@
 .app-headingLink {
   color: inherit;
 }
-
-// .app-asideHeading {
-//   color: $green;
-//   font-size: 1.1em;
-//
-//   @include media($med-up) {
-//     font-size: 1.3em;
-//   }
-// }
 
 .app-conDateHeader {
   margin-bottom: 0;
