@@ -5,12 +5,12 @@ module ConversationsHelper
 
     number_of_messages = conversation.length - 2
     link_string =
-      "#{number_of_messages} more #{ "messsage".pluralize number_of_messages }"
+      "View #{number_of_messages} more #{ "messsage".pluralize number_of_messages }"
 
     link_to link_string, [conversation.organization, conversation]
   end
 
   def empty_feed_notice
-    content_tag(:p, "Go to another day or check on a different group", class: 'con-empty')
+    content_tag(:p, "No conversations on this day. Start a new one or check a different group.", class: 'con-empty')
   end
 end

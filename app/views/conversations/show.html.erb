@@ -7,14 +7,15 @@
         class: "app-headingLink" %>
   </h1>
   <section class="app-convoSection">
-    <section class="con-messages" id="messages">
-      <%= render @messages %>
-    </section>
-    <section class="con-newMsg" id="new-message" data-turbolinks-temporary>
-      <h1 class="app-sectionHeader">Reply to this conversation</h1>
-      <%= render partial: 'messages/form',
-        locals: { org: @org, message_parent: @conversation, message: @new_msg } %>
-    </section>
+    <article class="con-conversation">
+      <section id="messages">
+        <%= render @messages %>
+      </section>
+      <section class="con-partition" id="new-message" data-turbolinks-temporary>
+        <%= render partial: 'messages/reply_form',
+          locals: { org: @org, message_parent: @conversation, message: @new_msg } %>
+      </section>
+    </article>
   </section>
   <aside class="app-aside" id="app-aside">
     <%= render partial: 'shared/groups_aside', locals: { org: @org } %>

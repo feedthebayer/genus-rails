@@ -4,7 +4,7 @@
     Groups
   </h1>
   <ul class="app-asideGroupList">
-    <li><%= link_to org.name, org %></li>
+    <li><%= link_to "Everyone", org %></li>
     <% org.groups.active.each do |group| %>
       <li><%= link_to group.name, [org, group] %></li>
     <% end %>

@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
     if params[:date].present?
       @date = Date.parse params[:date]
     else
-      @date = Date.today
+      @date = Date.current
     end
 
     @org = find_organization

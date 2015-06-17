@@ -1,18 +1,20 @@
-<article class="msg-container" id="messages:<%= message.id %>">
-  <header>
-    <%= gravatar_for message.user %>
-    <div>
-      <h1 class="msg-heading">
-        <%= message.user.name %>
-      </h1>
-      <small class="msg-time">
-        <%= time_tag message.created_at do %>
-          <%= time_ago_in_words message.created_at %> ago
-        <% end %>
-      </small>
+<article class="con-partition" id="messages:<%= message.id %>">
+  <section class="msg-container">
+    <header>
+      <%= gravatar_for message.user %>
+      <div>
+        <h1 class="msg-heading">
+          <%= message.user.name %>
+        </h1>
+        <small class="msg-time">
+          <%= time_tag message.created_at do %>
+            <%= time_ago_in_words message.created_at %> ago
+          <% end %>
+        </small>
+      </div>
+    </header>
+    <div class="msg-content">
+      <%= simple_format message.body %>
     </div>
-  </header>
-  <div class="msg-content">
-    <%= simple_format message.body %>
-  </div>
+  </section>
 </article>

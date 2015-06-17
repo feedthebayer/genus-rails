@@ -17,18 +17,12 @@ class MessagesController < ApplicationController
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
 
-    if new_conversation?
-      # flash[:success] = "Conversation created!"
-      # redirect_to :back, change: 'conversations'
-      redirect_to request.referer + "#messages:#{@message.id}", change: 'conversations'
-    else
-      redirect_to organization_conversation_path(@org, @message.conversation, anchor: "messages:#{@message.id}"), change: 'messages'
-    end
+    redirect_to request.referer + "#messages:#{@message.id}", change: 'messages'
   end
 
-  def update
+  # def update
     # redirect_to current_organization, change: "messages:#{@message.id}"
-  end
+  # end
 
   def destroy
     @org = find_organization

@@ -1,14 +1,14 @@
-<section class="con-messages">
+<section class="con-conversation">
   <%= render conversation.messages.first %>
   <% if conversation.length > 2 %>
-    <p class="msg-container msg-separator">
+    <p class="con-partition con-separator">
       <%= link_to_rest_of_conversation conversation %>
     </p>
   <% end %>
   <%= render conversation.messages.last if conversation.length > 1 %>
-  <nav class="con-footerNav">
-    <%= link_to "Reply to this conversation",
-      organization_conversation_path(conversation.organization, conversation,
-                                      anchor: "new-message") %>
-  </nav>
+    <section class="con-partition" id="new-message:<% conversation.id %>"
+      data-turbolinks-temporary>
+      <%= render partial: 'messages/reply_form',
+        locals: { org: conversation.organization, message_parent: conversation, message: new_msg } %>
+    </section>
 </section>

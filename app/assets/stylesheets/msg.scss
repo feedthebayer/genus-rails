@@ -1,23 +1,7 @@
-.msg-container {
-  border-top: solid 1px $base1;
-  padding: 1em 1em 0;
-
-  @include media($lrg-up) {
-    padding: 2em 2em 0;
-  }
-
-  &:first-child {
-    border-top: none;
-  }
-}
-
 .msg-content {
   clear: both;
   padding-top: 1em;
   margin-bottom: 1.3em;
-}
-
-.msg-headerText {
 }
 
 .msg-heading {
@@ -32,26 +16,28 @@
 .msg-time {
 }
 
-.msg-separator {
-  font-size: 0.9em;
-  margin-bottom: 0;
-  padding: 0.5em;
-  text-align: center;
+.msg-new-form {
+  text-align: right;
+
+  @include media($lrg-up) {
+    margin-top: -1em;
+  }
 }
 
-.msg-new-form {
-  margin-bottom: 2.6em;
+.msg-new-textarea, .msg-reply-textarea {
+  font-size: 0.9em;
+  min-height: 2.5em;
 }
 
 .msg-new-textarea {
-  font-size: 0.9em;
-  min-height: 3em;
+  margin-top: 1em;
 }
 
-.msg-new-submit {
-  float: right;
+.msg-new-submit, .msg-reply-submit {
+  margin-bottom: 0.4em;
+  margin-top: -0.4em;
 
-  @include media($med-down) {
+  @include media($sml-only) {
     width: 100%;
   }
 }

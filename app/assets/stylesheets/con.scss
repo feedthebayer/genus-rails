@@ -6,17 +6,37 @@
   }
 }
 
-.con-messages {
+.con-conversation {
   background: $base3-light;
   border-color: $base2;
   border-radius: $base-border-radius;
   border-style: solid;
   border-width: 1px 0px 2px;
-  // box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
   font-size: 0.9em;
   margin-bottom: 2.5em;
 }
+
+.con-partition {
+  border-top: solid 1px $base1;
+  padding: 1em 1em 0;
+
+  @include media($lrg-up) {
+    padding: 2em 2em 0;
+  }
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.con-separator {
+  font-size: 0.9em;
+  margin-bottom: 0;
+  padding: 0.5em;
+  text-align: center;
+}
+
 
 .con-footerNav {
   padding-bottom: 0.5em;
@@ -25,7 +45,7 @@
 
 .con-empty {
   font-style: italic;
-  max-width: 15em;
+  max-width: 19em;
   margin: 0 auto 2em;
   text-align: center;
 }
