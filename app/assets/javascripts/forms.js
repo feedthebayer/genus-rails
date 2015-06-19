@@ -1,15 +1,37 @@
-//  the following simple make the textbox "Auto-Expand" as it is typed in
-$(document).on('keyup', 'textarea', function(e) {
-  //Don't fire on shift-enter
-  if (!(e.keyCode == 13 && e.shiftKey)) {
-    //  this if statement checks to see if backspace or delete was pressed, 
-    //  if so, it resets the height of the box so it can be resized properly
-    if (e.which == 8 || e.which == 46) {
-      $(this).height(parseFloat($(this).css("min-height")) != 0 ? 
-        parseFloat($(this).css("min-height")) : parseFloat($(this).css("font-size")));
-    }
-    while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
-        $(this).height($(this).height()+1);
-    };
+$(document).on('keydown', '.uTextarea', function(e) {
+  // Enter was pressed with shift key
+  if (e.keyCode == 13 && e.shiftKey) {
+    $(this).next('#new-message').click();
+    e.preventDefault();
   }
 });
+
+
+
+$(document)
+  .on('focus.textarea', '.uTextarea', function(){
+    var savedValue = this.value;
+    var minRows = this.getAttribute('data-min-rows')|1;
+    this.value = '';
+    //Get height with no content
+    this.baseScrollHeight = this.scrollHeight;
+    //Calculate height on an incremental row
+    //To do this, add new lines until height is min + 1
+    for (i=0; i < minRows; i++) {
+      this.value += '\r\n';
+    }
+    //Save line increment
+    this.scrollInc = this.scrollHeight - this.baseScrollHeight;
+    this.value = savedValue;
+    // console.log('base:', this.baseScrollHeight, 'inc:', this.scrollInc, 'current:', this.scrollHeight);
+  })
+  .on('input.textarea', '.uTextarea', function(){
+    //Get minimum rows
+    var minRows = this.getAttribute('data-min-rows')|1;
+    //Attempt to set to min rows to shrink area to fit content
+    this.rows = minRows;
+    //Calculate extra rows
+    var extraRows = Math.round((this.scrollHeight - this.baseScrollHeight) / this.scrollInc);
+    this.rows = minRows + extraRows;
+    // console.log('current:', this.rows, '= min:', minRows, '+ extra:', extraRows, '| scroll:', this.scrollHeight, 'base:', this.baseScrollHeight);
+  });

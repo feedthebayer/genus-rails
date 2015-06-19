@@ -53,7 +53,8 @@ textarea {
 }
 
 textarea {
-  resize: vertical;
+  line-height: initial;
+  resize: none;
 }
 
 input[type="search"] {
