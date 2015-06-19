@@ -16,12 +16,16 @@
 .msg-time {
 }
 
-.msg-new-form {
+.msg-new-form, .msg-reply-form {
   text-align: right;
 
   @include media($lrg-up) {
     margin-top: -1em;
   }
+}
+
+.msg-new-form {
+  margin-bottom: 1em;
 }
 
 .msg-new-textarea, .msg-reply-textarea {

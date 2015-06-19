@@ -4,6 +4,11 @@
   <h1 class="app-pageHeading"><%= @group.name %></h1>
   <section class="app-convoSection">
       <section id="conversations">
+        <section id="grp-newMsg" data-turbolinks-temporary>
+          <!-- <h1 class="app&#45;sectionHeader">Start a new conversation</h1> -->
+          <%= render partial: 'messages/new_form',
+            locals: { org: @org, message_parent: @group, message: @new_msg } %>
+        </section>
         <h1 class="app-sectionHeader app-conDateHeader">
           <% if @date.today? %>
             Today's Conversations
@@ -22,13 +27,6 @@
         </small>
         <%= render(partial: 'conversations/conversation', collection: @conversations,
                   locals: { new_msg: @new_msg }) || empty_feed_notice %>
-        <section class="con-conversation" id="grp-newMsg" data-turbolinks-temporary>
-          <div class="con-partition">
-            <h1 class="app-sectionHeader">Start a new conversation</h1>
-            <%= render partial: 'messages/new_form',
-              locals: { org: @org, message_parent: @group, message: @new_msg } %>
-          </div>
-        </section>
       </section>
   </section>
   <aside class="app-aside" id="app-aside">
