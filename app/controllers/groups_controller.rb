@@ -5,11 +5,14 @@ class GroupsController < ApplicationController
     @org = find_organization
     @group = @org.groups.create(name: params[:group][:name])
 
-    if not @group.save
-      flash[:error] = "#{@group.errors.full_messages.first}"
+    if @group.save
+      redirect_to organization_groups_path(@org), change: "groups"
+    else
+      flash.now[:error] = "#{@group.errors.full_messages.first}"
+      @groups = @org.groups.active
+      @new_group = @group
+      render :index, change: "new_group"
     end
-
-    redirect_to organization_groups_path(@org), change: "groups"
   end
 
   def show

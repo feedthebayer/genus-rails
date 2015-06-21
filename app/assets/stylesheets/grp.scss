@@ -1,19 +1,7 @@
-.grp-indexContainer {
-  margin: 0 auto;
-  max-width: 35em;
-}
-
-.grp-indexSection {
-  margin-bottom: 4em;
-}
-
 .grp-showContainer {
   @include media($lrg-up) {
     @include span-columns(8);
   }
-}
-
-.grp-newForm {
 }
 
 input[type="text"].grp-newTextfield {

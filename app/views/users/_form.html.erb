@@ -1,0 +1,14 @@
+<section>
+  <%= form_for [org, user], remote: true do |f| %>
+    <%= f.label :name, "New person's name" %>
+    <%= f.text_field :name, class: 'usr-newTextfield',
+      placeholder: "Enter their full name", autofocus: true %>
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'usr-newTextfield',
+      placeholder: "Enter their email address", autofocus: true %>
+    <small class="usr-newUsrNotify">
+      We'll email them right away so they can log in and start collaborating!
+    </small>
+    <%= f.submit "Add Person", class: 'usr-newSubmit' %>
+  <% end %>
+</section>

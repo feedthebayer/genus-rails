@@ -1,0 +1,10 @@
+<%= render 'greeting' %>
+
+<%= @fromUser.name %> just added you to <%= @user.organization.name %>'s Genus account!
+
+You can log in and start collaborating with one click using this link:
+<%= @login_url %>
+
+And you can always access <%= @user.organization.name %>'s account using this link: <%= organization_url(@user.organization) %>
+
+

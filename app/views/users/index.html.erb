@@ -1,0 +1,22 @@
+<% content_for :title, "All people in #{@org.name}" %>
+<%= render partial: 'shared/nav_header', locals: { org: @org } %>
+<main class="app-main" id="app-main">
+  <section class="app-indexContainer">
+    <h1 class="app-pageHeading">
+      All people in <%= link_to @org.name, @org, class: "app-headingLink" %>
+    </h1>
+    <section class="app-indexSection">
+      <ul id="users">
+        <% @users.each do |user| %>
+          <!-- <li><#%= link_to user.name, [@org, user], class: "org&#45;user" %></li> -->
+          <li><%= user.name %></li>
+        <% end %>
+      </ul>
+    </section>
+    <section id="app-NewGroup" data-turbolinks-temporary>
+      <!-- <h1 class="app&#45;sectionHeader">Add a new person</h1> -->
+      <%= render partial: 'form', locals: { org: @org, user: @new_user } %>
+    </section>
+  </section>
+</main>
+

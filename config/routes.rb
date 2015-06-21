@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :organizations, path: "", only: [:show] do
     resources :users, only: [:create, :show, :update, :destroy]
+    get '/people' => 'users#index'
     resources :conversations, only: [:show] do
       # For all new messages in an existing converation
       resources :messages, only: [:create]

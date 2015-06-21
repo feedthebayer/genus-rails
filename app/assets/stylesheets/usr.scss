@@ -1,0 +1,35 @@
+input[type="text"].usr-newTextfield {
+  line-height: 24px;
+
+  // @include media($med-up) {
+  //   float: left;
+  //   width: 72%;
+  // }
+}
+
+.usr-newSubmit {
+  @include media($sml-only) {
+    width: 100%;
+  }
+
+  @include media($med-up) {
+    float: right;
+  }
+}
+
+.usr-gravatar {
+  border-radius: 3px;
+  float: left;
+  margin-right: 1em;
+  width: 40px;
+
+  @include media($med-up) {
+    width: 45px;
+  }
+}
+
+.usr-newUsrNotify {
+  display: inline-block;
+  margin-bottom: 1em;
+}
+

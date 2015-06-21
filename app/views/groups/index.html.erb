@@ -1,19 +1,19 @@
 <% content_for :title, "All groups in #{@org.name}" %>
 <%= render partial: 'shared/nav_header', locals: { org: @org } %>
 <main class="app-main" id="app-main">
-  <section class="grp-indexContainer">
+  <section class="app-indexContainer">
     <h1 class="app-pageHeading">
-      Groups in <%= link_to @org.name, @org, class: "app-headingLink" %>
+      All groups in <%= link_to @org.name, @org, class: "app-headingLink" %>
     </h1>
-    <section class="grp-indexSection">
+    <section class="app-indexSection">
       <ul id="groups">
         <% @groups.each do |group| %>
           <li><%= link_to group.name, [@org, group], class: "org-group" %></li>
         <% end %>
       </ul>
     </section>
-    <section class="grp-newGroup" id="grp-NewGroup" data-turbolinks-temporary>
-      <h1 class="app-sectionHeader">New group in <%= @org.name %></h1>
+    <section id="grp-NewGroup" data-turbolinks-temporary>
+      <h1 class="app-sectionHeader">Create a new group</h1>
       <%= render partial: 'form', locals: { org: @org, group: @new_group } %>
     </section>
   </section>

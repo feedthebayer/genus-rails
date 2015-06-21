@@ -10,8 +10,14 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
+  default_scope { order 'name' }
+
   def send_login_email
     UserMailer.login(self).deliver_later
+  end
+
+  def send_welcome_email_from(fromUser)
+    UserMailer.welcome(self, fromUser).deliver_later
   end
 
   # Generates, encryptes, saves, & returns a new login token

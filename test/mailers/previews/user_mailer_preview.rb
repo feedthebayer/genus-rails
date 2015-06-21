@@ -6,4 +6,8 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.login(User.first)
   end
 
+  def welcome
+    UserMailer.welcome(User.first, User.second)
+  end
+
 end

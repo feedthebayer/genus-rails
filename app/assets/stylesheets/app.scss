@@ -57,6 +57,15 @@
   text-indent: -1.5em;
 }
 
+.app-indexContainer {
+  margin: 0 auto;
+  max-width: 35em;
+}
+
+.app-indexSection {
+  margin-bottom: 4em;
+}
+
 .app-sectionHeader {
   color: $green;
   font-size: 1.1em;
