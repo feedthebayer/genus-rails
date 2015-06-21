@@ -7,10 +7,9 @@ class GroupsController < ApplicationController
 
     if not @group.save
       flash[:error] = "#{@group.errors.full_messages.first}"
-      redirect_to organization_groups_path(@org)
-    else
-      redirect_to [@org, @group]
     end
+
+    redirect_to organization_groups_path(@org), change: "groups"
   end
 
   def show
