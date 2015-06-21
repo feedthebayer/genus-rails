@@ -3,9 +3,8 @@
 <main class="app-main" id="app-main">
   <h1 class="app-pageHeading"><%= @group.name %></h1>
   <section class="app-convoSection">
-      <section id="conversations">
+      <section id="messages">
         <section id="grp-newMsg" data-turbolinks-temporary>
-          <!-- <h1 class="app&#45;sectionHeader">Start a new conversation</h1> -->
           <%= render partial: 'messages/new_form',
             locals: { org: @org, message_parent: @group, message: @new_msg } %>
         </section>
@@ -22,7 +21,7 @@
           <% if not @date.today? %>
             <%= link_to 'next',
               organization_group_path(@org, @group, date: @date.next_day.to_s) %>
-            <%= link_to 'today', @org %>
+            <%= link_to 'today', [@org, @group] %>
           <% end %>
         </small>
         <%= render(partial: 'conversations/conversation', collection: @conversations,
