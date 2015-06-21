@@ -32,11 +32,11 @@
   @include direction-context(right-to-left) {
     @include media($lrg-up) {
       @include span-columns(3);
-      padding-right: 0.5em;
     }
 
     @include media($xlrg-up) {
-      @include span-columns(2);
+      @include span-columns(3);
+      padding-left: 3em;
     }
   }
 }
@@ -53,6 +53,8 @@
 
 .app-asideGroupList {
   margin-bottom: 3em;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
 }
 
 .app-sectionHeader {

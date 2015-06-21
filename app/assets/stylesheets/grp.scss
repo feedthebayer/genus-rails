@@ -1,12 +1,9 @@
 .grp-indexContainer {
-  @include media($lrg-up) {
-    @include span-columns(8);
-    @include shift(2);
-  }
+  margin: 0 auto;
+  max-width: 35em;
 }
 
 .grp-indexSection {
-  // font-size: 1.1em;
   margin-bottom: 4em;
 }
 
