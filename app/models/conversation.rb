@@ -4,7 +4,7 @@ class Conversation < ActiveRecord::Base
   validates_presence_of :conversational
 
   default_scope { order('updated_at') }
-  scope :today, lambda { where('DATE(updated_at) = ?', Date.today) }
+  scope :today, lambda { where('DATE(updated_at) = ?', Time.zone.today) }
 
   def length
     self.messages.count

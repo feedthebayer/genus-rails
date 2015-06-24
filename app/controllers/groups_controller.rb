@@ -17,9 +17,9 @@ class GroupsController < ApplicationController
 
   def show
     if params[:date].present?
-      @date = Date.parse params[:date]
+      @date = Time.zone.parse(params[:date]).to_date
     else
-      @date = Date.current
+      @date = Time.zone.today
     end
 
     @org = find_organization

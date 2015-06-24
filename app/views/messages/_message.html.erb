@@ -7,9 +7,7 @@
           <%= message.user.name %>
         </h1>
         <small class="msg-time">
-          <%= time_tag message.created_at do %>
-            <%= time_ago_in_words message.created_at %> ago
-          <% end %>
+          <%= local_time_ago message.created_at %>
         </small>
       </div>
     </header>

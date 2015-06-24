@@ -15,6 +15,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'bcrypt', '~> 3.1.7'
 gem 'intercom-rails'
+gem 'local_time'
 
 group :development, :test do
   gem 'byebug'
@@ -25,7 +26,7 @@ group :development, :test do
   gem 'rack-livereload'
   gem 'awesome_print', require:"ap"
   gem 'quiet_assets'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
   # gem 'flamegraph'
 end
 
