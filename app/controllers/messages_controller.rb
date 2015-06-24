@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
 
-    redirect_to request.referer + "#messages:#{@message.id}", change: 'messages'
+    redirect_to request.referer.split('?').first + "#messages:#{@message.id}", change: 'messages'
   end
 
   # def update

@@ -17,6 +17,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'intercom'
 gem 'intercom-rails'
 gem 'local_time'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

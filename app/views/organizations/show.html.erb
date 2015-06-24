@@ -9,21 +9,19 @@
           locals: { org: @org, message_parent: nil, message: @new_msg } %>
       </section>
       <h1 class="app-sectionHeader app-conDateHeader">
-        <% if @date.today? %>
-          Today's Conversations
-        <% else %>
-          <%= @date.strftime "Conversations on %A %b %e, %Y" %>
-        <% end %>
+        Conversations
       </h1>
       <small class="app-pagination">
-        <%= link_to 'previous', organization_path(@org, date: @date.prev_day.to_s) %>
-        <% if not @date.today? %>
-          <%= link_to 'next', organization_path(@org, date: @date.next_day.to_s) %>
-          <%= link_to 'today', @org %>
-        <% end %>
+        <%= link_to_next_page @conversations, '←Older' %>
+        <%= link_to_previous_page @conversations, 'Newer→' %>
       </small>
-      <%= render(partial: 'conversations/conversation', collection: @conversations,
-                 locals: { new_msg: @new_msg }) || empty_feed_notice %>
+      <%= render(partial: 'conversations/conversation',
+          collection: @conversations.reverse, locals: { new_msg: @new_msg }) ||
+          empty_feed_notice %>
+      <small class="app-pagination">
+        <%= link_to_next_page @conversations, '←Older' %>
+        <%= link_to_previous_page @conversations, 'Newer→' %>
+      </small>
     </section>
   </section>
   <aside class="app-aside" id="app-aside">

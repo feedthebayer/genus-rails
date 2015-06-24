@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :organization
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
+            # TODO - send multiple login links to user in multiple orgs
+            # uniqueness: { scope: :organization_id, case_sensitive: false }
 
   default_scope { order 'name' }
 

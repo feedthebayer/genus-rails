@@ -3,8 +3,8 @@ class Conversation < ActiveRecord::Base
   has_many :messages, dependent: :delete_all
   validates_presence_of :conversational
 
-  default_scope { order('updated_at') }
-  scope :today, lambda { where('DATE(updated_at) = ?', Time.zone.today) }
+  default_scope { order(updated_at: :desc) }
+  # scope :today, lambda { where('DATE(updated_at) = ?', Time.zone.today) }
 
   def length
     self.messages.count

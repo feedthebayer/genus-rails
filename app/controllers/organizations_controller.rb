@@ -2,16 +2,10 @@ class OrganizationsController < ApplicationController
   before_action :require_login
 
   def show
-    if params[:date].present?
-      @date = Time.zone.parse(params[:date]).to_date
-    else
-      @date = Time.zone.today
-    end
-
     @org = find_organization
-    # @conversations = @org.conversations.includes(:messages).updated_on @date
-    @conversations = @org.conversations.includes(:messages).all
+    @conversations = @org.conversations.includes(:messages).page(params[:page])
     @new_msg = Message.new
+    render :show, change: 'messages'
   end
 
   private
