@@ -11,6 +11,6 @@ module ConversationsHelper
   end
 
   def empty_feed_notice
-    content_tag(:p, "No conversations on this day. Start a new one or check a different group.", class: 'con-empty')
+    content_tag(:p, "No conversations so far in this group. Start a new one or check a different group.", class: 'con-empty')
   end
 end
