@@ -13,7 +13,21 @@ class MessagesController < ApplicationController
     @message = Message.new(user: current_user, conversation: @conversation,
                            body: params[:message][:body])
 
-    if not @message.save
+    if @message.save
+      if new_conversation?
+        @intercom.events.create(
+          :event_name => "Started a conversation",
+          :email => current_user.email,
+          :created_at => Time.now.to_i,
+        )
+      else
+        @intercom.events.create(
+          :event_name => "Replied to conversation",
+          :email => current_user.email,
+          :created_at => Time.now.to_i,
+        )
+      end
+    else
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
 

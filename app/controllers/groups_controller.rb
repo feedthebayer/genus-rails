@@ -7,6 +7,12 @@ class GroupsController < ApplicationController
 
     if @group.save
       redirect_to organization_groups_path(@org), change: "groups"
+
+      @intercom.events.create(
+        :event_name => "Created a group",
+        :email => current_user.email,
+        :created_at => Time.now.to_i,
+      )
     else
       flash.now[:error] = "#{@group.errors.full_messages.first}"
       @groups = @org.groups.active

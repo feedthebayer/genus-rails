@@ -9,6 +9,16 @@ class UsersController < ApplicationController
       @user.send_welcome_email_from(current_user)
       flash[:success] = "#{@user.name} (#{@user.email}) has been added and notified"
       redirect_to organization_people_path(@org), change: "users"
+
+      @intercom.events.create(
+        :event_name => "Added a user",
+        :email => current_user.email,
+        :created_at => Time.now.to_i,
+        :metadata => {
+          "New user name" => @user.name,
+          "New user email" => @user.email
+        }
+      )
     else
       flash.now[:error] = "#{@user.errors.full_messages.first(2).join(', ')}"
       @users = @org.users

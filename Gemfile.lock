@@ -103,6 +103,8 @@ GEM
     hitimes (1.2.2)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    intercom (3.0.2)
+      json (~> 1.8)
     intercom-rails (0.2.28)
       activesupport (> 3.0)
     jbuilder (2.3.0)
@@ -246,6 +248,7 @@ DEPENDENCIES
   figaro
   guard
   guard-livereload
+  intercom
   intercom-rails
   jbuilder (~> 2.0)
   jquery-rails
