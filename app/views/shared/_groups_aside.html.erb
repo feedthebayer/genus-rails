@@ -7,6 +7,6 @@
     <% org.groups.active.each do |group| %>
       <li><%= link_to group.name, [org, group] %></li>
     <% end %>
-    <li><%= link_to "New...", organization_groups_path(org) %></li>
+    <li><%= link_to "New...", organization_groups_path(org, anchor: 'new_group') %></li>
   </ul>
 </section>
