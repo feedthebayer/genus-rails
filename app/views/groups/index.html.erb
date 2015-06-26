@@ -7,14 +7,33 @@
     </h1>
     <section class="app-indexSection">
       <ul id="groups">
+        <li><%= link_to "Everyone", @org %> <small>(default)</small></li>
         <% @groups.each do |group| %>
           <li><%= link_to group.name, [@org, group], class: "org-group" %></li>
         <% end %>
       </ul>
     </section>
-    <section id="grp-NewGroup" data-turbolinks-temporary>
+    <section id="grp-newGroup" data-turbolinks-temporary>
       <h1 class="app-sectionHeader">Create a new group</h1>
       <%= render partial: 'form', locals: { org: @org, group: @new_group } %>
     </section>
+    <p class="grp-help"><strong>What groups should I make?</strong></p>
+    <p>
+      Whatever you like!
+      Groups can be used to map your organizational structure by teams, circles,
+      or departments. Also groups can be used for specific projects or other themes
+      of communication. Simply, archive them when they are done.
+    </p>
+    <p class="grp-help"><strong>Can I make nested groups?</strong><p>
+    <p>
+      Sure! To maximize flexiblity, we let you nest groups with a naming
+      scheme. For example, a few group names could be:
+      <ul class="grp-groupEx">
+        <li>Board</li>
+        <li>Board/GCC/Web App</li>
+        <li>Ohio</li>
+        <li>Awesome Client Company</li>
+      </ul>
+    </p>
   </section>
 </main>
