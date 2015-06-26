@@ -26,8 +26,8 @@ p {
 
 a {
   color: $action-color;
-  // text-decoration: none;
   transition: color 0.1s linear;
+  word-wrap: break-word;
 
   &:active,
   &:focus,
