@@ -11,13 +11,18 @@
       <meta name="keywords" content="GlassFrog, glass frog, alternative, social network, self-managing, business management">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0" >
 
-      <%# <%= favicon_link_tag %>
-      <%# <%= favicon_link_tag 'apple-touch-icon-iphone.png', rel: 'apple-touch-icon', type: 'image/png' %>
-      <%# <%= favicon_link_tag 'touch-icon-ipad.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "76x76" %>
-      <%# <%= favicon_link_tag 'touch-icon-iphone-retina.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "120x120" %>
-      <%# <%= favicon_link_tag 'touch-icon-ipad-retina.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "152x152" %>
+      <%= favicon_link_tag %>
+      <%= favicon_link_tag 'apple-touch-icon-iphone.png',
+        rel: 'apple-touch-icon', type: 'image/png' %>
+      <%= favicon_link_tag 'touch-icon-ipad.png',
+        rel: 'apple-touch-icon', type: 'image/png', sizes: "76x76" %>
+      <%= favicon_link_tag 'touch-icon-iphone-retina.png',
+        rel: 'apple-touch-icon', type: 'image/png', sizes: "120x120" %>
+      <%= favicon_link_tag 'touch-icon-ipad-retina.png',
+        rel: 'apple-touch-icon', type: 'image/png', sizes: "152x152" %>
 
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= stylesheet_link_tag 'application', media: 'all',
+        'data-turbolinks-track' => true %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <% end %>
     <%= csrf_meta_tags %>
@@ -43,7 +48,7 @@
 
     <%= yield %>
 
-    <% if Rails.env.production? %>
+    <% if Rails.env.production? && !current_user %>
       <% cache 'google-analytics' do %>
         <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
