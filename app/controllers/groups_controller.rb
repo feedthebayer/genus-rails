@@ -24,7 +24,9 @@ class GroupsController < ApplicationController
   def show
     @org = find_organization
     @group = Group.includes(:conversations).find(params[:id])
-    if params[:page].present?
+    @unread_count = @group.conversations.unread_by(current_user).count
+
+    if params[:page].present? || @unread_count == 0
       @unread = false
       @conversations = @group.conversations.includes(:messages).read_by(current_user).page(params[:page])
     else

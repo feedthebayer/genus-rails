@@ -3,7 +3,9 @@ class OrganizationsController < ApplicationController
 
   def show
     @org = find_organization
-    if params[:page].present?
+    @unread_count = @org.conversations.unread_by(current_user).count
+
+    if params[:page].present? || @unread_count == 0
       @unread = false
       @conversations = @org.conversations.includes(:messages).read_by(current_user).page(params[:page])
     else

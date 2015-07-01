@@ -13,7 +13,7 @@
           Unread Conversations
         </h1>
         <small class="app-pagination">
-          <%= link_to 'View Read', organization_path(@org, page: 1) %>
+          <%= link_to 'View read', organization_path(@org, page: 1) %>
         </small>
       <% else %>
         <h1 class="app-sectionHeader app-conDateHeader">
@@ -22,7 +22,7 @@
         <small class="app-pagination">
           <%= link_to_next_page @conversations, '←Older' %>
           <%= link_to_previous_page @conversations, 'Newer→' %>
-          <%= link_to 'View Unread', @org %>
+          <%= link_to("View #{@unread_count} unread", @org) if @unread_count > 0 %>
         </small>
       <% end %>
       <%= render(partial: 'conversations/conversation',
@@ -31,11 +31,11 @@
                  empty_feed_notice %>
       <small class="app-pagination">
         <% if @unread %>
-          <%= link_to 'View Read', organization_path(@org, page: 1) %>
+          <%= link_to 'View uead', organization_path(@org, page: 1) %>
         <% else %>
           <%= link_to_next_page @conversations, '←Older' %>
           <%= link_to_previous_page @conversations, 'Newer→' %>
-          <%= link_to 'View Unread', @org %>
+          <%= link_to("View #{@unread_count} unread", @org) if @unread_count > 0 %>
         <% end %>
       </small>
     </section>
