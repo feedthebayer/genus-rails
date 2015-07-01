@@ -30,7 +30,7 @@ group :development, :test do
   gem 'rack-livereload'
   gem 'awesome_print', require:"ap"
   gem 'quiet_assets'
-  # gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler'
   # gem 'flamegraph'
 end
 
