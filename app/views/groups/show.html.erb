@@ -16,7 +16,7 @@
           <%= link_to_previous_page @conversations, 'Newer→' %>
         </small>
         <%= render(partial: 'conversations/conversation',
-            collection: @conversations, locals: { new_msg: @new_msg }) ||
+            collection: @conversations.reverse, locals: { new_msg: @new_msg }) ||
             empty_feed_notice %>
         <small class="app-pagination">
           <%= link_to_next_page @conversations, '←Older' %>
