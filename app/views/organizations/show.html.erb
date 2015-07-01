@@ -8,19 +8,35 @@
         <%= render partial: 'messages/new_form',
           locals: { org: @org, message_parent: nil, message: @new_msg } %>
       </section>
-      <h1 class="app-sectionHeader app-conDateHeader">
-        Conversations
-      </h1>
-      <small class="app-pagination">
-        <%= link_to_next_page @conversations, '←Older' %>
-        <%= link_to_previous_page @conversations, 'Newer→' %>
-      </small>
+      <% if @unread %>
+        <h1 class="app-sectionHeader app-conDateHeader">
+          Unread Conversations
+        </h1>
+        <small class="app-pagination">
+          <%= link_to 'View Read', organization_path(@org, page: 1) %>
+        </small>
+      <% else %>
+        <h1 class="app-sectionHeader app-conDateHeader">
+          Read Conversations
+        </h1>
+        <small class="app-pagination">
+          <%= link_to_next_page @conversations, '←Older' %>
+          <%= link_to_previous_page @conversations, 'Newer→' %>
+          <%= link_to 'View Unread', @org %>
+        </small>
+      <% end %>
       <%= render(partial: 'conversations/conversation',
-          collection: @conversations.reverse, locals: { new_msg: @new_msg }) ||
-          empty_feed_notice %>
+                 collection: @conversations.reverse,
+                 locals: { new_msg: @new_msg, unread: @unread }) ||
+                 empty_feed_notice %>
       <small class="app-pagination">
-        <%= link_to_next_page @conversations, '←Older' %>
-        <%= link_to_previous_page @conversations, 'Newer→' %>
+        <% if @unread %>
+          <%= link_to 'View Read', organization_path(@org, page: 1) %>
+        <% else %>
+          <%= link_to_next_page @conversations, '←Older' %>
+          <%= link_to_previous_page @conversations, 'Newer→' %>
+          <%= link_to 'View Unread', @org %>
+        <% end %>
       </small>
     </section>
   </section>

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   belongs_to :organization
   has_many :messages
   has_secure_password validations: false
+  acts_as_reader
 
   before_save :downcase_email
   validates_presence_of :name, :organization

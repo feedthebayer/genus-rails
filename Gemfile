@@ -18,7 +18,8 @@ gem 'intercom'
 gem 'intercom-rails'
 gem 'local_time'
 gem 'kaminari'
-gem "auto_html"
+gem 'auto_html'
+gem 'unread'
 
 group :development, :test do
   gem 'byebug'

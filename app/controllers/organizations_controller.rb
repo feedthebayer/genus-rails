@@ -3,7 +3,13 @@ class OrganizationsController < ApplicationController
 
   def show
     @org = find_organization
-    @conversations = @org.conversations.includes(:messages).page(params[:page])
+    if params[:page].present?
+      @unread = false
+      @conversations = @org.conversations.includes(:messages).read_by(current_user).page(params[:page])
+    else
+      @unread = true
+      @conversations = @org.conversations.includes(:messages).unread_by(current_user)
+    end
     @new_msg = Message.new
     render :show, change: 'messages'
   end

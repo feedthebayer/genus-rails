@@ -1,4 +1,8 @@
-<section class="con-conversation">
+<% if unread %>
+  <section class="con-conversation con-conversation--unread">
+<% else %>
+  <section class="con-conversation">
+<% end %>
   <%= render conversation.messages.first %>
   <% if conversation.length > 2 %>
     <p class="con-partition con-separator">
@@ -6,9 +10,14 @@
     </p>
   <% end %>
   <%= render conversation.messages.last if conversation.length > 1 %>
-    <section class="con-partition" id="new-message:<% conversation.id %>"
-      data-turbolinks-temporary>
-      <%= render partial: 'messages/reply_form',
-        locals: { org: conversation.organization, message_parent: conversation, message: new_msg } %>
-    </section>
+  <% if unread %>
+    <p class="con-separator">
+      <%= link_for_mark_read conversation %>
+    </p>
+  <% end %>
+  <section class="con-partition" id="new-message:<% conversation.id %>"
+    data-turbolinks-temporary>
+    <%= render partial: 'messages/reply_form',
+      locals: { org: conversation.organization, message_parent: conversation, message: new_msg } %>
+  </section>
 </section>

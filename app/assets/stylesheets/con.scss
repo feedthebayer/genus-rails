@@ -11,10 +11,14 @@
   border-color: $base2;
   border-radius: $base-border-radius;
   border-style: solid;
-  border-width: 1px 0px 2px;
+  border-width: 1px 1px 2px;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
   font-size: 0.9em;
   margin-bottom: 2.5em;
+}
+
+.con-conversation--unread {
+  border-color: $dark-blue;
 }
 
 .con-partition {

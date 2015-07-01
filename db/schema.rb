@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611232802) do
+ActiveRecord::Schema.define(version: 20150701205005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150611232802) do
   end
 
   add_index "conversations", ["conversational_type", "conversational_id"], name: "index_on_conversational", using: :btree
+  add_index "conversations", ["updated_at"], name: "index_conversations_on_updated_at", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -51,6 +52,15 @@ ActiveRecord::Schema.define(version: 20150611232802) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "read_marks", force: :cascade do |t|
+    t.integer  "readable_id"
+    t.string   "readable_type", null: false
+    t.integer  "user_id",       null: false
+    t.datetime "timestamp"
+  end
+
+  add_index "read_marks", ["user_id", "readable_type", "readable_id"], name: "index_read_marks_on_user_id_and_readable_type_and_readable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

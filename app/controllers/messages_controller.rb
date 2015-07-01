@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
                            body: params[:message][:body])
 
     if @message.save
+      @conversation.mark_as_read! for: current_user
       if new_conversation?
         @intercom.events.create(
           :event_name => "Started a conversation",
@@ -31,28 +32,29 @@ class MessagesController < ApplicationController
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
 
-    redirect_to request.referer.split('?').first + "#messages:#{@message.id}", change: 'messages'
+    path = request.referer.split('?').first + "?page=1" + "#messages:#{@message.id}"
+    redirect_to path, change: 'messages'
   end
 
   # def update
     # redirect_to current_organization, change: "messages:#{@message.id}"
   # end
 
-  def destroy
-    @org = find_organization
-    @message = Message.find(params[:id])
-
-    if not @message.destroy
-      flash[:error] = "#{@message.errors.full_messages.first}"
-    end
-
-    if @message.conversation.messages.empty?
-      @message.conversation.destroy!
-      redirect_to @org
-    else
-      redirect_to [@org, @message.conversation], change: 'messages'
-    end
-  end
+  # def destroy
+  #   @org = find_organization
+  #   @message = Message.find(params[:id])
+  #
+  #   if not @message.destroy
+  #     flash[:error] = "#{@message.errors.full_messages.first}"
+  #   end
+  #
+  #   if @message.conversation.messages.empty?
+  #     @message.conversation.destroy!
+  #     redirect_to @org
+  #   else
+  #     redirect_to [@org, @message.conversation], change: 'messages'
+  #   end
+  # end
 
   private
 

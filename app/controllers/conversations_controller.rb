@@ -6,9 +6,21 @@ class ConversationsController < ApplicationController
     # For some reason messages still get loaded in the view
     # @conversation = Conversation.includes(:messages).find(params[:id])
     @conversation = Conversation.find(params[:id])
+    @conversation.mark_as_read! for: current_user
     @parent_path = get_parent_show_path_for @conversation
     @messages = @conversation.messages.all
     @new_msg = @conversation.messages.build
+  end
+
+  def update
+    @org = find_organization
+    @conversation = Conversation.find(params[:id])
+
+    if params[:read_status] == 'read'
+      @conversation.mark_as_read! for: current_user
+    end
+
+    redirect_to :back, change: 'messages'
   end
 
   private

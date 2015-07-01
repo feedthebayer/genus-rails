@@ -3,26 +3,42 @@
 <main class="app-main" id="app-main">
   <h1 class="app-pageHeading"><%= @group.name %></h1>
   <section class="app-convoSection">
-      <section id="messages">
-        <section id="grp-newMsg" data-turbolinks-temporary>
-          <%= render partial: 'messages/new_form',
-            locals: { org: @org, message_parent: @group, message: @new_msg } %>
-        </section>
+    <section id="messages">
+      <section id="grp-newMsg" data-turbolinks-temporary>
+        <%= render partial: 'messages/new_form',
+          locals: { org: @org, message_parent: @group, message: @new_msg } %>
+      </section>
+      <% if @unread %>
         <h1 class="app-sectionHeader app-conDateHeader">
-          Conversations
+          Unread Conversations
+        </h1>
+        <small class="app-pagination">
+          <%= link_to 'View Read', organization_group_path(@org, @group, page: 1) %>
+        </small>
+      <% else %>
+        <h1 class="app-sectionHeader app-conDateHeader">
+          Read Conversations
         </h1>
         <small class="app-pagination">
           <%= link_to_next_page @conversations, '←Older' %>
           <%= link_to_previous_page @conversations, 'Newer→' %>
+          <%= link_to 'View Unread', [@org, @group] %>
         </small>
-        <%= render(partial: 'conversations/conversation',
-            collection: @conversations.reverse, locals: { new_msg: @new_msg }) ||
-            empty_feed_notice %>
-        <small class="app-pagination">
+      <% end %>
+      <%= render(partial: 'conversations/conversation',
+                  collection: @conversations.reverse,
+                  locals: { new_msg: @new_msg, unread: @unread }) ||
+                  empty_feed_notice %>
+      <small class="app-pagination">
+        <% if @unread %>
+          <%= link_to 'View Read', organization_group_path(@org, @group, page: 1) %>
+        <% else %>
           <%= link_to_next_page @conversations, '←Older' %>
           <%= link_to_previous_page @conversations, 'Newer→' %>
-        </small>
-      </section>
+          <%= link_to 'View Unread', [@org, @group] %>
+        <% end %>
+      </small>
+    </section>
   </section>
   <aside class="app-aside" id="app-aside">
     <%= render partial: 'shared/groups_aside', locals: { org: @org } %>
