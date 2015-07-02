@@ -47,6 +47,12 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     if @group.archive!
       flash[:success] = "#{@group.name} has been archived"
+
+      @intercom.events.create(
+        :event_name => "Archived a group",
+        :email => current_user.email,
+        :created_at => Time.now.to_i,
+      )
     else
       flash[:error] = "#{@group.errors.full_messages.first}"
     end

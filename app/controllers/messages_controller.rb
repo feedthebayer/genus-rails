@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
         )
       else
         @intercom.events.create(
-          :event_name => "Replied to conversation",
+          :event_name => "Replied to a conversation",
           :email => current_user.email,
           :created_at => Time.now.to_i,
         )
