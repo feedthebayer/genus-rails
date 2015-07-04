@@ -9,25 +9,13 @@ class MessagesController < ApplicationController
     end
 
     @org = find_organization
-    @conversation = find_or_create_conversation_in_parent
+    @conversation = find_or_create_conversation_in_group
     @message = Message.new(user: current_user, conversation: @conversation,
                            body: params[:message][:body])
 
     if @message.save
       @conversation.mark_as_read! for: current_user
-      if new_conversation?
-        @intercom.events.create(
-          :event_name => "Started a conversation",
-          :email => current_user.email,
-          :created_at => Time.now.to_i,
-        )
-      else
-        @intercom.events.create(
-          :event_name => "Replied to a conversation",
-          :email => current_user.email,
-          :created_at => Time.now.to_i,
-        )
-      end
+      trigger_intercom_event
     else
       flash[:error] = "#{@message.errors.full_messages.first}"
     end
@@ -66,13 +54,9 @@ class MessagesController < ApplicationController
     end
   end
 
-  def find_new_message_parent
-
-  end
-
-  def find_or_create_conversation_in_parent
+  def find_or_create_conversation_in_group
     if new_conversation?
-      create_conversation_in_parent
+      Group.find(params[:group_id]).conversations.create!
     else
       Conversation.find(params[:conversation_id])
     end
@@ -82,12 +66,19 @@ class MessagesController < ApplicationController
     params[:conversation_id].blank?
   end
 
-  def create_conversation_in_parent
-    if params[:group_id].present?
-      parent = Group.find(params[:group_id])
+  def trigger_intercom_event
+    if new_conversation?
+      @intercom.events.create(
+        :event_name => "Started a conversation",
+        :email => current_user.email,
+        :created_at => Time.now.to_i,
+      )
     else
-      parent = current_organization
+      @intercom.events.create(
+        :event_name => "Replied to a conversation",
+        :email => current_user.email,
+        :created_at => Time.now.to_i,
+      )
     end
-    parent.conversations.create!
   end
 end

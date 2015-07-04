@@ -11,19 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701205005) do
+ActiveRecord::Schema.define(version: 20150703000540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "conversations", force: :cascade do |t|
-    t.integer  "conversational_id"
-    t.string   "conversational_type"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "conversations", ["conversational_type", "conversational_id"], name: "index_on_conversational", using: :btree
+  add_index "conversations", ["group_id"], name: "index_conversations_on_group_id", using: :btree
   add_index "conversations", ["updated_at"], name: "index_conversations_on_updated_at", using: :btree
 
   create_table "groups", force: :cascade do |t|
@@ -75,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150701205005) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["organization_id"], name: "index_users_on_organization_id", using: :btree
 
+  add_foreign_key "conversations", "groups"
   add_foreign_key "groups", "organizations"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"

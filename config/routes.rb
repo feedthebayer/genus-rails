@@ -4,19 +4,20 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :organizations, path: "", only: [:show] do
-    resources :users, only: [:create, :show, :update, :destroy]
+    resources :users, only: [:create]
     get 'people' => 'users#index'
-    resources :conversations, only: [:show, :update] do
-      # For all new messages in an existing converation
-      resources :messages, only: [:create]
-    end
-    # For all new global conversations & show/update/delete all exisiting msg
-    resources :messages, only: [:create, :show]
 
     resources :groups, only: [:create, :show, :index, :destroy] do
-      # For all new conversations in a group
+      # New conversations
       resources :messages, only: [:create]
     end
+
+    resources :conversations, only: [:show, :update] do
+      # New messages in an existing converation
+      resources :messages, only: [:create]
+    end
+
+    # resources :messages, only: [:update]
   end
 
   root 'static_pages#home'

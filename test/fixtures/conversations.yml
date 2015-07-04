@@ -1,5 +1,5 @@
 one:
-  conversational: test_org
+  group: group_one
 
 two:
-  conversational: group_one
+  group: group_two

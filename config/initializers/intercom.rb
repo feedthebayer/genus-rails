@@ -41,6 +41,7 @@ IntercomRails.config do |config|
 
   # == Company Custom Data
   config.company.custom_data = {
+    "total groups" => Proc.new { |org| org.groups.count },
     "total conversations" => Proc.new { |org| org.conversations.count },
     "total messages" => Proc.new { |org| org.messages.count }
   }

@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
       )
     else
       flash.now[:error] = "#{@group.errors.full_messages.first}"
-      @groups = @org.groups.active
+      @groups = @org.groups
       @new_group = @group
       render :index, change: "new_group"
     end
@@ -28,10 +28,12 @@ class GroupsController < ApplicationController
 
     if params[:page].present? || @unread_count == 0
       @unread = false
-      @conversations = @group.conversations.includes(:messages).read_by(current_user).page(params[:page])
+      @conversations = @group.conversations.
+              includes(:messages).read_by(current_user).page(params[:page])
     else
       @unread = true
-      @conversations = @group.conversations.includes(:messages).unread_by(current_user)
+      @conversations = @group.conversations.
+              includes(:messages).unread_by(current_user).reverse
     end
     @new_msg = Message.new
     render :show, change: 'messages'
@@ -39,7 +41,7 @@ class GroupsController < ApplicationController
 
   def index
     @org = find_organization
-    @groups = @org.groups.active
+    @groups = @org.groups
     @new_group = Group.new
   end
 

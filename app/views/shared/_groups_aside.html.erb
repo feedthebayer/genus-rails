@@ -3,8 +3,6 @@
     <%= link_to "Groups", organization_groups_path(@org), class: "app-headingLink" %>
   </h1>
   <ul class="app-asideGroupList">
-    <% count = org.conversations.unread_by(current_user).count %>
-    <li><%= link_to "Everyone", org %><%= " (#{count})" if count > 0 %></li>
     <% org.groups.active.each do |group| %>
       <% count = group.conversations.unread_by(current_user).count %>
       <li><%= link_to group.name, [org, group] %><%= " (#{count})" if count > 0 %></li>

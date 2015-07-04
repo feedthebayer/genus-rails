@@ -1,7 +1,8 @@
 <section class="msg-reply-form">
-  <%= form_for [org, message_parent, message], remote: true do |f| %>
-    <%= f.text_area :body, class: 'msg-reply-textarea uTextarea',
-      placeholder: "Reply to this conversation...", rows: 1 %>
-    <%= f.submit "Reply to conversation", id: 'new-message', class: 'msg-reply-submit btn-sml' %>
+  <%= form_for [convo.organization, convo, message], remote: true do |f| %>
+    <%= f.text_area :body, class: 'msg-reply-textarea uTextarea ',
+                    placeholder: "Reply to this conversation...", rows: 1 %>
+    <%= f.submit "Reply to conversation", id: 'new-message',
+                    class: 'msg-reply-submit btn-sml' %>
   <% end %>
 </section>

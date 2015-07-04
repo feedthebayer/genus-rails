@@ -1,22 +1,27 @@
-<% content_for :title, "Conversation in #{@conversation.conversational.name}" %>
+<% content_for :title, "Conversation in #{@conversation.group.name}" %>
+
 <%= render partial: 'shared/nav_header', locals: { org: @org } %>
+
 <main class="app-main" id="app-main">
   <h1 class="app-pageHeading">
     A conversation in
-      <%= link_to @conversation.conversational.name, @parent_path,
+    <%= link_to @conversation.group.name, [@org, @conversation.group],
         class: "app-headingLink" %>
   </h1>
+
   <section class="app-convoSection">
     <article class="con-conversation">
       <section id="messages">
         <%= render @messages %>
       </section>
+
       <section class="con-partition" id="new-message" data-turbolinks-temporary>
         <%= render partial: 'messages/reply_form',
-          locals: { org: @org, message_parent: @conversation, message: @new_msg } %>
+          locals: { convo: @conversation, message: @new_msg } %>
       </section>
     </article>
   </section>
+
   <aside class="app-aside" id="app-aside">
     <%= render partial: 'shared/groups_aside', locals: { org: @org } %>
   </aside>

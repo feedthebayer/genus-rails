@@ -4,4 +4,4 @@ group_one:
 
 group_two:
   name: Test Group Two
-  organization_id: test_org
+  organization: test_org
