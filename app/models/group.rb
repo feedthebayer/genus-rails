@@ -11,6 +11,8 @@ class Group < ActiveRecord::Base
   scope :archived, -> { where archived: true }
 
   def archive!
-    update_attributes archived: true
+    if self.default != true
+      update_attributes archived: true
+    end
   end
 end

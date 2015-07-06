@@ -47,8 +47,10 @@
 
   <aside class="app-aside" id="app-aside">
     <%= render partial: 'shared/groups_aside', locals: { org: @org } %>
-    <%= link_to "Archive this group", [@org, @group], method: :delete,
-      data: { confirm: "The #{@group.name} group in #{@org.name} will be archived." } %>
+    <% if not @group.default %>
+      <%= link_to "Archive this group", [@org, @group], method: :delete,
+        data: { confirm: "The #{@group.name} group in #{@org.name} will be archived." } %>
+    <% end %>
   </aside>
 </main>
 
