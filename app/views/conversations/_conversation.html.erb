@@ -11,7 +11,7 @@
   <% end %>
   <%= render conversation.messages.last if conversation.length > 1 %>
   <% if unread %>
-    <p class="con-separator"><%= link_for_mark_read conversation %></p>
+    <p class="con-separator"><strong><%= link_for_mark_read conversation %></strong></p>
   <% end %>
   <section class="con-partition" id="new-message:<% conversation.id %>" data-turbolinks-temporary>
     <%= render partial: 'messages/reply_form',
