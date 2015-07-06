@@ -10,6 +10,6 @@ class Organization < ActiveRecord::Base
   private
 
   def create_default_group
-    self.groups.create name: "Everyone"
+    self.groups.create name: "Everyone", default: true
   end
 end

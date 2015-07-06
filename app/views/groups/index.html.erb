@@ -7,9 +7,9 @@
     </h1>
     <section class="app-indexSection">
       <ul id="groups">
-        <li><%= link_to "Everyone", @org %> <small>(default)</small></li>
         <% @groups.each do |group| %>
-          <li><%= link_to group.name, [@org, group], class: "org-group" %></li>
+          <li><%= link_to group.name, [@org, group], class: "org-group" %>
+              <small><%= " (default)" if group.default %></small></li>
         <% end %>
       </ul>
     </section>
