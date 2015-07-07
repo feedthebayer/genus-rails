@@ -7,7 +7,7 @@
 input[type="text"].grp-newTextfield {
   line-height: 24px;
 
-  @include media($med-up) {
+  @include media($sml-up) {
     float: left;
     width: 72%;
   }
@@ -15,10 +15,10 @@ input[type="text"].grp-newTextfield {
 
 .grp-newSubmit {
   float: right;
-  width: 26%;
+  width: 100%;
 
-  @include media($sml-only) {
-    width: 100%;
+  @include media($sml-up) {
+    width: 26%;
   }
 }
 

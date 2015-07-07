@@ -1,9 +1,13 @@
 .con-container {
 
-  @include media($xlrg-up) {
-    @include span-columns(8);
-    @include shift(2);
+  @include media($sml-up) {
+    padding: 0 $app-base-padding;
   }
+
+  // @include media($xlrg-up) {
+  //   @include span-columns(8);
+  //   @include shift(2);
+  // }
 }
 
 .con-conversation {
@@ -14,7 +18,11 @@
   border-width: 1px 0px 2px;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
   font-size: 0.9em;
-  margin-bottom: 2.5em;
+  margin-bottom: 1em;
+
+  &+& {
+    margin-top: 2em;
+  }
 }
 
 .con-conversation--unread {
@@ -25,7 +33,7 @@
   border-top: solid 1px $base1;
   padding: 1em 1em 0;
 
-  @include media($lrg-up) {
+  @include media($med-up) {
     padding: 2em 2em 0;
   }
 

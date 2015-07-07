@@ -8,7 +8,7 @@
   margin-bottom: 0;
   padding: 0.1em 0;
 
-  @include media($med-up) {
+  @include media($sml-up) {
     font-size: 1.1em;
   }
 }
@@ -19,7 +19,7 @@
 .msg-new-form, .msg-reply-form {
   text-align: right;
 
-  @include media($lrg-up) {
+  @include media($med-up) {
     margin-top: -1em;
   }
 }
@@ -37,11 +37,12 @@
 }
 
 .msg-new-submit, .msg-reply-submit {
-  margin-bottom: 0.4em;
+  margin-bottom: 0.8em;
   margin-top: -0.4em;
+  width: 100%;
 
-  @include media($sml-only) {
-    width: 100%;
+  @include media($sml-up) {
+    width: inherit;
   }
 }
 

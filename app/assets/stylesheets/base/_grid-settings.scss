@@ -7,14 +7,13 @@
 $max-width: em(1400);
 
 // Neat Breakpoints
-$medium-screen: em(600);
-$large-screen: em(760);
+$small-screen: em(600);
+$medium-screen: em(740);
+$large-screen: em(860);
 $xlarge-screen: em(1024);
 $xxlarge-screen: em(1200);
 
-$sml-only: new-breakpoint(max-width $medium-screen);
-$med-down: new-breakpoint(max-width $large-screen);
-
+$sml-up: new-breakpoint(min-width $small-screen);
 $med-up: new-breakpoint(min-width $medium-screen);
 $lrg-up: new-breakpoint(min-width $large-screen);
 $xlrg-up: new-breakpoint(min-width $xlarge-screen);

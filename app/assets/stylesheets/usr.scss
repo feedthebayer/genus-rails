@@ -1,19 +1,13 @@
 input[type="text"].usr-newTextfield {
   line-height: 24px;
-
-  // @include media($med-up) {
-  //   float: left;
-  //   width: 72%;
-  // }
 }
 
 .usr-newSubmit {
-  @include media($sml-only) {
-    width: 100%;
-  }
+  width: 100%;
 
-  @include media($med-up) {
+  @include media($sml-up) {
     float: right;
+    width: inherit;
   }
 }
 
@@ -23,7 +17,7 @@ input[type="text"].usr-newTextfield {
   margin-right: 1em;
   width: 40px;
 
-  @include media($med-up) {
+  @include media($sml-up) {
     width: 45px;
   }
 }

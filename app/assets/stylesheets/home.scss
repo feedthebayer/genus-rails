@@ -29,7 +29,7 @@
     width: 100%;
   }
 
-  @include media($med-up) {
+  @include media($sml-up) {
     font-size: 1em;
     margin-top: 4em;
   }
