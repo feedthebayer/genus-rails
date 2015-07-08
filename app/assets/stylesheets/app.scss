@@ -2,28 +2,14 @@ $app-base-padding: 1em;
 
 .app-main {
   clear: both;
-  // @include outer-container;
-  // padding: 0 1em 1em;
-  //
-  // @include media($sml-up) {
-  //   padding: 0 2em 2em;
-  // }
-}
 
-.app-paddedContainer {
-  padding: 0 $app-base-padding;
-}
+  @include media($med-up) {
+    float: right;
+    width: 70%;
+  }
 
-.app-convoSection {
-  // @include direction-context(right-to-left) {
-  //   @include media($lrg-up) {
-  //     @include span-columns(9);
-  //   }
-  //
-  //   @include media($xlrg-up) {
-  //     @include span-columns(6);
-  //     @include shift(3);
-  //   }
+  // @include media($xxlrg-up) {
+  //   width: 75%;
   // }
 }
 
@@ -36,16 +22,42 @@ $app-base-padding: 1em;
     font-size: 0.9em;
   }
 
-  // @include direction-context(right-to-left) {
-  //   @include media($lrg-up) {
-  //     @include span-columns(3);
-  //   }
-  //
-  //   @include media($xlrg-up) {
-  //     @include span-columns(3);
-  //     padding-left: 3em;
-  //   }
+  @include media($med-up) {
+    float: left;
+    margin-top: 5em;
+    position: fixed;
+    width: 30%;
+  }
+
+  @include media($xlrg-up) {
+    padding-left: 5%;
+  }
+
+  // @include media($xxlrg-up) {
+  //   width: 25%;
   // }
+}
+
+.app-paddedContainer {
+  padding: 0 $app-base-padding;
+}
+
+.app-primarySection {
+  max-width: 45em;
+  padding-bottom: 1em;
+
+  @include media($xlrg-up) {
+    float: left;
+    // width: 70%;
+    width: 100%;
+  }
+}
+
+.app-secondarySection {
+  @include media($xlrg-up) {
+    float: left;
+    // width: 30%;
+  }
 }
 
 .app-pageHeading {
@@ -57,12 +69,6 @@ $app-base-padding: 1em;
     font-size: 2em;
     margin-bottom: 1em;
   }
-}
-
-.app-asideGroupList {
-  margin-bottom: 3em;
-  padding-left: 1.5em;
-  text-indent: -1.5em;
 }
 
 .app-indexContainer {
@@ -89,10 +95,6 @@ $app-base-padding: 1em;
 
 .app-headingLink {
   color: inherit;
-}
-
-.app-conDateHeader {
-  margin-bottom: 0;
 }
 
 .app-pagination {

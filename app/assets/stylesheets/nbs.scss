@@ -1,1 +1,58 @@
+.nbs-section {
+  margin-bottom: 1.5em;
+}
+
+.nbs-grpList {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+
+.nbs-session {
+  clear: both;
+  text-align: center;
+}
+
+.nbs-sessionLink {
+  @include media($med-up) {
+    display: none;
+  }
+}
+
+.nbs-leftDiv, .nbs-rightDiv {
+  @include media($sml-up) {
+    width: 50%;
+  }
+
+  @include media($med-up) {
+    width: initial;
+  }
+}
+
+.nbs-leftDiv {
+  @include media($sml-up) {
+    float: left;
+  }
+
+  @include media($med-up) {
+    float: none;
+  }
+}
+
+.nbs-rightDiv {
+  @include media($sml-up) {
+    float: right;
+  }
+
+  @include media($med-up) {
+    float: none;
+  }
+}
+
+.nbs-hr {
+  @include media($med-up) {
+    display: none;
+  }
+}
 

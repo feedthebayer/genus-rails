@@ -33,7 +33,7 @@
   border-top: solid 1px $base1;
   padding: 1em 1em 0;
 
-  @include media($med-up) {
+  @include media($sml-up) {
     padding: 2em 2em 0;
   }
 
@@ -41,6 +41,11 @@
     border-top: none;
   }
 }
+
+.con-heading {
+  margin-bottom: 0;
+}
+
 
 .con-separator {
   font-size: 0.9em;
@@ -58,6 +63,6 @@
 .con-empty {
   font-style: italic;
   max-width: 19em;
-  margin: 0 auto 2em;
+  margin: 0 auto;
   text-align: center;
 }

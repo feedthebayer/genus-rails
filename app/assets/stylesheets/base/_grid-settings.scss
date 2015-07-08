@@ -18,3 +18,5 @@ $med-up: new-breakpoint(min-width $medium-screen);
 $lrg-up: new-breakpoint(min-width $large-screen);
 $xlrg-up: new-breakpoint(min-width $xlarge-screen);
 $xxlrg-up: new-breakpoint(min-width $xxlarge-screen);
+
+$sml-med: new-breakpoint(min-width $small-screen max-width $large-screen);

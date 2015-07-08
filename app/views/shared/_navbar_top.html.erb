@@ -1,0 +1,12 @@
+<nav class="nav-top">
+  <div class="nav-topLeft">
+    <%= link_to org do %>
+      <%= image_tag "genus-logo-t.png", alt: "Genus",
+               class: "nav-logo-top" %><%= org.name %>
+    <% end %>
+  </div>
+  <div class="nav-topRight">
+    <a href="#app-aside" class="nav-menuLink">Jump to Menu</a>
+    <%= log_in_out_link_top %>
+  </div>
+</nav>

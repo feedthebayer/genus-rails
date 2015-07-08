@@ -1,21 +1,56 @@
+<hr class="nbs-hr">
 <nav class="nbs">
-  <h1 class="app-sectionHeader">
-    <%= link_to "People", organization_people_path(org), class: "app-headingLink" %>
-  </h1>
-  <h1 class="app-sectionHeader">
-    <%= link_to "Groups", organization_groups_path(org), class: "app-headingLink" %>
-  </h1>
-  <ul class="app-asideGroupList">
-    <% org.groups.all.each do |group| %>
-      <% count = group.conversations.unread_by(current_user).count %>
-      <li><%= link_to group.name, [org, group] %><%= " (#{count})" if count > 0 %></li>
-    <% end %>
-    <li><%= link_to "New...", organization_groups_path(org, anchor: 'grp-newGroup') %></li>
-  </ul>
-  <% if current_group.present? %>
-    <%= link_to "Archive this group", [org, current_group], method: :delete,
-      data: { confirm: "The #{current_group.name} group in #{org.name} will be archived." } %>
-  <% end %>
+  <div class="nbs-leftDiv">
+    <section class="nbs-groups nbs-section">
+      <h1 class="app-sectionHeader">
+        <%= link_to "Groups", organization_groups_path(org),
+          class: "app-headingLink" %>
+      </h1>
+      <ul class="nbs-grpList">
+        <% org.groups.all.each do |group| %>
+          <% count = group.conversations.unread_by(current_user).count %>
+          <li><%= link_to group.name,
+            [org, group] %><%= " (#{count})" if count > 0 %></li>
+        <% end %>
+        <li><%= link_to "New...",
+          organization_groups_path(org, anchor: 'grp-newGroup') %></li>
+      </ul>
+      <% if current_group.present? && !current_group.default %>
+        <small>
+          <%= link_to "Archive #{current_group.name}", [org, current_group],
+            method: :delete,
+            data: {
+              confirm: "The #{current_group.name} group in #{org.name} will be archived."
+            } %>
+        </small>
+      <% end %>
+    </section>
+  </div>
 
-  <%= log_in_out_link_bottom %>
+  <div class="nbs-rightDiv">
+    <section class="nbs-roles nbs-section">
+      <h1 class="app-sectionHeader">
+        <%= link_to "Roles", organization_people_path(org),
+          class: "app-headingLink" %>
+      </h1>
+    </section>
+
+    <section class="nbs-people nbs-section">
+      <h1 class="app-sectionHeader">
+        <%= link_to "People", organization_people_path(org),
+          class: "app-headingLink" %>
+      </h1>
+    </section>
+
+    <section class="nbs-me nbs-section">
+      <h1 class="app-sectionHeader">
+        <%= link_to "Me", organization_people_path(org),
+          class: "app-headingLink" %>
+      </h1>
+    </section>
+  </div>
+
+  <section class="nbs-session">
+    <%= log_in_out_link_bottom %>
+  </section>
 </nav>

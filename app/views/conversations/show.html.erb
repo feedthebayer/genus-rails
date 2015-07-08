@@ -1,6 +1,6 @@
 <% content_for :title, "Conversation in #{@conversation.group.name}" %>
 
-<%= render partial: 'shared/nav_header', locals: { org: @org } %>
+<%= render partial: 'shared/navbar_top', locals: { org: @org } %>
 
 <main class="app-main" id="app-main">
   <h1 class="app-pageHeading">
@@ -9,7 +9,7 @@
         class: "app-headingLink" %>
   </h1>
 
-  <section class="app-convoSection">
+  <section class="app-primarySection">
     <article class="con-conversation">
       <section id="messages">
         <%= render @messages %>
