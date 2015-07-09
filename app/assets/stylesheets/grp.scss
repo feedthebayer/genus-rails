@@ -12,7 +12,7 @@ input[type="text"].grp-newTextfield {
 
   @include media($sml-up) {
     float: left;
-    width: 72%;
+    width: 70%;
   }
 }
 
@@ -21,7 +21,7 @@ input[type="text"].grp-newTextfield {
   width: 100%;
 
   @include media($sml-up) {
-    width: 26%;
+    width: 28%;
   }
 }
 
