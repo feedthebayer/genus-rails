@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   # Generates, encryptes, saves, & returns a new remember token
   def new_remember_token!
     SecureRandom.urlsafe_base64.tap do |random_token|
-      if remember_digests.length == 3
+      if remember_digests.length == 4
         remember_digests.pop
       end
       remember_digests.prepend User.digest(random_token)
