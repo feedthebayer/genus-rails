@@ -1,8 +1,4 @@
-<% if unread %>
-  <section class="con-conversation con-conversation--unread">
-<% else %>
-  <section class="con-conversation">
-<% end %>
+<%= conversation_tag_helper(unread) do %>
   <%= render conversation.messages.first %>
   <% if conversation.length > 2 %>
     <p class="con-partition con-separator">
@@ -17,4 +13,4 @@
     <%= render partial: 'messages/reply_form',
         locals: { convo: conversation, message: new_msg } %>
   </section>
-</section>
+<% end %>

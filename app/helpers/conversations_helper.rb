@@ -19,4 +19,12 @@ module ConversationsHelper
       conversation.organization, conversation, read_status: 'read'),
       method: :patch, remote: true
   end
+
+  def conversation_tag_helper(unread, &block)
+    if unread
+      content_tag(:section, capture(&block), class: "con-conversation con-conversation--unread")
+    else
+      content_tag(:section, capture(&block), class: "con-conversation")
+    end
+  end
 end
