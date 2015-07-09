@@ -19,7 +19,7 @@ class Group < ActiveRecord::Base
   private
 
   def organization_can_only_have_one_default_group
-    if self.organization.groups.find_by default: true
+    if self.default && self.organization.groups.find_by(default: true)
       errors.add :default, "Organization can only have 1 default group"
     end
   end

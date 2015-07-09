@@ -1,7 +1,7 @@
 <hr class="nbs-hr">
 <nav class="nbs">
   <div class="nbs-leftDiv">
-    <section class="nbs-groups nbs-section">
+    <section class="nbs-groups nbs-section" id="groups:list" data-turbolinks-temporary>
       <h1 class="app-sectionHeader">
         <%= link_to "Groups", organization_groups_path(org),
           class: "app-headingLink" %>
@@ -12,28 +12,18 @@
           <li><%= link_to group.name,
             [org, group] %><%= " (#{count})" if count > 0 %></li>
         <% end %>
-        <li><%= link_to "New...",
-          organization_groups_path(org, anchor: 'grp-newGroup') %></li>
+        <li><%= link_to "New...", organization_groups_path(org) %></li>
       </ul>
-      <% if current_group.present? && !current_group.default %>
-        <small>
-          <%= link_to "Archive #{current_group.name}", [org, current_group],
-            method: :delete,
-            data: {
-              confirm: "The #{current_group.name} group in #{org.name} will be archived."
-            } %>
-        </small>
-      <% end %>
     </section>
   </div>
 
   <div class="nbs-rightDiv">
-    <section class="nbs-roles nbs-section">
-      <h1 class="app-sectionHeader">
-        <%= link_to "Roles", organization_people_path(org),
-          class: "app-headingLink" %>
-      </h1>
-    </section>
+    <!-- <section class="nbs&#45;roles nbs&#45;section"> -->
+    <!--   <h1 class="app&#45;sectionHeader"> -->
+    <!--     <#%= link_to "Roles", organization_people_path(org), -->
+    <!--       class: "app&#45;headingLink" %> -->
+    <!--   </h1> -->
+    <!-- </section> -->
 
     <section class="nbs-people nbs-section">
       <h1 class="app-sectionHeader">
@@ -42,12 +32,12 @@
       </h1>
     </section>
 
-    <section class="nbs-me nbs-section">
-      <h1 class="app-sectionHeader">
-        <%= link_to "Me", organization_people_path(org),
-          class: "app-headingLink" %>
-      </h1>
-    </section>
+    <!-- <section class="nbs&#45;me nbs&#45;section"> -->
+    <!--   <h1 class="app&#45;sectionHeader"> -->
+    <!--     <#%= link_to "Me", organization_people_path(org), -->
+    <!--       class: "app&#45;headingLink" %> -->
+    <!--   </h1> -->
+    <!-- </section> -->
   </div>
 
   <section class="nbs-session">

@@ -58,7 +58,7 @@ class GroupsController < ApplicationController
     else
       flash[:error] = "#{@group.errors.full_messages.first}"
     end
-    redirect_to @group.organization
+    redirect_to organization_groups_path(@group.organization), change: "groups"
   end
 
   private

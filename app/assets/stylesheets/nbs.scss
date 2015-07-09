@@ -1,5 +1,9 @@
 .nbs-section {
   margin-bottom: 1.5em;
+
+  @include media($med-up) {
+    margin-bottom: 2.5em;
+  }
 }
 
 .nbs-grpList {

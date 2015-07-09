@@ -3,11 +3,6 @@
   @include media($sml-up) {
     padding: 0 $app-base-padding;
   }
-
-  // @include media($xlrg-up) {
-  //   @include span-columns(8);
-  //   @include shift(2);
-  // }
 }
 
 .con-conversation {
@@ -62,7 +57,7 @@
 
 .con-empty {
   font-style: italic;
-  max-width: 19em;
+  max-width: 17em;
   margin: 0 auto;
   text-align: center;
 }

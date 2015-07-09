@@ -11,6 +11,12 @@ $app-base-padding: 1em;
   // @include media($xxlrg-up) {
   //   width: 75%;
   // }
+
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
 }
 
 .app-aside {
@@ -36,6 +42,12 @@ $app-base-padding: 1em;
   // @include media($xxlrg-up) {
   //   width: 25%;
   // }
+
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
 }
 
 .app-paddedContainer {
@@ -71,22 +83,9 @@ $app-base-padding: 1em;
   }
 }
 
-.app-indexContainer {
-  margin: 0 auto;
-  max-width: 35em;
-}
-
-.app-indexSection {
-  margin-bottom: 4em;
-}
-
 .app-sectionHeader {
   color: $green;
   font-size: 1.2em;
-
-  .app-groupsAside & {
-    font-size: 1.4em;
-  }
 
   @include media($sml-up) {
     font-size: 1.3em;

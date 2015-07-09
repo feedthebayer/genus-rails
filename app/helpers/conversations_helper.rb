@@ -11,7 +11,7 @@ module ConversationsHelper
   end
 
   def empty_feed_notice
-    content_tag(:p, "No conversations so far in this group. Why not start a new one?", class: 'con-empty')
+    content_tag(:p, "No conversations so far in this group. Why not start one?", class: 'con-empty')
   end
 
   def link_for_mark_read(conversation)

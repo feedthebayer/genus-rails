@@ -15,7 +15,8 @@
             Unread Conversations
           </h1>
           <small class="app-pagination">
-            <%= link_to 'View read', organization_group_path(@org, @group, page: 1) %>
+            <%= link_to 'View read',
+                organization_group_path(@org, @group, page: 1) %>
           </small>
         <% else %>
           <h1 class="app-sectionHeader con-heading">
@@ -24,7 +25,8 @@
           <small class="app-pagination">
             <%= link_to_next_page @conversations, '←Older' %>
             <%= link_to_previous_page @conversations, 'Newer→' %>
-            <%= link_to("View #{@unread_count} unread", [@org, @group]) if @unread_count > 0 %>
+            <%= link_to("View #{@unread_count} unread",
+                        [@org, @group]) if @unread_count > 0 %>
           </small>
         <% end %>
       </div>
@@ -32,7 +34,8 @@
       <section class="con-container">
         <%= render(partial: 'conversations/conversation',
                    collection: @conversations.reverse,
-                   locals: { new_msg: @new_msg, unread: @unread }) || empty_feed_notice %>
+                   locals: { new_msg: @new_msg, unread: @unread }) ||
+                    empty_feed_notice %>
       </section>
 
       <div class="app-paddedContainer">
@@ -42,7 +45,8 @@
           <% else %>
             <%= link_to_next_page @conversations, '←Older' %>
             <%= link_to_previous_page @conversations, 'Newer→' %>
-            <%= link_to("View #{@unread_count} unread", [@org, @group]) if @unread_count > 0 %>
+            <%= link_to("View #{@unread_count} unread",
+                        [@org, @group]) if @unread_count > 0 %>
           <% end %>
         </small>
       </div>
@@ -53,8 +57,7 @@
 </main>
 
 <aside class="app-aside" id="app-aside">
-  <%= render partial: 'shared/navbar_side',
-    locals: { org: @org, current_group: @group } %>
+  <%= render partial: 'shared/navbar_side', locals: { org: @org } %>
 </aside>
 
 <%= link_to @org do %>

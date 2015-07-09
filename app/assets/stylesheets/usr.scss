@@ -1,3 +1,13 @@
+.usr-indexSection {
+  margin: 3em auto;
+  max-width: 30em;
+}
+
+.usr-newSection {
+  margin: 0 auto;
+  max-width: 30em;
+}
+
 input[type="text"].usr-newTextfield {
   line-height: 24px;
 }
@@ -25,5 +35,9 @@ input[type="text"].usr-newTextfield {
 .usr-newUsrNotify {
   display: inline-block;
   margin-bottom: 1em;
+
+  @include media($sml-up) {
+    max-width: 25em;
+  }
 }
 

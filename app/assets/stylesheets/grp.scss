@@ -1,6 +1,9 @@
-.grp-showContainer {
-  @include media($lrg-up) {
-    @include span-columns(8);
+.grp-newSection {
+  margin-top: 1.5em;
+  margin-bottom: 3em;
+
+  @include media($sml-up) {
+    margin-top: 0;
   }
 }
 
@@ -31,3 +34,9 @@ input[type="text"].grp-newTextfield {
   list-style-type: initial;
   padding-left: 1.5em;
 }
+
+.grp-list {
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+

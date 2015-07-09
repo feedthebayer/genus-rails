@@ -3,26 +3,34 @@
 <%= render partial: 'shared/navbar_top', locals: { org: @org } %>
 
 <main class="app-main" id="app-main">
-  <h1 class="app-pageHeading">
-    A conversation in
-    <%= link_to @conversation.group.name, [@org, @conversation.group],
-        class: "app-headingLink" %>
-  </h1>
-
   <section class="app-primarySection">
-    <article class="con-conversation">
-      <section id="messages">
-        <%= render @messages %>
-      </section>
+    <h1 class="app-pageHeading">
+      A conversation in
+      <%= link_to @conversation.group.name, [@org, @conversation.group],
+          class: "app-headingLink" %>
+    </h1>
 
-      <section class="con-partition" id="new-message" data-turbolinks-temporary>
-        <%= render partial: 'messages/reply_form',
-          locals: { convo: @conversation, message: @new_msg } %>
-      </section>
-    </article>
+    <section class="con-container">
+      <article class="con-conversation">
+        <section id="messages">
+          <%= render @messages %>
+        </section>
+
+        <section class="con-partition" id="new-message" data-turbolinks-temporary>
+          <%= render partial: 'messages/reply_form',
+              locals: { convo: @conversation, message: @new_msg } %>
+        </section>
+      </article>
+    </section>
   </section>
-
-  <aside class="app-aside" id="app-aside">
-    <%= render partial: 'shared/groups_aside', locals: { org: @org } %>
-  </aside>
+  <section class="app-secondarySection">
+  </section>
 </main>
+
+<aside class="app-aside" id="app-aside">
+  <%= render partial: 'shared/navbar_side', locals: { org: @org } %>
+</aside>
+
+<%= link_to @org do %>
+  <%= image_tag "genus-logo-t.png", alt: "Genus", class: "nav-logo-bottom" %>
+<% end %>
