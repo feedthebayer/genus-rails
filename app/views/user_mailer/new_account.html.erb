@@ -1,0 +1,15 @@
+<p><%= render 'greeting' %></p>
+<p>
+  We just created a Genus account for <%= @user.organization.name %>!
+  <br><br>
+  You can log in and start collaborating with one click using this link:
+  <br>
+  <%= link_to "#{@login_url}", @login_url %>
+  <br><br>
+  You can always access <%= @user.organization.name %>'s account using this link:
+  <%= link_to "#{organization_url(@user.organization)}", @user.organization %>
+  <i>(You may want to bookmark this)</i>
+</p>
+<p><%= render 'closing' %></p>
+<p><%= render 'signature' %></p>
+

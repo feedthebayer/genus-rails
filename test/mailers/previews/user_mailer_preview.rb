@@ -10,4 +10,8 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.welcome(User.first, User.second)
   end
 
+  def new_account
+    UserMailer.new_account(User.first)
+  end
+
 end

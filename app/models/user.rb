@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     UserMailer.welcome(self, fromUser).deliver_later
   end
 
+  def send_new_account_email
+    UserMailer.new_account(self).deliver_now
+  end
+
   # Generates, encryptes, saves, & returns a new login token
   def new_login_token!
     SecureRandom.urlsafe_base64.tap do |random_token|
