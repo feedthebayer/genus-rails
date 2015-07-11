@@ -26,7 +26,7 @@ IntercomRails.config do |config|
 
   # == User Custom Data
   config.user.custom_data = {
-    "total messages" => Proc.new { |user| user.messages.count }
+    "messages" => Proc.new { |user| user.messages.count }
   }
 
   # == User -> Company association
@@ -41,7 +41,8 @@ IntercomRails.config do |config|
 
   # == Company Custom Data
   config.company.custom_data = {
-    "total groups" => Proc.new { |org| org.groups.count },
+    "active groups" => Proc.new { |org| org.groups.count },
+    "archived groups" => Proc.new { |org| org.groups.archived.count },
     "total conversations" => Proc.new { |org| org.conversations.count },
     "total messages" => Proc.new { |org| org.messages.count }
   }
