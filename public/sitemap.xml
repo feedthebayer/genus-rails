@@ -4,6 +4,9 @@
     <loc>http://genusapp.com</loc> 
   </url>
   <url>
+    <loc>http://genusapp.com/about</loc> 
+  </url>
+  <url>
     <loc>http://genusapp.com/login</loc> 
   </url>
 </urlset>

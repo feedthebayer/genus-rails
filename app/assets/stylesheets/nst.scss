@@ -1,0 +1,25 @@
+$logo-size-med: 75px;
+$logo-size-lrg: 100px;
+
+.nst-nav {
+  line-height: $logo-size-med;
+
+  @include media($lrg-up) {
+    line-height: $logo-size-lrg;
+  }
+
+  a {
+    margin-right: 1.5em;
+  }
+
+}
+
+.nst-logo {
+  margin-right: 1em;
+  width: $logo-size-med;
+  vertical-align: middle;
+
+  @include media($lrg-up) {
+    width: $logo-size-lrg;
+  }
+}

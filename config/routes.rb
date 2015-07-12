@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  get 'about' => 'static_pages#about'
+
   resources :organizations, path: "", only: [:show] do
     resources :users, only: [:create]
     get 'people' => 'users#index'
