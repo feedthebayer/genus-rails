@@ -24,7 +24,15 @@
       </div>
       <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
       <div style="position: absolute; left: -5000px;"><input type="text" name="b_f1c7ebfcafb38d6b735e19b90_fd939b60bc" tabindex="-1" value=""></div>
-      <button type="submit" value="Subscribe" name="subscribe" >Set me up with a free beta account!</button>
+      <button type="submit" value="Subscribe" name="subscribe" onclick="trackEvent('beta-account'); return false;">Set me up with a free beta account!</button>
     </form>
   </section>
+
+  <script>
+    var trackEvent = function(label) {
+      ga('send', 'event', 'form', 'submit', label, {'hitCallback':
+        function () { document.location = label; }, 'nonInteraction': 1
+      });
+    }
+  </script>
 </section>
