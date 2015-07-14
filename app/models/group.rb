@@ -2,6 +2,8 @@ class Group < ActiveRecord::Base
   belongs_to :organization
   has_many :conversations
   has_many :messages, through: :conversations
+  has_many :roles
+
   validates_presence_of :name, :organization
   validate :organization_can_only_have_one_default_group
 

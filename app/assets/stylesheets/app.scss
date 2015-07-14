@@ -8,40 +8,9 @@ $app-base-padding: 1em;
     width: 70%;
   }
 
-  // @include media($xxlrg-up) {
-  //   width: 75%;
-  // }
-
-  &:after {
-    content:"";
-    display:table;
-    clear:both;
+  @include media($xxlrg-up) {
+    width: 75%;
   }
-}
-
-.app-aside {
-  font-size: 0.9em;
-  margin-bottom: 2em;
-  padding: 0 $app-base-padding;
-
-  @include media($sml-up) {
-    font-size: 0.9em;
-  }
-
-  @include media($med-up) {
-    float: left;
-    margin-top: 5em;
-    position: fixed;
-    width: 30%;
-  }
-
-  @include media($xlrg-up) {
-    padding-left: 5%;
-  }
-
-  // @include media($xxlrg-up) {
-  //   width: 25%;
-  // }
 
   &:after {
     content:"";
@@ -55,20 +24,54 @@ $app-base-padding: 1em;
 }
 
 .app-primarySection {
-  max-width: 45em;
+  max-width: 41em;
   padding-bottom: 1em;
 
-  @include media($xlrg-up) {
+  @include media($xxlrg-up) {
     float: left;
-    // width: 70%;
-    width: 100%;
+    width: 60%;
   }
 }
 
 .app-secondarySection {
-  @include media($xlrg-up) {
+  margin-top: 1em;
+
+  @include media($xxlrg-up) {
     float: left;
-    // width: 30%;
+    margin-top: 4.4em;
+    width: 40%;
+  }
+
+  @include media($xxxlrg-up) {
+    padding-left: 4%;
+  }
+}
+
+.app-aside {
+  font-size: 0.9em;
+  margin-bottom: 2em;
+  padding: 0 $app-base-padding;
+
+  @include media($med-up) {
+    float: left;
+    margin-top: 5em;
+    position: fixed;
+    width: 30%;
+  }
+
+  @include media($xlrg-up) {
+    padding-left: 2%;
+  }
+
+  @include media($xxlrg-up) {
+    padding-left: 4%;
+    width: 25%;
+  }
+
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
   }
 }
 
@@ -90,6 +93,10 @@ $app-base-padding: 1em;
   @include media($sml-up) {
     font-size: 1.3em;
   }
+
+  @include media($lrg-up) {
+    font-size: 1.4em;
+  }
 }
 
 .app-headingLink {
@@ -104,5 +111,4 @@ $app-base-padding: 1em;
     margin-left: 0.3em;
   }
 }
-
 

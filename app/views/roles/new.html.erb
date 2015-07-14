@@ -1,0 +1,36 @@
+<% content_for :title, "New role in #{@group.name}" %>
+
+<%= render partial: 'shared/navbar_top', locals: { org: @org } %>
+
+<main class="app-main" id="app-main">
+  <section class="app-primarySection">
+    <h1 class="app-pageHeading">
+      New role in
+      <%= link_to @group.name, [@org, @group], class: "app-headingLink" %>
+    </h1>
+    <div class="app-paddedContainer">
+      <section id="new_role">
+        <%= render partial: 'form',
+          locals: { resource: [@org, @group, @role] } %>
+      </section>
+    </div>
+
+  </section>
+  <section class="app-secondarySection">
+    <div class="app-paddedContainer">
+      <section id="roles">
+        <%= render partial: 'shared/group_secondary',
+          locals: { group: @group } %>
+      </section>
+    </div>
+  </section>
+</main>
+
+<aside class="app-aside" id="app-aside">
+  <%= render partial: 'shared/navbar_side', locals: { org: @org } %>
+</aside>
+
+<%= link_to @org do %>
+  <%= image_tag "genus-logo-t.png", alt: "Genus", class: "nav-logo-bottom" %>
+<% end %>
+

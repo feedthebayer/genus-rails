@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Founder
+  description: Founding stuff
+  group_id: group_one
+
+two:
+  name: Seller
+  description: Selling stuff
+  group_id: group_two

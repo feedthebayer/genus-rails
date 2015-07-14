@@ -12,7 +12,6 @@
       </div>
     </header>
     <div class="msg-content">
-      <%# <%= simple_format message.body %>
       <%= auto_html(message.body) { html_escape; simple_format; image; twitter; gist; link; } %>
     </div>
   </section>

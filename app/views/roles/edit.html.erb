@@ -1,0 +1,40 @@
+<% content_for :title, "Edit #{@role.name} in #{@role.group.name}" %>
+
+<%= render partial: 'shared/navbar_top', locals: { org: @org } %>
+
+<main class="app-main" id="app-main">
+  <section class="app-primarySection">
+    <h1 class="app-pageHeading">
+      Edit <%= @role.name %> role in
+      <%= link_to @role.group.name, [@org, @role.group], class: "app-headingLink" %>
+    </h1>
+    <div class="app-paddedContainer">
+      <section id="edit_role">
+        <%= render partial: 'form', locals: { resource: [@org, @role] } %>
+      </section>
+      <small class="rol-delete">
+        <%= link_to "Delete this role", [@org, @role],
+        method: :delete,  data: { confirm:
+        "WARNING: The #{@role.name} role in #{@role.group.name} will be permanently deleted!" } %>
+      </small>
+    </div>
+  </section>
+
+  <section class="app-secondarySection">
+    <div class="app-paddedContainer">
+      <section id="roles">
+        <%= render partial: 'shared/group_secondary',
+          locals: { group: @role.group } %>
+      </section>
+    </div>
+  </section>
+</main>
+
+<aside class="app-aside" id="app-aside">
+  <%= render partial: 'shared/navbar_side', locals: { org: @org } %>
+</aside>
+
+<%= link_to @org do %>
+  <%= image_tag "genus-logo-t.png", alt: "Genus", class: "nav-logo-bottom" %>
+<% end %>
+

@@ -1,0 +1,29 @@
+<section class="rol-newSection">
+  <%= form_for resource, remote: true do |f| %>
+    <section class="rol-newName">
+      <%= f.label :name, "Role Name" %>
+      <%= f.text_field :name, placeholder: "Enter a role name", autofocus: true %>
+    </section>
+    <section class="rol-newDescription">
+      <%= f.label :description, "Role Description" %>
+      <%= f.text_area :description, class: 'uTextarea',
+        placeholder: "Enter a description (purpose, accountabilities, etc.)...",
+        rows: 5, 'data-min-rows': '5'  %>
+    </section>
+    <section class="rol-newUserSection">
+      <%= f.label :user_ids, "Assigned To" %>
+      <%= f.collection_check_boxes :user_ids, resource.first.users,
+                              :id, :name, {}, multiple: true do |cb| %>
+        <div>
+          <%= cb.check_box %> <%= cb.label class: "rol-userCheckboxLabel" %>
+        </div>
+      <% end %>
+    </section>
+    <section class="rol-submitSection">
+      <small class="rol-cancel">
+        <%= link_to("Cancel", resource) if resource.size == 2 %>
+      </small>
+      <%= f.submit class: 'btn-sml' %>
+    </section>
+  <% end %>
+</section>

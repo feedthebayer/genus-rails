@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   belongs_to :organization
   has_many :messages
+  has_many :role_assignments
+  has_many :roles, through: :role_assignments
   has_secure_password validations: false
   acts_as_reader
 

@@ -1,0 +1,80 @@
+.rol-sideList {
+  // @include media($xxlrg-up) {
+  //   position: fixed;
+  // }
+}
+
+.rol-list-table {
+  font-size: 0.9em;
+}
+
+.rol-list-td {
+  padding-right: 2em;
+}
+
+.rol-newSection {
+
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
+
+.rol-newName {
+  margin-bottom: 1.5em;
+
+  @include media($med-up) {
+    margin-bottom: 2.5em;
+  }
+}
+
+.rol-newDescription {
+  margin-bottom: 1em;
+
+  @include media($med-up) {
+    margin-bottom: 2em;
+  }
+}
+
+.rol-userCheckboxLabel {
+  display: inline;
+  font-size: 0.9em;
+  font-weight: normal;
+}
+
+.rol-newUserSection {
+  margin-bottom: 2em;
+
+  @include media($sml-up) {
+    float: left;
+  }
+}
+
+.rol-submitSection {
+    float: right;
+}
+
+.rol-editLink {
+  padding-top: 2em;
+  text-align: center;
+}
+
+.rol-cancel {
+  margin-right: 0.5em;
+}
+
+.rol-description {
+  font-size: 0.9em;
+  margin-bottom: 3em;
+}
+
+.rol-assignments {
+  font-size: 0.9em;
+  margin-bottom: 1em;
+}
+
+.rol-delete {
+  display: block;
+  text-align: center;
+}

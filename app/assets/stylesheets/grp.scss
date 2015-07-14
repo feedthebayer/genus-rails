@@ -40,3 +40,8 @@ input[type="text"].grp-newTextfield {
   text-indent: -1.5em;
 }
 
+.grp-hr {
+  @include media($xxlrg-up) {
+    display: none;
+  }
+}

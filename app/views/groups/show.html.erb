@@ -53,6 +53,12 @@
     </section>
   </section>
   <section class="app-secondarySection">
+    <div class="app-paddedContainer">
+      <section class="rol-sideList" id="roles">
+        <%= render partial: 'shared/group_secondary',
+          locals: { group: @group } %>
+      </section>
+    </div>
   </section>
 </main>
 

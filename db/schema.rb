@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705234200) do
+ActiveRecord::Schema.define(version: 20150714003525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,27 @@ ActiveRecord::Schema.define(version: 20150705234200) do
 
   add_index "read_marks", ["user_id", "readable_type", "readable_id"], name: "index_read_marks_on_user_id_and_readable_type_and_readable_id", using: :btree
 
+  create_table "role_assignments", force: :cascade do |t|
+    t.integer  "role_id"
+    t.integer  "user_id"
+    t.string   "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "role_assignments", ["role_id"], name: "index_role_assignments_on_role_id", using: :btree
+  add_index "role_assignments", ["user_id"], name: "index_role_assignments_on_user_id", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "group_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "roles", ["group_id"], name: "index_roles_on_group_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -79,5 +100,6 @@ ActiveRecord::Schema.define(version: 20150705234200) do
   add_foreign_key "groups", "organizations"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "roles", "groups"
   add_foreign_key "users", "organizations"
 end

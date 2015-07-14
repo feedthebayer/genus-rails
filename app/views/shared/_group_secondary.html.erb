@@ -1,0 +1,25 @@
+<hr class="grp-hr">
+<h1 class="app-sectionHeader">Roles</h1>
+<table class="rol-list-table">
+  <% group.roles.each do |role| %>
+    <tr>
+      <td class="rol-list-td">
+        <%= link_to role.name, [group.organization, role] %>
+      </td>
+      <td>
+        <% if role.role_assignments.empty? %>
+          -
+        <% else %>
+          <% role.role_assignments.includes(:user).each do |assignment| %>
+            <div><%= assignment.user.name %><%= assignment.note %></div>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+    <td role="action-link"><%= link_to "New..",
+      new_organization_group_role_path(group.organization, group) %></td>
+  </tr>
+</table>
+

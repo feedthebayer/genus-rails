@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :groups, only: [:create, :show, :index, :destroy] do
       # New conversations
       resources :messages, only: [:create]
+      resources :roles, only: [:new, :create]
     end
 
     resources :conversations, only: [:show, :update] do
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     end
 
     # resources :messages, only: [:update]
+    resources :roles, only: [:show, :edit, :update, :destroy]
   end
 
   root 'static_pages#home'
