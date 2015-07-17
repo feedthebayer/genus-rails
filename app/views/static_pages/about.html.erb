@@ -30,7 +30,10 @@
     <p>~Brandon Bayer</p>
   </section>
   <section class="ab-image">
-    <%= image_tag "founder.jpg", alt: "Brandon Bayer", class: "ab-img" %>
+    <%= link_to "http://twitter.com/feedthebayer", title: "Follow me on Twitter!" do %>
+      <%= image_tag "founder.jpg", alt: "Brandon Bayer", class: "ab-img" %>
+      @feedthebayer
+    <% end %>
   </section>
 </main>
 
