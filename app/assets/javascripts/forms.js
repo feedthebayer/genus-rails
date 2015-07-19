@@ -9,14 +9,13 @@ $(document).on('keydown', '.uTextarea', function(e) {
 
 
 function UpdateTextAreaSize() {
-  //Get minimum rows
-  var minRows = this.getAttribute('data-min-rows')|1;
   //Attempt to set to min rows to shrink area to fit content
-  this.rows = minRows;
+  this.rows = this.minRows;
   //Calculate extra rows
   var extraRows = Math.round((this.scrollHeight - this.baseScrollHeight) / this.scrollInc);
-  // console.log('current:', this.rows, '= min:', minRows, '+ extra:', extraRows, '| scroll:', this.scrollHeight, 'base:', this.baseScrollHeight);
-  this.rows = minRows + extraRows;
+  console.log('CALC. scroll-base:', (this.scrollHeight - this.baseScrollHeight));
+  this.rows = this.minRows + extraRows;
+  // console.log('current:', this.rows, '= min:', this.minRows, '+ extra:', extraRows, '| scroll:', this.scrollHeight, 'base:', this.baseScrollHeight);
 }
 
 
@@ -28,18 +27,18 @@ $(document)
     if (!this.baseScrollHeight) {
       //Save current text and clear textarea
       var savedValue = this.value;
-      var minRows = this.getAttribute('data-min-rows')|1;
+      this.minRows = parseInt(this.getAttribute('data-min-rows'));
       this.value = '';
       //Get height with no content
       this.baseScrollHeight = this.scrollHeight;
 
       //Calculate height on an incremental row
       //To do this, add new lines until height is min + 1
-      for (i=0; i < minRows; i++) {
+      for (i=0; i < this.minRows; i++) {
         this.value += '\r\n';
       }
       //Save line increment
-      this.scrollInc = this.scrollHeight - this.baseScrollHeight;
+      this.scrollInc = this.scrollHeight - this.baseScrollHeight - 1;
 
       //Restore text
       this.value = savedValue;
