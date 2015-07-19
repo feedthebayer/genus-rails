@@ -1,4 +1,4 @@
-<section class="rol-newSection">
+<section class="rol-formSection">
   <%= form_for resource, remote: true do |f| %>
     <section class="rol-newName">
       <%= f.label :name, "Role Name" %>
@@ -8,7 +8,7 @@
       <%= f.label :description, "Role Description" %>
       <%= f.text_area :description, class: 'uTextarea',
         placeholder: "Enter a description (purpose, accountabilities, etc.)...",
-        rows: 5, 'data-min-rows': '5'  %>
+        rows: 10, 'data-min-rows': '10'  %>
     </section>
     <section class="rol-newUserSection">
       <%= f.label :user_ids, "Assigned To" %>
