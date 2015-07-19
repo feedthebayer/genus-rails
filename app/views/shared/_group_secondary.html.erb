@@ -1,5 +1,9 @@
 <hr class="grp-hr">
-<h1 class="app-sectionHeader">Roles</h1>
+<h1 class="app-sectionHeader">
+  Roles <span class="rol-listExpandedTitle"> in
+      <%= link_to group.name, [group.organization, group],
+      class: "app-headingLink" %></span>
+</h1>
 <table class="rol-list-table">
   <% group.roles.each do |role| %>
     <tr>

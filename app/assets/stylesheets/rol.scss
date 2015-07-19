@@ -79,3 +79,9 @@
   display: block;
   text-align: center;
 }
+
+.rol-listExpandedTitle {
+  @include media($xxlrg-up) {
+    display: none;
+  }
+}
