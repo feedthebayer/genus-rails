@@ -2,7 +2,7 @@
   <%= form_for [group.organization, group, message], remote: true do |f| %>
     <%= f.text_area :body, class: 'msg-new-textarea uTextarea',
           placeholder: "Start a new conversation in this group...",
-          rows: 1 %>
+          rows: 1, 'data-min-rows': '1'  %>
     <%= f.submit "Start new conversation", id: 'new-message',
           class: 'msg-new-submit btn-sml' %>
   <% end %>
