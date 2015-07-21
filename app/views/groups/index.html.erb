@@ -40,7 +40,7 @@
             <% next if group.default %>
             <li>
               <small><%= link_to "Archive \"#{group.name}\"", [@org, group],
-                  method: :delete,  data: { confirm:
+                  method: :delete, class: "uNegativeLinkColor", data: { confirm:
                   "The #{group.name} group in #{@org.name} will be archived." } %>
               </small>
             </li>

@@ -14,7 +14,7 @@
       </section>
       <small class="rol-delete">
         <%= link_to "Delete this role", [@org, @role],
-        method: :delete,  data: { confirm:
+        method: :delete, class: "uNegativeLinkColor",  data: { confirm:
         "WARNING: The #{@role.name} role in #{@role.group.name} will be permanently deleted!" } %>
       </small>
     </div>

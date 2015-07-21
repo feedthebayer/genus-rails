@@ -21,7 +21,7 @@
     </section>
     <section class="rol-submitSection">
       <small class="rol-cancel">
-        <%= link_to("Cancel", resource) if resource.size == 2 %>
+        <%= link_to("Cancel", resource, class: "uNegativeLinkColor") if resource.size == 2 %>
       </small>
       <%= f.submit class: 'btn-sml' %>
     </section>

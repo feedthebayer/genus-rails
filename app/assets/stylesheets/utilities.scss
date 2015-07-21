@@ -5,3 +5,13 @@
 .uOverflowAuto {
   overflow: auto;
 }
+
+.uNegativeLinkColor {
+  color: $negative-color;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: darken($negative-color, 15%);
+  }
+}

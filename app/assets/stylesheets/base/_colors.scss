@@ -1,7 +1,7 @@
 $base03:    #002b36;
 $base02:    #073642;
 $base01:    #586e75; //optional emphasized content
-$base00:    #657b83; //body text, primary content
+$base00:    darken(#657b83, 10); //#657b83; //body text, primary content
 $base0:     #839496;
 $base1:     #93a1a1; //comments, secondary content
 $base2:     #eee8d5; //background highlights
