@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_welcome_email_from(current_user)
       flash[:success] = "#{@user.name} (#{@user.email}) has been added and notified"
-      redirect_to organization_people_path(@org), change: "users"
+      redirect_to organization_people_path(@org)
 
       @intercom.events.create(
         :event_name => "Added a user",
