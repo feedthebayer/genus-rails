@@ -45,3 +45,12 @@ input[type="text"].grp-newTextfield {
     display: none;
   }
 }
+
+.grp-totalUnreadCount {
+  display: block;
+  text-align: center;
+
+  @include media($med-up) {
+    display: none;
+  }
+}

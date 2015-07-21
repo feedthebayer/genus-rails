@@ -7,6 +7,11 @@
     <h1 class="app-pageHeading"><%= @group.name %></h1>
     <section id="messages">
       <div class="app-paddedContainer" id="grp-heading" data-turbolinks-temporary>
+        <% if @total_unread_count %>
+          <small class="grp-totalUnreadCount"><%= pluralize(@total_unread_count,
+                  'unread conversation', 'unread conversations') %> </small>
+        <% end %>
+
         <%= render partial: 'messages/new_form',
           locals: { org: @org, group: @group, message: @new_msg } %>
 
