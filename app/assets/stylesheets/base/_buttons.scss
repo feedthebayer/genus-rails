@@ -2,9 +2,9 @@
 button, a.button {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
-  background-color: $action-color;
+  background-color: $positive-color;
   border-radius: $button-border-radius;
-  border-color: darken($action-color, 10%);
+  border-color: darken($positive-color, 10%);
   border-style: solid;
   border-width: 0px 0px 2px 0px;
   color: #fff;
@@ -32,7 +32,7 @@ button, a.button {
 
   &:hover,
   &:focus {
-    background-color: darken($action-color, 8%);
+    background-color: darken($positive-color, 8%);
     color: #fff;
   }
 
