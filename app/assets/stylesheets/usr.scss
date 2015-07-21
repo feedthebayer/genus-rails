@@ -30,6 +30,12 @@ input[type="text"].usr-newTextfield {
   @include media($sml-up) {
     width: 45px;
   }
+
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
 }
 
 .usr-newUsrNotify {

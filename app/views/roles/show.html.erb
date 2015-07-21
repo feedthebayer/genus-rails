@@ -22,7 +22,10 @@
           <div>No one</div>
         <% else %>
           <% @role.role_assignments.includes(:user).each do |assignment| %>
-            <div><%= assignment.user.name %><%= assignment.note %></div>
+            <div class="rol-assignee uOverflowAuto">
+              <%= gravatar_for assignment.user %>
+              <%= assignment.user.name %><%= assignment.note %>
+            </div>
           <% end %>
         <% end %>
       </section>
