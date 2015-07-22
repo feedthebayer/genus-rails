@@ -17,6 +17,11 @@ class RolesController < ApplicationController
         :event_name => "Created a role",
         :email => current_user.email,
         :created_at => Time.now.to_i,
+        :metadata => {
+          "Role name" => @role.name,
+          "Description?" => @role.description.present?,
+          "Assigned users" => @role.users.count
+        }
       )
       redirect_to [@org, @role]
     else
@@ -44,6 +49,11 @@ class RolesController < ApplicationController
         :event_name => "Updated a role",
         :email => current_user.email,
         :created_at => Time.now.to_i,
+        :metadata => {
+          "Role name" => @role.name,
+          "Description?" => @role.description.present?,
+          "Assigned users" => @role.users.count
+        }
       )
       redirect_to [@org, @role]
     else
@@ -62,6 +72,11 @@ class RolesController < ApplicationController
         :event_name => "Deleted a role",
         :email => current_user.email,
         :created_at => Time.now.to_i,
+        :metadata => {
+          "Role name" => @role.name,
+          "Description?" => @role.description.present?,
+          "Assigned users" => @role.users.count
+        }
       )
       redirect_to [@org, @role.group]
     else
