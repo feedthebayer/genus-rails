@@ -1,6 +1,12 @@
 .usr-indexSection {
+  font-size: 0.9em;
+  line-height: 1.6em;
   margin: 3em auto;
   max-width: 30em;
+}
+
+.usr-indexItem {
+  margin-bottom: 0.5em;
 }
 
 .usr-newSection {
@@ -38,6 +44,25 @@ input[type="text"].usr-newTextfield {
   }
 }
 
+.usr-gravatar_lrg {
+  float: none;
+  margin-right: 0;
+  width: 150px;
+
+  @include media($sml-up) {
+    width: 200px;
+  }
+}
+
+.usr-gravatar_sml {
+  margin-right: 0.5em;
+  width: 25px;
+}
+
+.usr-container {
+  font-size: 0.9em;
+}
+
 .usr-newUsrNotify {
   display: inline-block;
   margin-bottom: 1em;
@@ -45,5 +70,87 @@ input[type="text"].usr-newTextfield {
   @include media($sml-up) {
     max-width: 25em;
   }
+}
+
+.usr-left {
+
+  @include media($sml-up) {
+    margin-right: 1.5em;
+    float: left;
+    max-width: 16em;
+  }
+}
+
+.usr-right {
+  text-align: center;
+
+  @include media($sml-up) {
+    text-align: left;
+  }
+}
+
+.usr-pic {
+  margin-bottom: 1em;
+  text-align: center;
+
+  @include media($sml-up) {
+    text-align: left;
+  }
+
+  @include media($lrg-up) {
+    margin-bottom: 2em;
+  }
+}
+
+.usr-roles {
+  margin-bottom: 3em;
+}
+
+.usr-description {
+}
+
+.usr-formSection {
+  text-align: left;
+
+  @include media($sml-up) {
+    display: inline-block;
+    min-width: 47%;
+  }
+
+  @include media($xlrg-up) {
+    min-width: 59%;
+  }
+
+  @include media($xxlrg-up) {
+    min-width: 50%;
+  }
+
+  @include media($xxxlrg-up) {
+    min-width: 59%;
+  }
+}
+
+.usr-formTextField {
+  margin-bottom: 1.5em;
+
+  @include media($med-up) {
+    margin-bottom: 2.5em;
+  }
+}
+
+.usr-formTextArea {
+  margin-bottom: 1em;
+
+  @include media($med-up) {
+    margin-bottom: 2em;
+  }
+}
+
+.usr-submitSection {
+    float: right;
+}
+
+.usr-cancel {
+  margin-right: 0.5em;
 }
 

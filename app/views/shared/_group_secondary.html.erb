@@ -1,8 +1,7 @@
 <hr class="grp-hr">
 <h1 class="app-sectionHeader">
-  Roles <span class="rol-listExpandedTitle"> in
-      <%= link_to group.name, [group.organization, group],
-      class: "app-headingLink" %></span>
+  Roles in <%= link_to group.name, [group.organization, group],
+      class: "app-headingLink" %>
 </h1>
 <table class="rol-list-table">
   <% group.roles.each do |role| %>
@@ -14,8 +13,12 @@
         <% if role.role_assignments.empty? %>
           -
         <% else %>
-          <% role.role_assignments.includes(:user).each do |assignment| %>
-            <div><%= assignment.user.name %><%= assignment.note %></div>
+          <% role.role_assignments.ordered_by_user.each do |assignment| %>
+            <div>
+              <%= link_to assignment.user.name,
+                [group.organization, assignment.user],
+                class: "app-subtleLink"%>
+            </div>
           <% end %>
         <% end %>
       </td>

@@ -100,7 +100,13 @@ $app-base-padding: 1em;
 }
 
 .app-headingLink {
-  color: inherit;
+  color: $dark-blue;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: lighten($dark-blue, 5%);
+  }
 }
 
 .app-pagination {
@@ -112,3 +118,13 @@ $app-base-padding: 1em;
   }
 }
 
+.app-subtleLink {
+  color: $base-font-color;
+  text-decoration: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+}

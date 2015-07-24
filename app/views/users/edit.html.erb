@@ -1,0 +1,76 @@
+<% content_for :title, "#{@user.name} in #{@org.name}" %>
+
+<%= render partial: 'shared/navbar_top', locals: { org: @org } %>
+
+<main class="app-main" id="app-main">
+  <section class="app-primarySection">
+    <h1 class="app-pageHeading"><%= @user.name %></h1>
+    <div class="usr-container app-paddedContainer">
+      <section class="usr-left uClearAfter">
+        <section class="usr-pic">
+          <%= large_gravatar_for @user %>
+          <%= link_to "Change photo at Gravatar.com", "http://gravatar.com", class: 'uBlock' %>
+        </section>
+        <section class="usr-roles">
+          <h2 class="app-sectionHeader">Assigned Roles</h2>
+          <ol>
+            <% if @user.role_assignments.empty? %>
+              <li>None!</li>
+            <% else %>
+              <% @user.role_assignments.ordered_by_role.each do |assign| %>
+                <li>
+                  <%= link_to assign.role.name, [@org, assign.role],
+                    class: "app-subtleLink" %>
+                  <small>
+                    <%= link_to assign.role.group.name, [@org, assign.role.group],
+                        class: "app-subtleLink uSmallColor" %>
+                  </small>
+                </li>
+              <% end %>
+            <% end %>
+          </ol>
+        </section>
+      </section>
+
+      <section class="usr-right usr-formSection">
+        <section class="usr-form" id='edit_user'>
+          <%= form_for [@org, @user], remote: true do |f| %>
+            <section class="usr-formTextField">
+              <%= f.label :name, "Name" %>
+              <%= f.text_field :name, placeholder: "Enter name...", autofocus: true %>
+            </section>
+            <section class="usr-formTextField">
+              <%= f.label :email, "Email address" %>
+              <%= f.text_field :email, placeholder: "Enter email..." %>
+            </section>
+            <section class="usr-formTextArea">
+              <%= f.label :description, "Description" %>
+              <%= f.text_area :description, class: 'uTextarea',
+                placeholder: "Enter a description...",
+                rows: 10, 'data-min-rows': '10'  %>
+            </section>
+            <section class="usr-submitSection">
+              <small class="usr-cancel">
+                <%= link_to "Cancel", [@org, @user] %>
+              </small>
+              <%= f.submit class: 'btn-sml' %>
+            </section>
+          <% end %>
+        </section>
+      </section>
+    </div>
+
+  </section>
+  <section class="app-secondarySection">
+  </section>
+</main>
+
+<aside class="app-aside" id="app-aside">
+  <%= render partial: 'shared/navbar_side', locals: { org: @org } %>
+</aside>
+
+<%= link_to @org do %>
+  <%= image_tag "genus-logo-t.png", alt: "Genus", class: "nav-logo-bottom" %>
+<% end %>
+
+

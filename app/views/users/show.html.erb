@@ -1,2 +1,65 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% content_for :title, "#{@user.name} in #{@org.name}" %>
+
+<%= render partial: 'shared/navbar_top', locals: { org: @org } %>
+
+<main class="app-main" id="app-main">
+  <section class="app-primarySection">
+    <h1 class="app-pageHeading"><%= @user.name %></h1>
+    <div class="usr-container app-paddedContainer">
+      <section class="uClearAfter">
+        <section class="usr-left">
+          <section class="usr-pic">
+            <%= large_gravatar_for @user %>
+          </section>
+          <section class="usr-roles">
+            <h2 class="app-sectionHeader">Assigned Roles</h2>
+            <ol>
+              <% if @user.role_assignments.empty? %>
+                <li>None!</li>
+              <% else %>
+                <% @user.role_assignments.ordered_by_role.each do |assign| %>
+                  <li>
+                    <%= link_to assign.role.name, [@org, assign.role],
+                      class: "app-subtleLink" %>
+                    <small>
+                      <%= link_to assign.role.group.name, [@org, assign.role.group],
+                        class: "app-subtleLink uSmallColor" %>
+                    </small>
+                  </li>
+                <% end %>
+              <% end %>
+            </ol>
+          </section>
+        </section>
+
+        <section class="usr-right uClearAfter">
+          <section class="usr-description">
+            <% if @user.description.blank? %>
+              <i>No description</i>
+            <% else %>
+              <%= auto_html(@user.description) { html_escape; simple_format; image; twitter; gist; link; } %>
+            <% end %>
+          </section>
+        </section>
+      </section>
+
+      <section class="usr-editLink uAlignCenter">
+        <%= link_to "Edit my account",
+          edit_organization_user_path(@org, @user) %>
+      </section>
+    </div>
+
+  </section>
+  <section class="app-secondarySection">
+  </section>
+</main>
+
+<aside class="app-aside" id="app-aside">
+  <%= render partial: 'shared/navbar_side', locals: { org: @org } %>
+</aside>
+
+<%= link_to @org do %>
+  <%= image_tag "genus-logo-t.png", alt: "Genus", class: "nav-logo-bottom" %>
+<% end %>
+
+

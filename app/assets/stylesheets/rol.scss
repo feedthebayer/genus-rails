@@ -81,12 +81,6 @@
   text-align: center;
 }
 
-.rol-listExpandedTitle {
-  @include media($xxlrg-up) {
-    display: none;
-  }
-}
-
 .rol-assignee {
   line-height: 3em;
   margin-bottom: 1em;

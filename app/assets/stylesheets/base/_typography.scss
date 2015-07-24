@@ -26,6 +26,7 @@ p {
 
 a {
   color: $action-color;
+  text-decoration: none;
   transition: color 0.1s linear;
   word-wrap: break-word;
 
@@ -33,6 +34,7 @@ a {
   &:focus,
   &:hover {
     color: darken($action-color, 15%);
+    text-decoration: underline;
   }
 
   &:active,
@@ -41,8 +43,9 @@ a {
   }
 }
 
+$small-color: $base1;
 small {
-  color: $base1;
+  color: $small-color;
 }
 
 hr {

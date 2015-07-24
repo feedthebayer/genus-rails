@@ -15,3 +15,22 @@
     color: darken($negative-color, 15%);
   }
 }
+
+.uSmallColor {
+  color: $small-color;
+}
+
+.uClearAfter:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
+.uAlignCenter {
+  text-align: center;
+}
+
+.uBlock {
+  display: block;
+}
+

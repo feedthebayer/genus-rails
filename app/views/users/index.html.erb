@@ -9,11 +9,16 @@
     </h1>
     <section class="app-paddedContainer">
       <section class="usr-indexSection">
-        <ol id="users">
+        <ul id="users">
           <% @users.each do |user| %>
-            <li><%= user.name %></li>
+            <li class="usr-indexItem uOverflowAuto">
+              <%= link_to [@org, user], class: 'app-subtleLink' do %>
+                <%= small_gravatar_for user %>
+                <%= user.name %>
+              <% end %>
+            </li>
           <% end %>
-        </ol>
+        </ul>
       </section>
       <section class="usr-newSection" id="usr-new" data-turbolinks-temporary>
         <%= render partial: 'form', locals: { org: @org, user: @new_user } %>

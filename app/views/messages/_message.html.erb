@@ -1,10 +1,14 @@
 <article class="con-partition" id="messages:<%= message.id %>">
   <section class="msg-container">
     <header>
-      <%= gravatar_for message.user %>
+      <%= link_to [message.user.organization, message.user] do %>
+        <%= gravatar_for message.user %>
+      <% end %>
       <div class="uOverflowAuto">
         <h1 class="msg-heading">
-          <%= message.user.name %>
+          <%= link_to message.user.name,
+            [message.user.organization, message.user],
+            class: "app-headingLink" %>
         </h1>
         <small class="msg-time">
           <%= local_time_ago message.created_at %>

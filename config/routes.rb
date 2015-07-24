@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
 
   resources :organizations, path: "", only: [:show] do
-    resources :users, only: [:create]
-    get 'people' => 'users#index'
+    resources :people, as: 'users', controller: 'users',
+      only: [:create, :show, :edit, :update, :index]
 
     resources :groups, only: [:create, :show, :index, :destroy] do
       # New conversations

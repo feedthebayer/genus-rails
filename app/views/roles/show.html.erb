@@ -21,10 +21,12 @@
         <% if @role.role_assignments.empty? %>
           <div>No one</div>
         <% else %>
-          <% @role.role_assignments.includes(:user).each do |assignment| %>
+          <% @role.role_assignments.ordered_by_user.each do |assignment| %>
             <div class="rol-assignee uOverflowAuto">
-              <%= gravatar_for assignment.user %>
-              <%= assignment.user.name %><%= assignment.note %>
+              <%= link_to [@org, assignment.user], class: 'app-subtleLink' do %>
+                <%= gravatar_for assignment.user %>
+                <%= assignment.user.name %>
+              <% end %>
             </div>
           <% end %>
         <% end %>

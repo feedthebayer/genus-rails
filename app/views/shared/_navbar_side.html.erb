@@ -20,17 +20,17 @@
   <div class="nbs-rightDiv">
     <section class="nbs-people nbs-section">
       <h1 class="app-sectionHeader">
-        <%= link_to "People", organization_people_path(org),
+        <%= link_to "People", organization_users_path(org),
           class: "app-headingLink" %>
       </h1>
     </section>
 
-    <!-- <section class="nbs&#45;me nbs&#45;section"> -->
-    <!--   <h1 class="app&#45;sectionHeader"> -->
-    <!--     <#%= link_to "Me", organization_people_path(org), -->
-    <!--       class: "app&#45;headingLink" %> -->
-    <!--   </h1> -->
-    <!-- </section> -->
+    <section class="nbs-me nbs-section">
+      <h1 class="app-sectionHeader">
+        <%= link_to "Me", [org, current_user],
+          class: "app-headingLink" %>
+      </h1>
+    </section>
   </div>
 
   <section class="nbs-session">
